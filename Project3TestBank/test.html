@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <button class="button">
+
+        click here
+
+    </button>
+    <div>
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td>
+
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h4>Client Data Test</h4>
+        </div>
+        <div class="card-body">
+            <ul id="clientData" class="list-group"></ul>
+        </div>
+    </div>
+
+
+    <script>
+
+        $(".button").click(function () {
+
+            $.ajax({
+                url: "/classes",
+                method: "GET"
+            }).then(function (result) {
+
+                // Here we then log the tableData to console, where it will show up as an object.
+                console.log(result);
+                console.log("------------------------------------");
+
+
+            });
+        });
+
+
+
+
+    </script>
+
+</body>
+
+</html>
