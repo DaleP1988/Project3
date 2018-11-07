@@ -11,11 +11,17 @@ module.exports = function(app) {
   // (ex: localhost:PORT/api/admin... they are shown a JSON of the data in the table)
   // ---------------------------------------------------------------------------
 
-  app.get("/classes", function(req, res) {
+  app.get("/class", function(req, res) {
     console.log("something");
     var mindbody = require("./soapTest.js");
     mindbody.getClasses(res);
   });
+
+  // app.get("/classes", function(req, res) {
+  //   console.log("something");
+  //   var mindbody = require("./soapTest.js");
+  //   mindbody.getClasses(res);
+  // });
 };
 
 // app.post("/classes", function(req, res) {
