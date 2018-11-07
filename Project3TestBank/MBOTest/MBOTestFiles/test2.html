@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <form id="form">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Name</label>
+            <input id="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name">
+            <small id="emailHelp" class="form-text text-muted"></small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Location (city)</label>
+            <input id="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Location">
+            <small id="emailHelp" class="form-text text-muted"></small>
+        </div>
+        <button id="button" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+
+    <div class="card">
+        <div class="card-header">
+            <h4>TEST: Getting Data By Instructor</h4>
+        </div>
+        <div class="card-body">
+            <ul id="instructorData" class="list-group"></ul>
+            <!-- <table id="table" class="table table-striped">
+
+                </table> -->
+        </div>
+
+    </div>
+    <script>
+
+        // $(document).ready(function (event) {
+        //     event.preventDefault(); //Added 
+
+        $('#button').click(function (event) {
+            alert("submitted!");
+            event.preventDefault();
+            var instructorName = $('#name').val();
+            var location = $('#location').val();
+
+            // $("#button").click(function (e) {
+            //     e.preventDefault();
+            //     alert("button clicked!");
+
+            $.ajax({
+                url: "/class",
+                method: "GET"
+            }).then(function (result) {
+                alert("successful call!");
+
+                // Here we then log the tableData to console, where it will show up as an object.
+                console.log(result);
+                console.log("------------------------------------");
+                var classList = result.Classes.Class;
+                var classData = $("#instructorData");
+                //use var to get deeper into the object
+                // var instructorName = $('#name');
+                // var location = $('#location');
+
+                for (var i = 0; i < classList.length; i++) {
+                    if (instructorName === classList[i].Staff.Name || location === classList[i].Location.city) {
+
+                        var listItem = $("<li class='list-group-item mt-4'>");
+                        listItem.append(
+                            $("<p>").text("Instructor: " + classList[i].Staff.Name),
+                            $("<p>").text("Class Type: " + classList[i].ClassDescription.SessionType.Name),
+                            $("<p>").text("Class Level: " + classList[i].ClassDescription.Level.Name),
+                            $("<p>").text("Class Description " + classList[i].ClassDescription.Description),
+                            $("<p>").text("Class Start Time" + classList[i].StartDateTime),
+                            $("<p>").text("Class End Time" + classList[i].EndDateTime),
+                            $("<p>").text("Location:" + classList[i].Location.City),
+                            $("<p>").text("Address:"),
+                            $("<hr>"),
+                            $("<p>").text(classList[i].Location.Address),
+                            $("<p>").text(classList[i].Location.Address2),
+
+                            $("<p>").text("'Are there spots available?'  " + classList[i].IsAvailable),
+                            $("<p>").text("Class Canceled?  " + classList[i].IsCanceled),
+                            $("<p>").text("'Class is canceled. Can I get on the waitlist?'  " + classList[i].IsWaitlistAvailable),
+                            $("<p>").text("'Do I pre-register or drop-in'  " + classList[i].ClassDescription.Program.ScheduleType),
+
+                        );
+                        classData.append(listItem);
+
+
+                    } else {
+                        alert("Instructor not Listed in Mind Body Online. Search for another instructor or take the Client Survey!")
+                    }
+
+
+
+                }
+            });
+        });
+        // });
+
+
+
+
+    </script>
+
+</body>
+
+</html>
