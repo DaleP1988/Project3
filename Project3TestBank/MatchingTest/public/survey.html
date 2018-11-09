@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+        h1 {color: lightblue !important;}
+    hr {margin-right: 25%;}
+    .option { font-size: 12px  ! important;}
+    #submit { margin-left: 43%; }
+    #name {width:50%;}
+    #photo {width: 50%;}
+    .jumbotron { width: 70% ! important; background-color: rgb(162, 162, 167) ! important; border-style: solid; border-width:2px; border-color:orchid}
+    .container { margin-left: 10% ! important;}
+    .footer {margin-left: 25% ! important;}
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <div class="jumbotron">
+        <div class="container">
+
+            <h1>
+                <i class="far fa-smile-wink fa-lg" aria-hidden="true"></i>
+                Matching Test
+            </h1>
+            <hr>
+            <h4 style="color:gray">Answer some questions... and find your new bestie!</h4>
+
+            <br>
+            <h2 style="color: navajowhite">Survey Questions</h2>
+            <hr>
+
+            <h3 style="color: navajowhite">
+                <strong>About You</strong>
+            </h3>
+            <h5>Name (required)</h5>
+            <input type="text" id="name" class="form-control" required>
+
+            <!-- <h5> Link to Photo Image (required)</h5>
+            <input type="text" id="photo" class="form-control" required> -->
+            <hr>
+
+            <fieldset id="q1">
+                <legend>Question 1</legend>
+
+                <div>
+                    <input type="checkbox" id="item1" name="feature" value="item1" />
+                    <label for="scales">1</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item2" name="feature" value="item2" />
+                    <label for="horns">2</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item3" name="feature" value="item3" />
+                    <label for="claws">3</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item4" name="feature" value="item4" />
+                    <label for="claws">4</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item5" name="feature" value="item5" />
+                    <label for="claws">5</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item6" name="feature" value="item6" />
+                    <label for="claws">6</label>
+                </div>
+
+            </fieldset>
+
+            <fieldset id="q2">
+                <legend>Question 2</legend>
+
+                <div>
+                    <input type="checkbox" id="item1" name="feature" value="item1" />
+                    <label for="scales">1</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item2" name="feature" value="item2" />
+                    <label for="horns">2</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item3" name="feature" value="item3" />
+                    <label for="claws">3</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item4" name="feature" value="item4" />
+                    <label for="claws">4</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item5" name="feature" value="item5" />
+                    <label for="claws">5</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item6" name="feature" value="item6" />
+                    <label for="claws">6</label>
+                </div>
+
+            </fieldset>
+            <fieldset id="q3">
+                <legend>Question 3</legend>
+
+                <div>
+                    <input type="checkbox" id="item1" name="feature" value="item1" />
+                    <label for="scales">1</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item2" name="feature" value="item2" />
+                    <label for="horns">2</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item3" name="feature" value="item3" />
+                    <label for="claws">3</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item4" name="feature" value="item4" />
+                    <label for="claws">4</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item5" name="feature" value="item5" />
+                    <label for="claws">5</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item6" name="feature" value="item6" />
+                    <label for="claws">6</label>
+                </div>
+
+            </fieldset>
+            <fieldset id="q4">
+                <legend>Question 4</legend>
+
+                <div>
+                    <input type="checkbox" id="item1" name="feature" value="item1" />
+                    <label for="scales">1</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item2" name="feature" value="item2" />
+                    <label for="horns">2</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item3" name="feature" value="item3" />
+                    <label for="claws">3</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item4" name="feature" value="item4" />
+                    <label for="claws">4</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item5" name="feature" value="item5" />
+                    <label for="claws">5</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item6" name="feature" value="item6" />
+                    <label for="claws">6</label>
+                </div>
+
+            </fieldset>
+            <fieldset id="q5">
+                <legend>Question 5</legend>
+
+                <div>
+                    <input type="checkbox" id="item1" name="feature" value="item1" />
+                    <label for="scales">1</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item2" name="feature" value="item2" />
+                    <label for="horns">2</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item3" name="feature" value="item3" />
+                    <label for="claws">3</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item4" name="feature" value="item4" />
+                    <label for="claws">4</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item5" name="feature" value="item5" />
+                    <label for="claws">5</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item6" name="feature" value="item6" />
+                    <label for="claws">6</label>
+                </div>
+
+            </fieldset>
+            <fieldset id="q6">
+                <legend>Question 6</legend>
+
+                <div>
+                    <input type="checkbox" id="item1" name="feature" value="item1" />
+                    <label for="scales">1</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item2" name="feature" value="item2" />
+                    <label for="horns">2</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item3" name="feature" value="item3" />
+                    <label for="claws">3</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item4" name="feature" value="item4" />
+                    <label for="claws">4</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item5" name="feature" value="item5" />
+                    <label for="claws">5</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="item6" name="feature" value="item6" />
+                    <label for="claws">6</label>
+                </div>
+
+            </fieldset>
+
+            <div class="chosen-container chosen-container-single" style="width: 155px;" title id="q1_chosen"> </div>
+        </div>
+
+        <br>
+
+        <button type="submit" class="btn btn-primary btn-lg" id="submit">
+            <i class="fa fa-check-circle" aria-hidden="true"></i> Submit
+        </button>
+        <br>
+        <br>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <p>
+                <a href="/api/friends">API Friends List</a> |
+                <a href="https://github.com/DaleP1988/Friend-Finder---Node-and-Express-Servers.git">GitHub Repo</a>
+        </div>
+    </footer>
+
+
+    <!-- Modal Trigger -->
+    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+    <!-- Modal Structure -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+        </div>
+        <div class="modal-footer">
+            <a class="modal-close waves-effect waves-light btn " href="">Close</a>
+            <a class="waves-effect waves-light btn " href="">Search Instructors</a>
+
+
+        </div>
+    </div>
+
+
+
+    </div>
+    </div>
+
+    <!-- 
+    FOR THE SITE, GET CLIENT SURVEY DATA, FIND ALL INSTRUCTOR SURVEY DATA (FROM DB), COMPARE BY QUESTION, TAKE TOTAL -->
+
+
+    <script type="text/javascript" src="materialize.js"></script>
+    <script type="text/javascript">
+
+
+
+
+        //this code should determine how data gets in from the server --- check tables.html
+        //do an AJAX call to get the data from the friends api
+        //form inputs
+        // $(".chosen-select").val("");
+        // $(document).ready(function() {
+        // $('select').material_select();
+
+        $("#modal").hide(); //hiding the div for the modal. avoiding the gray background.
+        $("#submit").on("click", function (event) {
+            event.preventDefault();
+            // var valid = true;
+            // $(".form-control").each(function () {
+            //     if ($(this).text() == "") {
+            //         alert("Please fill all fields!");
+            //         valid = false;
+            //     }
+            // });
+            // if (!valid) {
+            //     return;
+            // }
+
+
+            var clientSelections = {
+                name: $("#name").val()
+
+                // name is key and after colon is value pair
+            };
+
+
+            // for the react version change "q" to "question"
+            //
+
+            var questions = ["q1", "q2", "q3", "q4", "q5", "q6"];  //eliminated pound sign to look up q and store answers in client selection structure
+            questions.forEach(function (question) {    //regular arrays forEach()
+
+                var selections = [];  //bc this is a loop, it is created fresh for each question.
+
+                $("#" + question).find("input:checked").each(function (i, element) {
+
+                    selections.push($(this).val());
+
+                });
+                clientSelections[question] = selections;
+
+
+            });
+
+            console.log(clientSelections);
+
+            // store client
+
+
+
+            // modify below to get the data from the db.
+
+
+            $.post("/api/client", clientSelections, function (data) {
+                // if(data) {
+                alert("client data in");
+                console.log(data);
+
+
+                //call instructor
+
+
+                //the path is defining endpoints for the rest API
+                $.post("/api/match", clientSelections, function (data) {
+                    // if(data) {
+                    alert("");
+                    console.log(data);
+                    bestMatch(clientSelections);
+                    //this holds all instructors sorted by score.
+                    //from here loop through and display
+
+
+                });
+            });
+
+
+            console.log(clientSelections);
+
+        });
+
+
+        //getting the scores
+        //loop through scores to find the highest
+
+        var scores = clientSelections;
+        var array = [];
+
+        function bestMatch(scores) {
+
+            var scoreArray = array.push(scores);
+            var sortArray = scoreArray.sort(scores.score);
+            var bestFive = sortArray.slice(4);
+            console.log(bestFive);
+
+
+            for (var i = 0; i < bestFive.length; i++) {
+
+                var matchModal = $(".modal-content");
+                matchModal.append(
+                    $("<h5>").text("Name: " + bestFive.name),
+                    $("<a class = waves-effect waves-light btn modal-trigger/> ").text("View Schedule")
+                    // $("<p>").text("Location:" + bestFive.),
+                    // $("<p>").text("Studio: " + ),
+                )
+            };
+
+
+
+
+
+
+
+   //server code changes, restart server!!!!!!!
+//Grab result from AJAX post to display best match name and photo
+
+//display modal with best match
+
+//run the best match function
+// <!-- 
+// findBestMatch();
+//   -->
+    </script>
+</body>
+
+</html>
