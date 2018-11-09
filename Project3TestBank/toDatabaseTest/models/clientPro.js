@@ -21,7 +21,7 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    locCity: {
+    City: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -40,28 +40,28 @@ module.exports = function(sequelize, DataTypes) {
           len: [1]
         }
       },
-      question1: {
+      q1: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
           len: [1]
         }
       },
-      question2: {
+      q2: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
           len: [1]
         }
       },
-      question3: {
+      q3: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
           len: [1]
         }
       },
-      question4: {
+      q4: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {

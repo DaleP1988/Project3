@@ -7,40 +7,40 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    question1: {
+    q1: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]
       }
     },
-    question2: {
+    q2: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]
       }
     },
-    question3: {
+    q3: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]
       },
-      question4: {
+      q4: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
           len: [1]
         }
       },
-      question5: {
+      q5: {
         type: DataTypes.TEXT,
         validate: {
           len: [1]
         }
       },
-      question6: {
+      q6: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {

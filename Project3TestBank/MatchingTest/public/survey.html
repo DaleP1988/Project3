@@ -248,24 +248,20 @@
     </footer>
 
 
-    <div id="results-modal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!--MODAL CONTENT-->
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">X</button>
-                    <h2 class="modal-title"><strong>This one has Bestie Potential!</strong>
-                    </h2>
-                </div>
-                <div class="modal-body">
-                    <!-- <h2 id="match-name"></h2>
-                <img id="match-img"  alt=""> -->
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Try Again!</button>
-                </div>
-            </div>
+    <!-- Modal Trigger -->
+    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+    <!-- Modal Structure -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
         </div>
+        <div class="modal-footer">
+            <a class="modal-close waves-effect waves-light btn " href="">Close</a>
+            <a class="waves-effect waves-light btn " href="">Search Instructors</a>
+
+
+        </div>
+    </div>
 
 
 
@@ -276,8 +272,12 @@
     FOR THE SITE, GET CLIENT SURVEY DATA, FIND ALL INSTRUCTOR SURVEY DATA (FROM DB), COMPARE BY QUESTION, TAKE TOTAL -->
 
 
-
+    <script type="text/javascript" src="materialize.js"></script>
     <script type="text/javascript">
+
+
+
+
         //this code should determine how data gets in from the server --- check tables.html
         //do an AJAX call to get the data from the friends api
         //form inputs
@@ -285,7 +285,7 @@
         // $(document).ready(function() {
         // $('select').material_select();
 
-        $("#results-modal").hide(); //hiding the div for the modal. avoiding the gray background.
+        $("#modal").hide(); //hiding the div for the modal. avoiding the gray background.
         $("#submit").on("click", function (event) {
             event.preventDefault();
             // var valid = true;
@@ -348,6 +348,7 @@
                     // if(data) {
                     alert("");
                     console.log(data);
+                    bestMatch(clientSelections);
                     //this holds all instructors sorted by score.
                     //from here loop through and display
 
@@ -356,143 +357,41 @@
             });
 
 
-            // simply fill the modal. view schedule will redirect to new react page
-
-
-            //loop through instructors objects
-            //compare scores at each location
-            //return the five best matches
-            //fill the modal
-            //make sure to add button to add view schedule add go back button
-            //get the instructor name on click ....
-
-            function (data) {
-
-
-            }
-
-
-
-
-
-            // compare
-
-
-
-
-
-
-
-
-
-
-
-            //five matches
-
-
-            // get answers by question #
-            //this gets all inputs
-
-
-
-
-
-
-
-
-            // <!-- 
-            //             //grab the form elements
-            //             var clientSelections = {
-            //                 name: $("#name").val(),
-            //                 question1: q1Selections,
-
-
-            //                 question2: [
-            //                     ($("#q1").val()),
-            //                     ($("#q2").val()),
-            //                     ($("#q3").val()),
-            //                     ($("#q4").val()),
-            //                     ($("#q5").val()),
-            //                     ($("#q6").val())
-            //                 ],
-            //                 question3: [
-            //                     ($("#q1").val()),
-            //                     ($("#q2").val()),
-            //                     ($("#q3").val()),
-            //                     ($("#q4").val()),
-            //                     ($("#q5").val()),
-            //                     ($("#q6").val()),
-            //                     ($("#q7").val()),
-            //                     ($("#q8").val())
-            //                 ],
-            //                 question4: [
-            //                     ($("#q1").val()),
-            //                     ($("#q2").val()),
-            //                     ($("#q3").val()),
-            //                     ($("#q4").val()),
-            //                     ($("#q5").val()),
-            //                     ($("#q6").val())
-            //                 ],
-            //                 question5: [
-            //                     ($("#q1").val()),
-            //                     ($("#q2").val()),
-            //                     ($("#q3").val()),
-            //                     ($("#q4").val()),
-            //                     ($("#q5").val()),
-            //                     ($("#q6").val())
-
-            //                 ],
-            //                 question6: [
-            //                     ($("#q1").val()),
-            //                     ($("#q2").val()),
-            //                     ($("#q3").val()),
-            //                     ($("#q4").val()),
-            //                     ($("#q5").val()),
-            //                     ($("#q6").val())
-            //                 ]
-            //             }; -->
-
             console.log(clientSelections);
 
-
-            // console.log(userData);
-            //CHECK RESERVE.HTML
-            // AJAX post the data to the friends API
-            //using the jQuery .done function to deal with the asynchronicity
-
-
-            // $.post("/api/client", clientSelections, function (data) {
-            // if(data) {
-            // alert("You are officially listed in Friendly! Let's findy you a new bestie!");
-            // console.log(data); -->
-            // $("#match-name").html(data.name);
-            // $("#match-img").attr("src", data.photo);
-            // $("#results-modal").modal('open'
-
-
-            //MODAL FUNCTONALITY
-
-
-
-            // $('.modal-body').empty();  //get rid of previous match. get the width of the modal.
-            // var header = $("<h2>").text("Meet: " + data.name);
-            // var img = $("<img>").attr("src", data.photo).attr("width", "300px");
-            // var newBestieInfo = $(".modal-body");
-            // newBestieInfo.append(header).append(img);
-            // $('.modal').modal({
-            //     dismissible: false,
-
-
-            // Modal can be dismissed by clicking outside of the modal
-            // opacity: .5, // Opacity of modal background
-            // inDuration: 300, // Transition in duration
-            // outDuration: 200, // Transition out duration
-            // startingTop: '4%', // Starting top style attribute
-            // endingTop: '10%' // Ending top style attribute
-
-            // }).show();  //hide until data is available
-            //     });
         });
+
+
+        //getting the scores
+        //loop through scores to find the highest
+
+        var scores = clientSelections;
+        var array = [];
+
+        function bestMatch(scores) {
+
+            var scoreArray = array.push(scores);
+            var sortArray = scoreArray.sort(scores.score);
+            var bestFive = sortArray.slice(4);
+            console.log(bestFive);
+
+
+            for (var i = 0; i < bestFive.length; i++) {
+
+                var matchModal = $(".modal-content");
+                matchModal.append(
+                    $("<h5>").text("Name: " + bestFive.name),
+                    $("<a class = waves-effect waves-light btn modal-trigger/> ").text("View Schedule")
+                    // $("<p>").text("Location:" + bestFive.),
+                    // $("<p>").text("Studio: " + ),
+                )
+            };
+
+
+
+
+
+
 
    //server code changes, restart server!!!!!!!
 //Grab result from AJAX post to display best match name and photo

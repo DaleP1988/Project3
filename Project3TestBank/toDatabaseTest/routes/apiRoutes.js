@@ -1,233 +1,335 @@
 var db = require("../models");
 
-const requets = require("request");
+const request = require("request");
 const axios = require("axios");
 
 module.exports = function(app) {
-  // Find New Templat HTML
-  app.get("/api/newtemp/:temp", function(req, res) {
-    db.Newtemps.findOne({
-      where: {
-        lable: req.params.temp
-      }
+  
+
+
+/////////////////////
+//////CLIENT SURVEY//
+/////////////////////
+
+
+
+  //CREATE CLIENT SURVEY RESULT
+  // 
+
+ 
+  app.post("/api/CS", function (req, res) {
+    db.clientSurvey.create(req.body).then(function (result) {
+      res.json(result);
     })
-      .then(function(result) {
-        res.json(result);
-      })
-      .catch(function(err) {
+      .catch(function (err) {
         res.status(400).json(err);
       });
   });
 
-  // Find New Templat HTML
-  app.get("/api/usertemp/:userid", function(req, res) {
-    db.Temps.findAll({
-      where: {
-        UserId: req.params.userid
-      }
-    })
-      .then(function(result) {
-        res.json(result);
-      })
-      .catch(function(err) {
-        res.status(400).json(err);
-      });
-  });
+  //UPDATE CLIENT SURVEY RESULT
 
-  // Create User Temp
-  app.post("/api/usertemp", function(req, res) {
-    db.Temps.create(req.body)
-      .then(function(result) {
-        res.json(result);
-      })
-      .catch(function(err) {
-        res.status(400).json(err);
-      });
-  });
+  
 
-  ///////////////////
-  //CLIENT PROFILE///
-  ///////////////////
-
-  //create client profile data: template to database
-  //call the db client
-
-  app.post("/api/clientProf", function(req, res) {
-    db.clientP
-      .create(req.body)
-      .then(function(result) {
-        res.json(result);
-      })
-      .catch(function(err) {
-        res.status(400).json(err);
-      });
-  });
-
-  //get the client profile data: data to page
-  //change the userid field (in sequelize) to match the below
-
-  // Find New Templat HTML
-  app.get("/api/clientProf/:userid", function(req, res) {
-    db.clientP
-      .findAll({
+  app.put("/api/CS", function (req, res) {
+    db.clientSurvey.update({
+      clientName: req.body.clientName,
+      q1: req.body.q1,
+      q2: req.body.q1,
+      q3: req.body.q1,
+      q4: req.body.q1,
+      q5: req.body.q1,
+      q6: req.body.q1,
+    }, {
         where: {
-          UserId: req.params.userid
+          clientId: req.body.clientId
         }
-      })
-      .then(function(result) {
+      }).then(function (result) {
         res.json(result);
       })
-      .catch(function(err) {
+      .catch(function (err) {
         res.status(400).json(err);
       });
   });
 
-  ///////////////////
-  //CLIENT SURVEY///
-  ///////////////////
 
-  //create client survey data: template to database
-  //call the db client
 
-  app.post("/api/clientSurv", function(req, res) {
-    db.clientS
-      .create(req.body)
-      .then(function(result) {
+  //FIND/GET CLIENT SURVEY RESULT ...by clientName
+
+  app.get("/api/CS/:clientName", function (req, res) {
+    db.User.findOne({
+      where: {
+        clientName: req.params.clientName
+      }
+    }).then(function (result) {
+      if (result) {
         res.json(result);
-      })
-      .catch(function(err) {
+      } else {
+        res.json(false);
+      }
+    })
+      .catch(function (err) {
         res.status(400).json(err);
       });
   });
 
-  //get the client survey data: data to page
-  //change the userid field (in sequelize) to match the below
 
-  // Find New Templat HTML
-  app.get("/api/clientSurv/:userid", function(req, res) {
-    db.clientS
-      .findAll({
+
+
+
+
+/////////////////////
+//INSTRUCTOR SURVEY//
+/////////////////////
+
+
+
+  //CREATE INSTRUCTOR SURVEYS
+
+
+
+  app.post("/api/IS", function (req, res) {
+    db.instructorSurvey.create(req.body).then(function (result) {
+      res.json(result);
+    })
+      .catch(function (err) {
+        res.status(400).json(err);
+      });
+  });
+
+  //UPDATE INSTRUCTOR 
+
+
+  app.put("/api/IS", function (req, res) {
+    db.instructorSurvey.update({
+      instructorName: req.body.instructorName,
+      studio: req.body.studio,
+      loc: req.body.loc,
+      q1: req.body.q1,
+      q2: req.body.q1,
+      q3: req.body.q1,
+      q4: req.body.q1,
+      q5: req.body.q1,
+      q6: req.body.q1,
+    }, {
         where: {
-          UserId: req.params.userid
-          // need to change this to get all data
+          clientId: req.body.clientId
         }
-      })
-      .then(function(result) {
+      }).then(function (result) {
         res.json(result);
       })
-      .catch(function(err) {
+      .catch(function (err) {
         res.status(400).json(err);
       });
   });
 
-  ///////////////////////
-  //INSTRUCTOR PROFILE///
-  ///////////////////////
+//make sure to make the clientID
 
-  //create instructor profile data: template to database
-  //call the db instructor
 
-  app.post("/api/instructorProf", function(req, res) {
-    db.instructor
-      .create(req.body)
-      .then(function(result) {
-        res.json(result);
-      })
-      .catch(function(err) {
-        res.status(400).json(err);
-      });
-  });
+  //dont need to get survey again
 
-  //get the instructor survey data: data to page
-  //change the userid field (in sequelize) to match the below
 
-  // Find New Templat HTML
-  app.get("/api/instructorProf/:userid", function(req, res) {
-    db.Temps.findAll({
+
+
+/////////////////////
+//CLIENT PROFILE/////
+/////////////////////
+
+// create client profile
+
+app.post("/api/CP", function (req, res) {
+  db.clientProfile.create(req.body).then(function (result) {
+    res.json(result);
+  })
+    .catch(function (err) {
+      res.status(400).json(err);
+    });
+});
+
+
+// update client profile
+
+
+
+app.put("/api/CP", function (req, res) {
+  db.clientProfile.update({
+    clientName: req.body.clientName,
+    email: req.body.email,
+    phone: req.body.phone,
+    City: req.body.City,
+    locState: req.body.locState,
+    img: req.body.img,
+    q1: req.body.q1,
+    q2: req.body.q1,
+    q3: req.body.q1,
+    q4: req.body.q1
+  
+  }, {
       where: {
-        UserId: req.params.userid
-        // need to change this to get all data
+        clientId: req.body.clientId
       }
+    }).then(function (result) {
+      res.json(result);
     })
-      .then(function(result) {
-        res.json(result);
-      })
-      .catch(function(err) {
-        res.status(400).json(err);
-      });
-  });
+    .catch(function (err) {
+      res.status(400).json(err);
+    });
+});
 
-  ///////////////////////
-  //INSTRUCTOR SURVEY///
-  ///////////////////////
 
-  //create instructor profile data: template to database
-  //call the db instructor
 
-  app.post("/api/instructorProf", function(req, res) {
-    db.instructor
-      .create(req.body)
-      .then(function(result) {
-        res.json(result);
-      })
-      .catch(function(err) {
-        res.status(400).json(err);
-      });
-  });
+//get client profile
 
-  //get the instructor survey data: data to page
-  //change the userid field (in sequelize) to match the below
 
-  // Find New Templat HTML
-  app.get("/api/instructorProf/:userid", function(req, res) {
-    db.Temps.findAll({
+
+app.get("/api/CS/:clientName", function (req, res) {
+  db.User.findOne({
+    where: {
+      clientName: req.params.clientName
+    }
+  }).then(function (result) {
+    if (result) {
+      res.json(result);
+    } else {
+      res.json(false);
+    }
+  })
+    .catch(function (err) {
+      res.status(400).json(err);
+    });
+});
+
+
+
+//////////////////////
+//INSTRUCTOR PROFILE//
+//////////////////////
+
+//CREATE INSTRUCTOR PROFILE
+
+app.post("/api/IP", function (req, res) {
+  db.instructorProfile.create(req.body).then(function (result) {
+    res.json(result);
+  })
+    .catch(function (err) {
+      res.status(400).json(err);
+    });
+});
+
+
+
+//UPDATE INSTRUCTOR PROFILE
+
+app.put("/api/IP", function (req, res) {
+  db.instructorProfile.update({
+    instructorName: req.body.clientName,
+    email: req.body.email,
+    phone: req.body.phone,
+    loc: req.body.loc,
+    img: req.body.img,
+    q1: req.body.q1,
+    q2: req.body.q2,
+    q3: req.body.q3,
+    q4: req.body.q4,
+    q5: req.body.q5,
+    q6: req.body.q6,
+    q7: req.body.q7
+  
+  }, {
       where: {
-        UserId: req.params.userid
-        // need to change this to get all data
+        clientId: req.body.clientId
       }
+    }).then(function (result) {
+      res.json(result);
     })
-      .then(function(result) {
-        res.json(result);
-      })
-      .catch(function(err) {
-        res.status(400).json(err);
-      });
-  });
+    .catch(function (err) {
+      res.status(400).json(err);
+    });
+});
 
-  ///////////////////////
-  ////////SEARCH/////////
-  ///////////////////////
 
-  //create db of select instructor profile data: template to database
-  //call the db survey
+//GET INSTRUCTOR PROFILE
 
-  app.post("/api/search", function(req, res) {
-    db.instructor
-      .create(req.body)
-      .then(function(result) {
-        res.json(result);
-      })
-      .catch(function(err) {
-        res.status(400).json(err);
-      });
-  });
 
-  //get the instructor survey : data to page
-  //change the userid field (in sequelize) to match the below
 
-  // Find New Templat HTML
-  app.get("/api/search/:userid", function(req, res) {
-    db.Temps.findAll({
+app.get("/api/IP/:instructorName", function (req, res) {
+  db.User.findOne({
+    where: {
+      instructorName: req.params.instructorName
+    }
+  }).then(function (result) {
+    if (result) {
+      res.json(result);
+    } else {
+      res.json(false);
+    }
+  })
+    .catch(function (err) {
+      res.status(400).json(err);
+    });
+});
+
+
+
+//////////////////////
+/////////SEARCH///////
+//////////////////////
+
+//CREATE SEARCH
+
+app.post("/api/search", function (req, res) {
+  db.search.create(req.body).then(function (result) {
+    res.json(result);
+  })
+    .catch(function (err) {
+      res.status(400).json(err);
+    });
+});
+
+
+//UPDATE SEARCH
+
+
+app.put("/api/search", function (req, res) {
+  db.search.update({
+    instructorName: req.body.clientName,
+    email: req.body.email,
+    phone: req.body.phone,
+    city: req.body.city,
+    ste: req.body.ste,
+    img: req.body.img
+  
+  }, {
       where: {
-        UserId: req.params.userid
-        // need to change this to get all data
+        insId: req.body.instId
       }
+    }).then(function (result) {
+      res.json(result);
     })
-      .then(function(result) {
-        res.json(result);
-      })
-      .catch(function(err) {
-        res.status(400).json(err);
-      });
-  });
-};
+    .catch(function (err) {
+      res.status(400).json(err);
+    });
+});
+
+
+
+//GET INSTRUCTORS FROM SEARCH 
+
+
+app.get("/api/search/:instructorName", function (req, res) {
+  db.User.findOne({
+    where: {
+      instructorName: req.params.instructorName
+    }
+  }).then(function (result) {
+    if (result) {
+      res.json(result);
+    } else {
+      res.json(false);
+    }
+  })
+    .catch(function (err) {
+      res.status(400).json(err);
+    });
+});
+
+

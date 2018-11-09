@@ -21,13 +21,13 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    locCity: {
+    city: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]
       },
-      locState: {
+      ste: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {

@@ -16,7 +16,7 @@
 -- EDIT SURVEY TO TAKE URLS
 
 INSERT INTO clientPro
-    (UserId, clientName, email, phone, city, locState, img, question1, question2, question3, question4)
+    (clientId, clientName, email, phone, City, locState, img, q1, q2, q3, q4)
 
 
 -- Client Survey Data: template Data to database 
@@ -35,7 +35,7 @@ INSERT INTO clientPro
 
 
 INSERT INTO clientSurvey
-    (UserId, clientName, question1, question2, question3, question4, question5, question6)
+    (clientId, clientName, q1, q2, q3, q4, q5, q6)
 values
     ('', 'Bobby Brown', '', '', '', '', '', '')
 
@@ -51,7 +51,7 @@ values
 -- }
 
 INSERT INTO instructorPro
-    (UserId, instructorName, email, phone, city, ste, profPic, question1, question2, question3, question4, question5, question6, question7)
+    (insId, instructorName, email, phone, loc, img, q1, q2, q3, q4, q5, q6, q7)
 
 
 
@@ -76,7 +76,7 @@ INSERT INTO instructorPro
 --used to make a match
 
 INSERT INTO instructorSurvey
-    (UserId, clientName, question1, question2, question3, question4, question5, question6)
+    (insId, instructorName, studio, loc, q1, q2, q3, q4, q5, q6)
 values
     ('', 'Bobby Brown', '', '', '', '', '', '')
 
@@ -91,7 +91,7 @@ values
 -- }
 
 INSERT INTO search
-    (UserId, instructorName, email, phone, city, ste, profPic,)
+    (insId, instructorName, email, phone, city, ste, img,)
 values
     ('', '', '', '', '', '', '')
 
