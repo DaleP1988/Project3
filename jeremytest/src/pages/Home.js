@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Row, Container } from '../components/Grid';
+import { Icon } from 'react-materialize';
 
 class Home extends Component {
 
@@ -37,7 +38,35 @@ class Home extends Component {
                         </span>
                     </div>
                 </Col>
+                <Col size="6">
+                </Col>
             </Row>
+            <div className="section white">
+                <Row>
+                    <Col size="12">
+                            <h3 className="center">HOW IT WORKS</h3>
+                                <div className="center">
+                                    <Col size="4">
+                                        <Icon className="medium">account_circle</Icon>
+                                        <h5>Log in and create profile</h5>
+                                    </Col>
+                                </div>
+                                <div className="center">
+                                    <Col size="4">
+                                        <Icon className="medium">assignment_ind</Icon>
+                                        <h5>Find match</h5>
+                                    </Col>
+                                </div>
+                                <div className="center">
+                                    <Col size="4">
+                                        <Icon className="medium">event_available</Icon>
+                                        <h5>Connect</h5>
+                                    </Col>
+                                </div>
+                    </Col>
+                </Row>
+            </div>
+
         </div>
     </div>
     );
