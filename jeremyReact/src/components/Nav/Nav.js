@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import './nav.css';
-import Booking from '../../pages/Booking';
 
 const Nav = () => (
 
@@ -12,10 +11,10 @@ const Nav = () => (
                 className="brand-logo" id="logo-container" to="/">SAVE MY ASANA
             </Link>
             <ul className="right hide-on-med-and-down">
-                <li><a href="#">About</a></li>
-                <li><a href="#">How it Works</a></li>
-                <li><a href="#">Log In</a></li>
-                <li><Link to="/booking"><a>Booking</a></Link></li>
+                <li><Link to="/about">About</Link></li>
+                <li><a>How it Works</a></li>
+                <li><a>Log In</a></li>
+                <li><Link to="/booking">Booking</Link></li>
                 <li><a className="waves-effect waves-light btn-small">Get Started</a></li>
             </ul>
             {/* <ul id="nav-mobile" class="sidenav">

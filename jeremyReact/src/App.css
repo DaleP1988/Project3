@@ -22,9 +22,13 @@
   color: #61dafb;
 }
 
+.background {
+  max-width: 95%;
+}
+
 body {
-  background-image: url(./images/floor2.jpg);
-  background-size: 100%;
+  /* background-image: url(./images/floor2.jpg);
+  background-size: 100%; */
   opacity: 0.9;
   font-family: Poiret One, sans-serif;
 }
@@ -33,7 +37,6 @@ body {
   margin-top: 0;
   float: right;
 }
-
 
 #title {
   margin-bottom: 0;
