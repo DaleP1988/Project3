@@ -13,22 +13,22 @@ const Nav = () => (
       </Link>
       <ul className="right hide-on-med-and-down">
         <li>
-          <Link to="/about">Create Client Profile</Link>
-        </li>
-        <li>
-          <Link to="/about">Create Instructor Profile</Link>
-        </li>
-        <li>
           <Link to="/about">About</Link>
         </li>
         <li>
-          <a>How it Works</a>
+          <Link to="/search">Search for Instructors</Link>
         </li>
         <li>
-          <a>Log In</a>
+          <Link to="/clientprofile">Create Client Profile</Link>
+        </li>
+        <li>
+          <Link to="/instructorprofile">Create Instructor Profile</Link>
         </li>
         <li>
           <Link to="/booking">Booking</Link>
+        </li>
+        <li>
+          <a>Log In</a>
         </li>
         <li>
           <a className="waves-effect waves-light btn-small">Get Started</a>

@@ -2,6 +2,8 @@ import React from "react";
 import "./Footer.css";
 import { Icon } from "react-materialize";
 import { Col, Row, Container } from "../Grid";
+import logo from "../../images/logo.png";
+import appStore from "../../images/appStore.png";
 
 const Footer = () => (
   <div className="page-footer teal" id="footer-style">
@@ -45,14 +47,10 @@ const Footer = () => (
           <i className="fab fa-twitter-square fa-3x" />
 
           <h5 className="white-text">Get Our App </h5>
-          <img className="img" src="../../images/appStore.png" />
+          <img className="img" id="appStore" src={appStore} />
         </Col>
         <Col size="2">
-          <img
-            // style="height: 200px; width: 200px; background-color: white"
-            className="img"
-            src="../../images/logo.png"
-          />
+          <img className="img" id="logoBtm" src={logo} alt="logo" />
         </Col>
       </Row>
       <Row>
