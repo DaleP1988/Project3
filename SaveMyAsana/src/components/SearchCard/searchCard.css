@@ -1,0 +1,12 @@
+.searchCard {
+    height: 300px;
+    width: 500px;
+    margin: 10px;
+    float: left;
+}
+
+.card-image {
+    padding: 5px;
+    width: 150px;
+    height: 275px;
+}
