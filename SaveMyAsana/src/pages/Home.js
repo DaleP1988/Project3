@@ -59,7 +59,7 @@ class Home extends Component {
           </Container>
           <div className="parallax">
             <img
-              className="background"
+              className="background-img"
               src={background}
               alt="Unsplashed background img 1"
             />

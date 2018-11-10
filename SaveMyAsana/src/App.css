@@ -22,7 +22,7 @@
   color: #61dafb;
 }
 
-.background {
+.background-img {
   max-width: 95%;
 }
 
@@ -33,9 +33,16 @@ body {
   font-family: Poiret One, sans-serif;
 }
 
+
+
 #description {
   margin-top: 0;
   float: right;
+}
+
+#search {
+  padding: 25px;
+  margin-top: 115px;
 }
 
 #title {
