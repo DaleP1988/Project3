@@ -4,5 +4,5 @@ Wellness app that matches clients with specialized instructors and wellness prof
 
 
 
-https://savemyasana.herokuapp.com/ - automatic!
+https://savemyasana.herokuapp.com/ - OR ->
 [Save My Asana](https://savemyasana.herokuapp.com/)
