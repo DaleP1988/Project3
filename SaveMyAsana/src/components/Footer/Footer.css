@@ -1,0 +1,15 @@
+.delete-btn {
+  float: right;
+  color: #e74944;
+}
+
+#footer {
+  text-align: center;
+  font-weight: lighter;
+  margin-top: 8%;
+  margin-bottom: 0px;
+}
+
+#footer-style {
+  height: 100%;
+}
