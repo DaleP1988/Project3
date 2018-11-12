@@ -4,24 +4,25 @@ var surveyJSON = {
   title: "Yoga Instructor Survey",
   pages: [
     {
-      name: "Yoga Instructor Survey",
+      name: "",
       elements: [
         {
           type: "multipletext",
-          name: "question1",
+          name: "Contact",
           title: "Contact",
           items: [
-            { name: "First name", placeHolder: "First name" },
-            { name: "Last name", placeHolder: "Last name" },
+            { name: "Firstname", placeholder: "First name" },
+            { name: "Lastname", placeholder: "Last name" },
             { name: "Studio" },
-            { name: "Location " }
+            { name: "Location" }
           ],
           colCount: 2
         },
         {
           type: "checkbox",
-          name: "question2",
+          name: "question1",
           title: "How long have you been teaching yoga?",
+          isRequired: true,
           choices: [
             { value: "item1", text: "0 -1 year" },
             { value: "item2", text: "1-5 years" },
@@ -32,7 +33,7 @@ var surveyJSON = {
         },
         {
           type: "checkbox",
-          name: "question3",
+          name: "question2",
           title: "What levels do you teach? (please check all that apply)",
           choices: [
             { value: "item1", text: "Introductory" },
@@ -46,7 +47,7 @@ var surveyJSON = {
         },
         {
           type: "checkbox",
-          name: "question4",
+          name: "question3",
           title: "What styles do you teach? (please check all that apply)",
           choices: [
             { value: "item1", text: "Vinyasa Flow" },
@@ -62,7 +63,7 @@ var surveyJSON = {
         },
         {
           type: "checkbox",
-          name: "question5",
+          name: "question4",
           title:
             "What special populations have you worked with (either privately or in group settings)?",
           choices: [
@@ -89,7 +90,7 @@ var surveyJSON = {
         },
         {
           type: "checkbox",
-          name: "question6",
+          name: "question5",
           title:
             "What specialty training or certifications do you have? (please check all that apply)",
           choices: [
@@ -112,7 +113,7 @@ var surveyJSON = {
         },
         {
           type: "checkbox",
-          name: "question7",
+          name: "question6",
           title:
             "What advanced training (academic or professional) do you have? (please check all that apply)",
           choices: [
@@ -129,7 +130,7 @@ var surveyJSON = {
         },
         {
           type: "checkbox",
-          name: "question8",
+          name: "question7",
           title:
             "In addition to teaching classes, I offer:    (please check all that apply) ",
           choices: [
@@ -149,11 +150,27 @@ var surveyJSON = {
 };
 
 function sendDataToServer(survey) {
-  survey.sendResult("8bbb761b-5a49-417d-9acf-876fe48a20c6");
+  var instructorSurv = survey.valuesHash;
+  $.post("/api/IS/", instructorSurv, function(matches) {
+    console.log("great work!");
+    // window.location.href = "/test";
+    $("#instructorSurvey").text(JSON.stringify(matches));
+    //populate the page with matches
+  });
 }
 
 var survey = new Survey.Model(surveyJSON);
-$("#surveyContainer_IS").Survey({
+$("#surveyContainer").Survey({
   model: survey,
   onComplete: sendDataToServer
 });
+
+//   survey.sendResult("8bbb761b-5a49-417d-9acf-876fe48a20c6");
+//   console.log(survey);
+// }
+
+// var survey = new Survey.Model(surveyJSON);
+// $("#surveyContainer").Survey({
+//   model: survey,
+//   onComplete: sendDataToServer
+// });

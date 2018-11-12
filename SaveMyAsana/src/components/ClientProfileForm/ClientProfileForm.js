@@ -9,13 +9,13 @@ var surveyJSON = {
         {
           type: "multipletext",
           name: "Contact",
-          title: "Contact ",
+          title: "Contact",
           items: [
             { name: "Firstname" },
             { name: "Lastname" },
             { name: "Email" },
-            { name: "Phone " },
-            { name: "Location (city, state)" }
+            { name: "Phone" },
+            { name: "Location", placeholder: "(city, state)" }
           ],
           itemSize: 16,
           colCount: 2
@@ -23,8 +23,8 @@ var surveyJSON = {
         {
           type: "file",
           name: "Photo",
-          imageHeight: "300px",
-          imageWidth: "200px",
+          imageHeight: "200px",
+          imageWidth: "300px",
           maxSize: 0
         },
         {
@@ -76,11 +76,17 @@ var surveyJSON = {
 };
 
 function sendDataToServer(survey) {
-  survey.sendResult("bd42385f-45b7-45dd-be8c-2f049f0288c9");
+  var clientProf = survey.valuesHash;
+  $.post("/api/CP/", clientProf, function(matches) {
+    console.log("great work!");
+    // window.location.href = "/test";
+    $("#clientProf").text(JSON.stringify(matches));
+    //populate the page with matches
+  });
 }
 
 var survey = new Survey.Model(surveyJSON);
-$("#surveyContainer_CP").Survey({
+$("#surveyContainer").Survey({
   model: survey,
   onComplete: sendDataToServer
 });

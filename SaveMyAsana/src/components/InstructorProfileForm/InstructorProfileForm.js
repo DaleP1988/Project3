@@ -4,18 +4,18 @@ var surveyJSON = {
   title: "Yoga Instructor Profile",
   pages: [
     {
-      name: "Yoga Instructor Profile",
+      name: "",
       elements: [
         {
           type: "multipletext",
-          name: "Contact ",
+          name: "Contact",
           title: "Contact",
           items: [
-            { name: "First name" },
-            { name: "Last name" },
+            { name: "Firstname" },
+            { name: "Lastname" },
             { name: "Email" },
-            { name: "Phone " },
-            { name: "Location (city, state)" }
+            { name: "Phone" },
+            { name: "Location", placeholder: "City, State" }
           ],
           itemSize: 16,
           colCount: 3
@@ -71,7 +71,11 @@ var surveyJSON = {
           title:
             "Instructor Message to Clients: What words of wisdom and encouragement do you have to offer clients?"
         },
-        { type: "text", name: "Show us your favorite yoga goodie! (Paste URL)" }
+        {
+          type: "text",
+          name: "Goodie",
+          title: "Show us your favorite yoga goodie! (Paste URL)"
+        }
       ]
     }
   ],
@@ -79,11 +83,37 @@ var surveyJSON = {
 };
 
 function sendDataToServer(survey) {
-  survey.sendResult("785d36d3-9d28-4e7e-8e07-c5d1ba9f158d");
+  var instructorProf = survey.valuesHash;
+  $.post("/api/IP/", instructorProf, function(matches) {
+    console.log("great work!");
+    // window.location.href = "/test";
+    $("#instructorProfileForm").text(JSON.stringify(matches));
+    //populate the page with matches
+  });
 }
 
 var survey = new Survey.Model(surveyJSON);
-$("#surveyContainer_IP").Survey({
+$("#surveyContainer").Survey({
   model: survey,
   onComplete: sendDataToServer
 });
+
+// function sendDataToServer(survey) {
+//   survey.sendResult("785d36d3-9d28-4e7e-8e07-c5d1ba9f158d");
+//   console.log(survey);
+// }
+
+// var survey = new Survey.Model(surveyJSON);
+// $("#surveyContainer").Survey({
+//   model: survey,
+//   onComplete: sendDataToServer
+// });
+
+//NOTES:
+// to edit the object subheaders use name. use title for the HTML
+
+//get survey object
+//post survey to db
+// post to search in db
+// put on profile page
+//

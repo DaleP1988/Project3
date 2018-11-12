@@ -19,10 +19,10 @@ var surveyJSON = {
           title: "How long have you been practicing yoga?",
           isRequired: true,
           choices: [
-            { value: "Ford", text: "0 -1 year" },
-            { value: "Vauxhall", text: "1-5 years" },
-            { value: "Volkswagen", text: "5-10 years" },
-            { value: "Peugeot", text: "10+ years" }
+            { value: "item1", text: "0 -1 year" },
+            { value: "item2", text: "1-5 years" },
+            { value: "item3", text: "5-10 years" },
+            { value: "item4", text: "10+ years" }
           ],
           colCount: 4
         },
@@ -146,11 +146,22 @@ var surveyJSON = {
 };
 
 function sendDataToServer(survey) {
-  survey.sendResult("a0de9071-9ea9-425d-90e7-12a74e713274");
+  var clientSurv = survey.valuesHash;
+  $.post("/api/CS/", clientSurv, function(matches) {
+    console.log("great work!");
+    // window.location.href = "/test";
+    $("#clientSurvey").text(JSON.stringify(matches));
+    //populate the page with matches
+  });
 }
 
 var survey = new Survey.Model(surveyJSON);
-$("#surveyContainer_CS").Survey({
+$("#surveyContainer").Survey({
   model: survey,
   onComplete: sendDataToServer
 });
+
+//get survey object
+// get parts
+// running matching
+// modal
