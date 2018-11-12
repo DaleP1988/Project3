@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import background from "../images/floor2.jpg";
 import { Link } from "react-router-dom";
-import { ClientProfileSurvey } from "../components/ClientProfileForm";
+import { ClientProfileForm } from "../components/ClientProfileForm/ClientProfileForm"
 
 class Home extends Component {
   render() {
@@ -11,7 +11,7 @@ class Home extends Component {
         <div className="parallax-container">
           <Container>
             <Row>
-              <div src={ClientProfileSurvey} id="surveyContainer_CP" />
+              <div src={ClientProfileForm} id="surveyContainer_CP" />
             </Row>
             <Row>
               <Link to="/booking">
