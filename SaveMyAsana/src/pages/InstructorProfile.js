@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import background from "../images/floor2.jpg";
 import { Link } from "react-router-dom";
-import { InstructorProfileSurvey } from "../components/InstructorProfileSurvey";
+import { InstructorProfileSurvey } from "../components/InstructorProfileForm";
 
 class Home extends Component {
   render() {
