@@ -2,16 +2,16 @@ import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import background from "../images/floor2.jpg";
 import { Link } from "react-router-dom";
-import { ClientSurvey } from "../components/ClientSurveyForm";
+import ClientSurveyForm from "../components/ClientSurveyForm/ClientSurveyForm";
 
-class Home extends Component {
+class ClientProfile extends Component {
   render() {
     return (
       <div>
         <div className="parallax-container">
           <Container>
             <Row>
-              <div src={ClientSurvey} id="surveyContainer_CS" />
+              <ClientSurveyForm />
             </Row>
             <Row>
               <Link to="/booking">
@@ -55,4 +55,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default ClientProfile;
