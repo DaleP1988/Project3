@@ -6,6 +6,7 @@ require('dotenv').config({ path: 'variables.env' }); //package dotenv will take 
 
 // Connect to our Database and handle any bad connections
 mongoose.connect(process.env.DATABASE); // Connecting to Mongodb instance
+mongoose.Promise = global.Promise;
 mongoose.connection.on('error', (err) => { //listens to any errors when connecting & shows error in terminal
     console.error(`🙅 🚫 → ${err.message}`);
 });

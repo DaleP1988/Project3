@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const routes = require('./routes/index');
+const expressValidator = require('express-validator');
 
 // create our Express app
 const app = express();
@@ -18,6 +19,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//Exposes a bunch of methods for validating data. Used heavily in userController.validateRegister
+//applies a bunch of validation methods to every request, so whenever you have a request you can just call
+// any validation method that lives on top of it w/o having to import the library
+app.use(expressValidator());
 
 
 // After all the middleware above, we finally handle our own routes
