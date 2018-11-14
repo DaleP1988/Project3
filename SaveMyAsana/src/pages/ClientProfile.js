@@ -4,6 +4,10 @@ import background from "../images/floor2.jpg";
 import { Link } from "react-router-dom";
 import ClientProfileForm from "../components/ClientProfileForm/ClientProfileForm";
 
+// on click View Profile, get data (API.getsurvey), new window (to profile page), display on profile page
+// use functions defined client side in API.js (utils)
+// get data using API.js, store in the DB
+
 class ClientProfile extends Component {
   render() {
     return (

@@ -171,7 +171,7 @@ class ClientSurveyForm extends React.Component {
 
     //API.saveSurvey .then  (return API.saveSurvey)
     // treat as a post (like submitting something from a form), don't need to save function will be called here.....
-    //function defined in API.js
+    //function defined in API.js ****
     //(see saved book)
 
     console.log("Survey results: " + JSON.stringify(survey.data));
