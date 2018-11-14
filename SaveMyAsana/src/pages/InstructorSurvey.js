@@ -4,6 +4,8 @@ import background from "../images/floor2.jpg";
 import { Link } from "react-router-dom";
 import InstructorSurveyForm from "../components/InstructorSurveyForm/InstructorSurveyForm";
 
+//use API.js to get data to DB
+
 class InstructorSurvey extends Component {
   render() {
     return (
@@ -39,8 +41,8 @@ class InstructorSurvey extends Component {
             <div className="center">
               <Col size="6">
                 <p>
-                  "Yoga Is a light with once lit will never dim, the better your
-                  practice the brighter your flame."
+                  "Yoga is a light which once lit will never dim, the better
+                  your practice the brighter your flame."
                 </p>
                 <p>- B.K.S. Iyengar</p>
               </Col>

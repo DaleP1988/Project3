@@ -1,6 +1,7 @@
 import * as Survey from "survey-react";
 import "survey-react/survey.css";
 import React from "react";
+// import API from ""
 
 class ClientSurveyForm extends React.Component {
   json = {
@@ -148,9 +149,31 @@ class ClientSurveyForm extends React.Component {
     ]
   };
 
+  createDTO = survey => {
+    var dto = {
+      Firstname: survey.Contact.Firstname,
+      Lastname: survey.Contact.Lastname,
+      q1: survey.question1,
+      q2: survey.question2,
+      q3: survey.question3,
+      q4: survey.question4,
+      q5: survey.question5,
+      q6: survey.question6,
+      q7: survey.question7
+    };
+
+    return dto;
+  };
+
   //Define a callback methods on survey complete
   onComplete(survey, options) {
     //Write survey results into database
+
+    //API.saveSurvey .then  (return API.saveSurvey)
+    // treat as a post (like submitting something from a form), don't need to save function will be called here.....
+    //function defined in API.js ****
+    //(see saved book)
+
     console.log("Survey results: " + JSON.stringify(survey.data));
   }
   render() {

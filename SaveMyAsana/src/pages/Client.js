@@ -5,6 +5,9 @@ import background from "../images/floor2.jpg";
 import { Link } from "react-router-dom";
 import headstand from "../images/headstand.png";
 
+//need to be directed from form page, fill in the data, change the state
+// use functions defined client side in API.js (utils)
+
 class Client extends Component {
   render() {
     return (
@@ -34,8 +37,12 @@ class Client extends Component {
                 <div className="white center" id="search-heading">
                   <h5 className="center" id="search-title">
                     {/* <img src={omSym}> </img> */}
-                    begin bio content
+                    begin bio content - label
                   </h5>
+                  <h3>Contact</h3>
+                  <h3>phone</h3>
+                  <h3>email</h3>
+                  <img>image</img>
                 </div>
               </Col>
             </Row>
@@ -46,6 +53,11 @@ class Client extends Component {
                     {/* <img src={omSym}> </img> */}
                     final bio content
                   </h5>
+                  {/* see above */}
+                  <p>ideal practice</p>
+                  <p>level</p>
+                  <p>ideal environment</p>
+                  <p>more about journey</p>
                 </div>
               </Col>
             </Row>

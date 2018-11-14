@@ -50,7 +50,7 @@ const Footer = () => (
           <img className="img" id="appStore" src={appStore} />
         </Col>
         <Col size="2">
-          <img className="img" id="logoBtm" src={logo} alt="logo" />
+          <img className="img" id="logoBtn" src={logo} alt="logo" />
         </Col>
       </Row>
       <Row>

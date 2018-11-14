@@ -4,6 +4,10 @@ import background from "../images/floor2.jpg";
 import { Link } from "react-router-dom";
 import InstructorProfileSurvey from "../components/InstructorProfileForm/InstructorProfileForm";
 
+// on click View Profile, get data (API.getsurvey), new window (to profile page), display on profile page
+// use functions defined client side in API.js (utils)
+// get data using API.js, store in the DB
+
 class InstructorProfile extends Component {
   render() {
     return (
@@ -39,8 +43,8 @@ class InstructorProfile extends Component {
             <div className="center">
               <Col size="6">
                 <p>
-                  "Yoga Is a light with once lit will never dim, the better your
-                  practice the brighter your flame."
+                  "Yoga is a light which once lit will never dim, the better
+                  your practice the brighter your flame."
                 </p>
                 <p>- B.K.S. Iyengar</p>
               </Col>
