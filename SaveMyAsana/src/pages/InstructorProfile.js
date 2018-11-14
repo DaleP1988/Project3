@@ -39,8 +39,8 @@ class InstructorProfile extends Component {
             <div className="center">
               <Col size="6">
                 <p>
-                  "Yoga Is a light with once lit will never dim, the better your
-                  practice the brighter your flame."
+                  "Yoga is a light which once lit will never dim, the better
+                  your practice the brighter your flame."
                 </p>
                 <p>- B.K.S. Iyengar</p>
               </Col>
