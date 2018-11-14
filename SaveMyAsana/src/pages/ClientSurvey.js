@@ -3,6 +3,10 @@ import { Col, Row, Container } from "../components/Grid";
 import background from "../images/floor2.jpg";
 import { Link } from "react-router-dom";
 import ClientSurveyForm from "../components/ClientSurveyForm/ClientSurveyForm";
+import { Modal } from "react-materialize";
+
+// on click get data (obj), call result function, display in modal...
+// add a modal to the page
 
 class ClientProfile extends Component {
   render() {
@@ -14,12 +18,22 @@ class ClientProfile extends Component {
               <ClientSurveyForm />
             </Row>
             <Row>
-              <Link to="/booking">
-                {" "}
-                <a className="waves-effect waves-light btn-small">
-                  View Matches
-                </a>{" "}
-              </Link>
+              <Modal
+                header="Modal Header"
+                className=" waves-effect waves-light btn-small"
+                trigger={<Button>View Matches</Button>}
+              >
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum
+                </p>
+              </Modal>
             </Row>
           </Container>
           <div className="parallax">

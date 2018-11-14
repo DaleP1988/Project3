@@ -5,6 +5,9 @@ import background from "../images/floor2.jpg";
 import { Link } from "react-router-dom";
 import omSym from "../images/omSym.png";
 
+//need to be directed from form page, fill in the data, change the state
+// use functions defined client side in API.js (utils)
+
 class Instructor extends Component {
   render() {
     return (
