@@ -1,6 +1,7 @@
 import React from "react";
 import * as Survey from "survey-react";
 import "survey-react/survey.css";
+// import API from "../../";
 
 export default class ClientProfileForm extends React.Component {
   json = {
@@ -77,11 +78,33 @@ export default class ClientProfileForm extends React.Component {
     ]
   };
 
+  createDTO = survey => {
+    var dto = {
+      Firstname: survey.Contact.Firstname,
+      Lastname: survey.Contact.Lastname,
+      email: survey.Contact.Email,
+      phone: survey.Contact.Phone,
+      locState: survey.Location,
+      img: survey.Photo.content,
+      q1: survey.question1,
+      q2: survey.question2,
+      q3: survey.question3,
+      q4: survey.question4
+    };
+
+    return dto;
+  };
+
   //Define a callback methods on survey complete
   onComplete(survey, options) {
     //Write survey results into database
     console.log("Survey results: " + JSON.stringify(survey.data));
+
+    //API.saveSurvey function will be called here.....
+    //function defined in API.js
+    //(see saved book)
   }
+
   render() {
     //Create the model and pass it into react Survey component
     //You may create survey model outside the render function and use it in your App or component

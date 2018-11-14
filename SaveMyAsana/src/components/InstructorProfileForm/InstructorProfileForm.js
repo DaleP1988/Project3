@@ -1,6 +1,7 @@
 import * as Survey from "survey-react";
 import "survey-react/survey.css";
 import React from "react";
+// import API from "";
 
 class InstructorProfileForm extends React.Component {
   json = {
@@ -83,6 +84,26 @@ class InstructorProfileForm extends React.Component {
       }
     ],
     sendResultOnPageNext: true
+  };
+
+  createDTO = survey => {
+    var dto = {
+      Firstname: survey.Contact.Firstname,
+      Lastname: survey.Contact.Lastname,
+      email: survey.Email,
+      phone: survey.Phone,
+      loc: survey.Location,
+      img: survey.Photo.content,
+      q1: survey.question1,
+      q2: survey.question2,
+      q3: survey.question3,
+      q4: survey.question4,
+      q5: survey.question5,
+      q6: survey.question6,
+      q7: survey.Goodie
+    };
+
+    return dto;
   };
 
   //Define a callback methods on survey complete

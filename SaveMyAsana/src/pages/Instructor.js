@@ -36,6 +36,11 @@ class Instructor extends Component {
                     {/* <img src={omSym}> </img> */}
                     begin bio content
                   </h5>
+                  {/* see above */}
+                  <h3>Contact</h3>
+                  <h3>phone</h3>
+                  <h3>email</h3>
+                  <img>image</img>
                 </div>
               </Col>
             </Row>
@@ -46,6 +51,13 @@ class Instructor extends Component {
                     {/* <img src={omSym}> </img> */}
                     final bio content
                   </h5>
+                  <p>teaching style</p>
+                  <p>about self</p>
+                  <p>transdformative </p>
+                  <p>what you love</p>
+                  <p>words of wisdowm</p>
+                  <p>what you love</p>
+                  <h3> goodie </h3>
                 </div>
               </Col>
             </Row>
