@@ -1,3 +1,4 @@
+
 // ==============================================================================
 // DEPENDENCIES
 // Series of npm packages that we will use to give our server useful functionality
@@ -72,3 +73,4 @@ db.sequelize.sync().then(function() {
 
 // // we export it so we can start the site in server.js
 // module.exports = app;
+
