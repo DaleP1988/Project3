@@ -3,6 +3,7 @@ import { Col, Row, Container } from "../components/Grid";
 import { Icon } from "react-materialize";
 import background from "../images/floor2.jpg";
 import { Link } from "react-router-dom";
+import FormLogin from "../components/mainLogin/loginScreen";
 
 class Home extends Component {
   render() {
@@ -19,6 +20,7 @@ class Home extends Component {
                 </h5>
               </Col>
             </Row>
+            <FormLogin />
             <Row>
               <Col size="6">
                 <div className="card-panel amber lighten-5">

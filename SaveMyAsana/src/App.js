@@ -29,6 +29,7 @@ const App = () => (
         <Route exact path="/instructorprofile" component={InstructorProfile} />
         <Route exact path="/instructorsurvey" component={InstructorSurvey} />
         <Route exact path="/search" component={Search} />
+        
       </Switch>
       <Footer />
     </div>
