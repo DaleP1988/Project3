@@ -30,12 +30,12 @@ class FormLogin extends Component {
                     <h5>Login</h5>
                 </Row>
                 <Row>
-                    <Input type="email" label="E-mail" s={12} />
+                <Input type="email" label="E-mail" s={32} name="email" value={this.state.email} onChange={this.login} />
                 </Row>
                 <Row>
-                    <Input type="password" label="Password" s={12} />
+                <Input type="password" label="Password" s={32} name="password" value={this.state.password} onChange={this.login}/>
                 </Row>
-                <Button waves='light'>Submit</Button>
+                <Button waves='light' onClick={this.handleClick}>Submit</Button>
              </div>
         )
     }
