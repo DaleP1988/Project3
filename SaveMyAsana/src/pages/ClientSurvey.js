@@ -3,7 +3,7 @@ import { Col, Row, Container } from "../components/Grid";
 import background from "../images/floor2.jpg";
 import { Link } from "react-router-dom";
 import ClientSurveyForm from "../components/ClientSurveyForm/ClientSurveyForm";
-import { Modal } from "react-materialize";
+import { Button, Modal } from "react-materialize";
 
 // on click get data (obj), call result function, display in modal...
 // add a modal to the page
@@ -20,8 +20,8 @@ class ClientProfile extends Component {
             <Row>
               <Modal
                 header="Modal Header"
-                className=" waves-effect waves-light btn-small"
-                // trigger={<Button>View Matches</Button>}
+                className=" waves-effect waves-light"
+                trigger={<Button>View Matches</Button>}
               >
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed

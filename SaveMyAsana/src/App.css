@@ -33,16 +33,32 @@ body {
   font-family: Poiret One, sans-serif;
 }
 
-
+#booking-section {
+  height: 550px;
+  margin-bottom: 25px;
+}
 
 #description {
   margin-top: 0;
   float: right;
 }
 
+#home-card {
+  padding-bottom: 72px;
+}
+
+.parallax-container {
+  height: 200%;
+}
+
 #search {
   padding: 25px;
   margin-top: 115px;
+  margin-bottom: 115px;
+}
+
+#search-title {
+  padding-top: 25px;
 }
 
 #title {

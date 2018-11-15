@@ -25,16 +25,18 @@ class FormLogin extends Component {
             console.log('email ', this.state.email)
             console.log('password', this.state.password)
         return (
-            <div className="App card-panel amber lighten-5">
-            {/* <h1>Her is a compoent</h1> */}
+            <div className="card-panel amber lighten-5">
                 <Row>
-                    <Input type="email" label="E-mail" s={32} name="email" value={this.state.email} onChange={this.login} />
-                    <Input type="password" label="Password" s={32} name="password" value={this.state.password} onChange={this.login}/>
-                    <Button waves='light' onClick={this.handleClick}>Submit</Button>
+                    <h5>Login</h5>
                 </Row>
-
-
-            </div>
+                <Row>
+                <Input type="email" label="E-mail" s={32} name="email" value={this.state.email} onChange={this.login} />
+                </Row>
+                <Row>
+                <Input type="password" label="Password" s={32} name="password" value={this.state.password} onChange={this.login}/>
+                </Row>
+                <Button waves='light' onClick={this.handleClick}>Submit</Button>
+             </div>
         )
     }
 }

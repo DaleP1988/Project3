@@ -3,7 +3,6 @@ import { Col, Row, Container } from "../components/Grid";
 import { Icon } from "react-materialize";
 import SearchCard from "../components/SearchCard";
 import background from "../images/floor2.jpg";
-import "./Search.css";
 
 //get data from search table, post on page
 // use functions defined client side in API.js (utils)
