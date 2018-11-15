@@ -1,0 +1,24 @@
+{
+  "name": "Project3",
+  "version": "1.0.0",
+  "description": "Wellness app that matches clients with specialized instructors and wellness professionals",
+  "main": "index.js",
+  "dependencies": {
+    "yarn": "^1.12.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DaleP1988/Project3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DaleP1988/Project3/issues"
+  },
+  "homepage": "https://github.com/DaleP1988/Project3#readme"
+}
