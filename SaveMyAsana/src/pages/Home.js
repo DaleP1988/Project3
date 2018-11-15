@@ -20,7 +20,7 @@ class Home extends Component {
                 </h5>
               </Col>
             </Row>
-            <FormLogin />
+          
             <Row>
               <Col size="6">
                 <div className="card-panel amber lighten-5">
@@ -57,6 +57,7 @@ class Home extends Component {
                 </div>
               </Col>
               <Col size="6" />
+              <FormLogin />
             </Row>
           </Container>
           <div className="parallax">

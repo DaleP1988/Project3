@@ -60,8 +60,7 @@ class Search extends Component {
                     <SearchCard />
                     <SearchCard />
                     <SearchCard />
-                    <SearchCard />
-                    <SearchCard />
+                   
                   </Row>
                 </div>
               </Col>

@@ -21,7 +21,7 @@ class ClientProfile extends Component {
               <Modal
                 header="Modal Header"
                 className=" waves-effect waves-light btn-small"
-                trigger={<Button>View Matches</Button>}
+                // trigger={<Button>View Matches</Button>}
               >
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
