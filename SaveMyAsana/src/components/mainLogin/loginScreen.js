@@ -5,15 +5,18 @@ import { Row, Input, Button } from "react-materialize";
 class FormLogin extends Component {
     render() {
         return (
-            <div className="App card-panel amber lighten-5">
-<Row>
-    <Input type="email" label="E-mail" s={32} />
-    <Input type="password" label="Password" s={32} />
-    <Button waves='light'>Submit</Button>
-</Row>
-
-
-        </div>
+            <div className="card-panel amber lighten-5">
+                <Row>
+                    <h5>Login</h5>
+                </Row>
+                <Row>
+                    <Input type="email" label="E-mail" s={12} />
+                </Row>
+                <Row>
+                    <Input type="password" label="Password" s={12} />
+                </Row>
+                <Button waves='light'>Submit</Button>
+             </div>
         )
     }
 }
