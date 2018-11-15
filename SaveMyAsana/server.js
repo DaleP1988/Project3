@@ -7,7 +7,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var axis = require("axios");
-
+const morgan = require('morgan');
 // ==============================================================================
 // EXPRESS CONFIGURATION
 // This sets up the basic properties for our express server
@@ -16,6 +16,9 @@ var axis = require("axios");
 // Tells node that we are creating an "express" server
 var app = express();
 var db = require("./models");
+const session = require('express-session') // for sessions
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 
 // Sets an initial port. We"ll use this later in our listener
 var PORT = process.env.PORT || 8080;
