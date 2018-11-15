@@ -4,6 +4,7 @@ import background from "../images/floor2.jpg";
 import { Link } from "react-router-dom";
 import ClientSurveyForm from "../components/ClientSurveyForm/ClientSurveyForm";
 import { Button, Modal } from "react-materialize";
+import InstructorCard from '../components/InstructorCard';
 
 // on click get data (obj), call result function, display in modal...
 // add a modal to the page
@@ -19,20 +20,14 @@ class ClientProfile extends Component {
             </Row>
             <Row>
               <Modal
-                header="Modal Header"
+                header="Instructor Matches!"
                 className=" waves-effect waves-light"
                 trigger={<Button>View Matches</Button>}
               >
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum
+                  These are your suggested matches:
                 </p>
+                <InstructorCard />
               </Modal>
             </Row>
           </Container>

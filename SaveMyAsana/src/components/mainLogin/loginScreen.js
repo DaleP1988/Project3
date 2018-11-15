@@ -3,7 +3,27 @@ import { Row, Input, Button } from "react-materialize";
 
 
 class FormLogin extends Component {
-    render() {
+    constructor(props) {
+        super(props);
+        this.login = this.login.bind(this);
+        this.state = {
+            email: "",
+            password: ""
+        }
+    }
+    login(event) {
+        const target = event.target;
+        const name = target.name;
+        const value = target.value;
+        this.setState({ [name] : value});
+        // this.setState({
+        //     email: event.target.value,
+        //     password: event.target.value
+        // })
+    }
+        render() {
+            console.log('email ', this.state.email)
+            console.log('password', this.state.password)
         return (
             <div className="card-panel amber lighten-5">
                 <Row>
@@ -21,13 +41,5 @@ class FormLogin extends Component {
     }
 }
 
-function UserProfile(props) {
-    return (
-      <div className="user-profile">
-        <img src={props.userProfile.picture} />
-        <p>{props.userProfile.name}</p>
-      </div>
-    );
-  }
 
 export default FormLogin;
