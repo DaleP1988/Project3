@@ -42,3 +42,11 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
+
+// module.exports = {
+//   clientPro: require("./clientPro"),
+//   clientSurv: require("./clientSurv"),
+//   instructorPro: require("./instructorPro"),
+//   instructorSurv: require("./instructorSurv"),
+//   search: require("./search")
+// };

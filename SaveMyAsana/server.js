@@ -20,11 +20,12 @@ var db = require("./models");
 var PORT = process.env.PORT || 8080;
 
 // Sets up the Express app to handle data parsing
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use("/view", express.static(__dirname + "/view"));
 
-//make sure you get to the right location to get files.
+// make sure you get to the right location to get files.
 
 // ================================================================================
 // ROUTER
@@ -34,6 +35,7 @@ app.use("/view", express.static(__dirname + "/view"));
 
 // require("./routes/apiRoutes")(app);
 // require("./routes/htmlRoutes")(app);
+app.use(require("./routes/surveyRoutes/surveyRoutes.js"));
 
 // =============================================================================
 // LISTENER
@@ -46,29 +48,27 @@ db.sequelize.sync().then(function() {
   });
 });
 
-// const express = require('express');
-// const path = require('path');
-// const bodyParser = require('body-parser');
-// const routes = require('./routes/index');
+// const express = require("express");
 
-// // create our Express app
+// const mongoose = require("mongoose");
+// const routes = require("./routes");
 // const app = express();
+// const PORT = process.env.PORT || 3001;
 
-// // view engine setup
-// app.set('views', path.join(__dirname, 'views')); // this is the folder where we keep our pug files
-// // app.set('view engine', 'pug'); // we could use the engine pug, mustache or EJS or etc.
+// // Define middleware here
+// app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
+// // Serve up static assets (usually on heroku)
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static("client/build"));
+// }
+// // Add routes, both API and view
+// app.use(routes);
 
-// // serves up static files from the public folder. Anything in public/ will just be served up as the file it is
-// app.use(express.static(path.join(__dirname, 'public')));
+// // Connect to the Mongo DB
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactasana");
 
-// // Takes the raw requests and turns them into usable properties on req.body
-// // So checks the url for data & puts all the data in the request so we can access it via request.query or request.body or etc.
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
-
-// // After all the middleware above, we finally handle our own routes
-// // Meaning: anytime someone goes to "/anything" then we go to the routes file (routes defined above)
-// app.use('/', routes);
-
-// // we export it so we can start the site in server.js
-// module.exports = app;
+// // Start the API server
+// app.listen(PORT, function() {
+//   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+// });

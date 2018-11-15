@@ -70,21 +70,3 @@ router
   .delete(SurveysController.remove);
 
 module.exports = router;
-
-//Matches with /api/clientSurv
-
-//Matches with /api/clientProf
-
-//Matches with /api/instructorSurv
-
-//Matches with /api/instructorProf
-
-//Matches with /api/clientSurv
-
-//Matches with /api/clientSurv
-
-//Matches with /api/clientSurv
-
-//Matches with /api/clientSurv
-
-//Matches with /api/clientSurv

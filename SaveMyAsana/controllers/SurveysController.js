@@ -52,20 +52,158 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+
+  //////////////////
+  ///CLIENT SURV/////
+  //////////////////
+
+  findAll: function(req, res) {
+    db.clientSurv
+      .find(req.query)
+      .sort({ date: -1 }) //this needs to sort by a new param.
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+  //find by id
+
+  findById: function(req, res) {
+    db.clientSurv
+      .findById(req.params.id)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+  //cerae
+
+  create: function(req, res) {
+    db.clientSurv
+      .create(req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+  //update
+
+  // update: function(req, res) {
+  //   db.clientSurv
+  //     .findOneAndUpdate({ _id: req.params.id }, req.body)
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
+
+  //delete
+
+  // remove: function(req, res) {
+  //   db.clientSurv
+  //     .findById({ _id: req.params.id })
+  //     .then(dbModel => dbModel.remove())
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+
+  ///////////////////
+  ///ISNTRUCT PRO/////
+  ////////////////////
+
+  //find all
+
+  findAll: function(req, res) {
+    db.instructorPro
+      .find(req.query)
+      .sort({ date: -1 }) //this needs to sort by a new param.
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+  //find by id
+
+  findById: function(req, res) {
+    db.instructorPro
+      .findById(req.params.id)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+  //cerae
+
+  create: function(req, res) {
+    db.instructorPro
+      .create(req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+  //update
+
+  update: function(req, res) {
+    db.instructorPro
+      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+  //delete
+
+  remove: function(req, res) {
+    db.instructorPro
+      .findById({ _id: req.params.id })
+      .then(dbModel => dbModel.remove())
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+  /////////////////////
+  ///INSTRUCT SURV//////
+  //////////////////////
+
+  //find all
+
+  findAll: function(req, res) {
+    db.instructorSurv
+      .find(req.query)
+      .sort({ date: -1 }) //this needs to sort by a new param.
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+  //find by id
+
+  findById: function(req, res) {
+    db.instructorSurv
+      .findById(req.params.id)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+  //cerae
+
+  create: function(req, res) {
+    db.instructorSurv
+      .create(req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
+
+  // //update
+
+  // update: function(req, res) {
+  //   db.instructorSurv
+  //     .findOneAndUpdate({ _id: req.params.id }, req.body)
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
+
+  // //delete
+
+  // remove: function(req, res) {
+  //   db.instructorSurv
+  //     .findById({ _id: req.params.id })
+  //     .then(dbModel => dbModel.remove())
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // }
 };
-
-//////////////////
-///CLIENT SURV/////
-//////////////////
-
-///////////////////
-///ISNTRUCT PRO/////
-////////////////////
-
-/////////////////////
-///INSTRUCT SURV//////
-//////////////////////
 
 //   findAll: function(req, res) {
 //   db.Article

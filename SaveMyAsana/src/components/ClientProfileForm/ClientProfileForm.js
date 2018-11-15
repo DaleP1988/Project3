@@ -1,7 +1,7 @@
 import React from "react";
 import * as Survey from "survey-react";
 import "survey-react/survey.css";
-// import API from "../../";
+import API from "../../utils/API.js";
 
 export default class ClientProfileForm extends React.Component {
   json = {
@@ -99,6 +99,8 @@ export default class ClientProfileForm extends React.Component {
   onComplete(survey, options) {
     //Write survey results into database
     console.log("Survey results: " + JSON.stringify(survey.data));
+
+    // API.saveSurvey();
 
     //API.saveSurvey function will be called here.....
     //function defined in API.js

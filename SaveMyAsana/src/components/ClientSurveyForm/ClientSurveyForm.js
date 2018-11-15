@@ -1,7 +1,7 @@
 import * as Survey from "survey-react";
 import "survey-react/survey.css";
 import React from "react";
-// import API from ""
+import API from "../../utils/API.js";
 
 class ClientSurveyForm extends React.Component {
   json = {
@@ -175,6 +175,8 @@ class ClientSurveyForm extends React.Component {
     //(see saved book)
 
     console.log("Survey results: " + JSON.stringify(survey.data));
+
+    // API.saveSurvey();
   }
   render() {
     //Create the model and pass it into react Survey component

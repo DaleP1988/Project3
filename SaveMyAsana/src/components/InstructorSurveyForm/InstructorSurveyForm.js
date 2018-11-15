@@ -1,7 +1,7 @@
 import * as Survey from "survey-react";
 import "survey-react/survey.css";
 import React from "react";
-// import API from "";
+import API from "../../utils/API.js";
 
 class InstructorSurveyForm extends React.Component {
   json = {
@@ -175,6 +175,8 @@ class InstructorSurveyForm extends React.Component {
   onComplete(survey, options) {
     //Write survey results into database
     console.log("Survey results: " + JSON.stringify(survey.data));
+
+    // API.saveSurvey();
   }
   render() {
     //Create the model and pass it into react Survey component
