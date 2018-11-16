@@ -3,19 +3,6 @@
   "version": "1.0.0",
   "description": "Wellness app that matches clients with specialized instructors and wellness professionals",
   "main": "index.js",
-  "dependencies": {
-    "yarn": "^1.12.3",
-    "dotenv": "^6.1.0",
-    "express": "^4.16.4",
-    "mongoose": "^5.3.12",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "react-materialize": "^2.4.8",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "^2.1.1",
-    "survey-react": "^1.0.55"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -29,5 +16,21 @@
   "bugs": {
     "url": "https://github.com/DaleP1988/Project3/issues"
   },
-  "homepage": "https://github.com/DaleP1988/Project3#readme"
+  "homepage": "https://github.com/DaleP1988/Project3#readme",
+  "dependencies": {
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.12",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-materialize": "^2.4.8",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^2.1.1",
+    "survey-react": "^1.0.55",
+    "yarn": "^1.12.3"
+  },
+  "devDependencies": {}
 }
+
+
+// make sure that the outside has the server.js dependencies
