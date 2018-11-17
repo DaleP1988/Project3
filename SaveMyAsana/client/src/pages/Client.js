@@ -7,6 +7,28 @@ import headstand from "../images/headstand.png";
 
 //need to be directed from form page, fill in the data, change the state
 // use functions defined client side in API.js (utils)
+// make sure to disable the links until the login happens
+//
+
+class Client extends Component {
+  state = {
+    survey: []
+  };
+
+  componentDidMount() {
+    this.getClientProfile();
+  }
+
+  //Method for getting the saved survey from the db
+  getClientProfile = () => {
+    API.getIS()
+    .then((res) => {
+      this.setState({ survey: res.data });
+    });
+}
+
+// method for rendering one results div
+
 
 class Client extends Component {
   render() {

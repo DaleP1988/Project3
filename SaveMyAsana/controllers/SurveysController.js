@@ -194,5 +194,35 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+
+  /////////////////////
+  ////////LOGIN////////
+  /////////////////////
+
+  findLogin: function(req, res) {
+    db.login
+      .find(req.query)
+      .sort({ date: -1 }) //this needs to sort by a new param.
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+  //find by id
+
+  findOneLogin: function(req, res) {
+    db.login
+      .findById(req.params.id)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+  //createone
+
+  createLogin: function(req, res) {
+    db.login
+      .create(req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 };

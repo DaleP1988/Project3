@@ -69,6 +69,25 @@ router
   .put(SurveysController.update)
   .delete(SurveysController.remove);
 
+///////////////////////
+//////////LOGIN////////
+///////////////////////
+
+// Matches with "/api/Login"
+
+router
+  .route("/Login")
+  .get(SurveysController.findAll)
+  .post(SurveysController.create);
+
+// Matches with "/api/Login/:id"
+
+router
+  .route("/Login/:id")
+  .get(SurveysController.findById)
+  .put(SurveysController.update)
+  .delete(SurveysController.remove);
+
 module.exports = router;
 
 //Matches with /api/clientSurv
