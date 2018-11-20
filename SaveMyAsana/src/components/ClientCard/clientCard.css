@@ -1,0 +1,16 @@
+.instructor-card {
+  width: 450px;
+  height: 250px;
+}
+
+.instructor-image {
+  max-width: 100%;
+}
+
+.instructor-row {
+  margin-bottom: 115px;
+}
+
+.instructor-btn {
+  margin-top: 10px;
+}

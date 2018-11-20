@@ -1,7 +1,6 @@
-import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import { Icon } from "react-materialize";
-import SearchCard from "../components/SearchCard";
+import ClientCard from "../components/ClientCard";
 import background from "../images/floor2.jpg";
 
 //get data from search table, post on page
@@ -17,7 +16,7 @@ class Search extends Component {
               <Row>
                 <div className="center" id="search-heading">
                   <h2 className="center" id="search-title">
-                    <Icon className="medium">search</Icon>SEARCH INSTRUCTORS
+                    <Icon className="medium">search</Icon>SEARCH CLIENTS
                   </h2>
                   <div className="input-field col s6">
                     <i className="material-icons prefix">account_circle</i>

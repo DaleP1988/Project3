@@ -7,6 +7,10 @@
     max-width: 100%;
 }
 
-.instructor-name {
-    padding: 10px;
+.instructor-row {
+    margin-bottom: 115px;
+}
+
+.instructor-btn {
+    margin-top: 10px;
 }

@@ -28,12 +28,16 @@ class ClientProfile extends Component {
                   These are your suggested matches:
                 </p>
                 <InstructorCard />
+                <InstructorCard />
+                <InstructorCard />
+                <InstructorCard />
+                <InstructorCard />
               </Modal>
             </Row>
           </Container>
           <div className="parallax">
             <img
-              className="background"
+              className="background-img"
               src={background}
               alt="Unsplashed background img 1"
             />

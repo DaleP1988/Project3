@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import background from "../images/floor2.jpg";
+import {Modal} from "react-materialize";
 import { Link } from "react-router-dom";
 import InstructorSurveyForm from "../components/InstructorSurveyForm/InstructorSurveyForm";
+import ClientCard from "../components/ClientCard";
 
 //use API.js to get data to DB
 
@@ -16,17 +18,25 @@ class InstructorSurvey extends Component {
               <InstructorSurveyForm />
             </Row>
             <Row>
-              <Link to="/booking">
-                {" "}
-                <a className="waves-effect waves-light btn-small">
-                  View Matches
-                </a>{" "}
-              </Link>
+            <Modal
+                header="Client Matches!"
+                className=" waves-effect waves-light"
+                trigger={<a className="waves-effect waves-light btn-small">View Matches</a>}>
+                <p>
+                  These are your suggested matches:
+                </p>
+                <ClientCard />
+                <ClientCard />
+                <ClientCard />
+                <ClientCard />
+                <ClientCard />
+              </Modal>
+
             </Row>
           </Container>
           <div className="parallax">
             <img
-              className="background"
+              className="background-img"
               src={background}
               alt="Unsplashed background img 1"
             />
