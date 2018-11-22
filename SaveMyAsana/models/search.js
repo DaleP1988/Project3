@@ -1,6 +1,13 @@
 module.exports = function(sequelize, DataTypes) {
   var search = sequelize.define("search", {
-    instructorName: {
+    Firstame: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
+    },
+    Lastname: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -27,7 +34,7 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: [1]
       },
-      ste: {
+      locState: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {

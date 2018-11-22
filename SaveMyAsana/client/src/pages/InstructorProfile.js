@@ -18,10 +18,22 @@ class InstructorProfile extends Component {
               <InstructorProfileSurvey />
             </Row>
             <Row>
-              <Link to="/booking">
+              <Link to="/instructor">
                 {" "}
                 <a className="waves-effect waves-light btn-small">
                   View Profile Page
+                </a>{" "}
+              </Link>
+              <Link to="/instructorsurvey">
+                {" "}
+                <a className="waves-effect waves-light btn-small">
+                  Take Instructor Survey
+                </a>{" "}
+              </Link>
+              <Link to="/clientsearch">
+                {" "}
+                <a className="waves-effect waves-light btn-small">
+                  Search Clients
                 </a>{" "}
               </Link>
             </Row>

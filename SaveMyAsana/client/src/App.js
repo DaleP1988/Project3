@@ -11,6 +11,7 @@ import InstructorProfile from "./pages/InstructorProfile";
 import InstructorSurvey from "./pages/InstructorSurvey";
 import Instructor from "./pages/Instructor";
 import Search from "./pages/Search";
+import ClientSearch from "./pages/ClientSearch";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -64,6 +65,7 @@ class App extends Component {
               component={InstructorSurvey}
             />
             <Route exact path="/search" component={Search} />
+            <Route exact path="/clientsearch" component={ClientSearch} />
           </Switch>
           <Footer />
         </div>

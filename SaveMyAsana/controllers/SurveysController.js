@@ -67,6 +67,8 @@ module.exports = {
   ///CLIENT SURV/////
   //////////////////
 
+  //find best match
+
   //find all
 
   findClientSurv: function(req, res) {
@@ -94,6 +96,39 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+
+  // bestMatch
+  // name is the same as the function called in surveyRoutes.js
+  // client does post, survey routes receives and forwards to surveyscontroller
+  //TO DO:
+  // add to seeds (instructors and clients)
+  // check the old "API" model and match the format for the query
+
+  bestMatch: function(req, res) {
+    //retrieve all instructors
+    console.log(JSON.stringify(req));
+    db.instructorSurvey
+      .findAll()
+      .then(dbModel => {
+        // check the dbModel structure to make sure the form of the data
+        console.log(JSON.stringify(dbModel));
+        //send all instructors and client survey to perform scoring
+        var instructors = getSortedInstructors(dbModel, req.DTO);
+        // sent the data back to the client
+        //function below is called above
+        res.json(instructors);
+      })
+      // instructors above is array of all instructors sorted by score
+
+      .catch(err => res.status(422).json(err));
+  },
+
+  //using axios for a particular route
+  //getting 404
+  //have route on server
+  //can't figure out why it can't find it
+  //said axios is on server... can I use axios on the client and express on the server to handle?
+
   // };
 
   ///////////////////
@@ -121,7 +156,7 @@ module.exports = {
 
   //createone
 
-  createInstructPros: function(req, res) {
+  createInstructPro: function(req, res) {
     db.instructorPro
       .create(req.body)
       .then(dbModel => res.json(dbModel))
@@ -130,7 +165,7 @@ module.exports = {
 
   //update
 
-  updateInstructPros: function(req, res) {
+  updateInstructPro: function(req, res) {
     db.instructorPro
       .findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
@@ -139,7 +174,7 @@ module.exports = {
 
   //delete
 
-  removeInstructPros: function(req, res) {
+  removeInstructPro: function(req, res) {
     db.instructorPro
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())

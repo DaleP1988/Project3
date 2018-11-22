@@ -22,7 +22,14 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    loc: {
+    city: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+      validate: {
+        len: [1]
+      }
+    },
+    locState: {
       type: DataTypes.TEXT,
       allowNull: true,
       validate: {

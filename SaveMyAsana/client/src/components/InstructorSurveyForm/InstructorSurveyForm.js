@@ -123,8 +123,8 @@ class InstructorSurveyForm extends React.Component {
             choices: [
               { value: "item1", text: "Licensed Physical Therapist" },
               { value: "item2", text: "Licensed Manual Therapist" },
-              { value: "item3", text: "Psychiatrist" },
-              { value: "item4", text: "Psychologist" },
+              { value: "item3", text: "None" },
+              { value: "item4", text: "Psychology" },
               { value: "item5", text: "Cranio Sacral Therapist" },
               { value: "item6", text: "Doctor (General Practitioner)" },
               { value: "item7", text: "Doctor (Other Specialty)" },

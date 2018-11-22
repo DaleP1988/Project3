@@ -1,6 +1,13 @@
 module.exports = function(sequelize, DataTypes) {
   var clientPro = sequelize.define("clientPro", {
-    clientName: {
+    Firstname: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        len: [1]
+      }
+    },
+    Lastname: {
       type: DataTypes.STRING,
       allowNull: true,
       validate: {
@@ -21,7 +28,7 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    City: {
+    city: {
       type: DataTypes.STRING,
       allowNull: true,
       validate: {
