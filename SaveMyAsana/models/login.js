@@ -1,20 +1,20 @@
 module.exports = function(sequelize, DataTypes) {
-  var login = sequelize.define("login", {
-    Name: {
+  var userLogin = sequelize.define("login", {
+    userName: {
       type: DataTypes.STRING,
       allowNull: true,
       validate: {
         len: [1]
       }
     },
-    Email: {
+    userEmail: {
       type: DataTypes.STRING,
       allowNull: true,
       validate: {
         len: [1]
       }
     },
-    Password: {
+    Pword: {
       type: DataTypes.STRING,
       allowNull: true,
       validate: {
@@ -23,5 +23,5 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  return login;
+  return userLogin;
 };

@@ -87,20 +87,21 @@ class InstructorProfileForm extends React.Component {
   };
 
   createDTO = survey => {
+    var values = survey.ValuesHash;
     var dto = {
-      Firstname: survey.Contact.Firstname,
-      Lastname: survey.Contact.Lastname,
-      email: survey.Email,
-      phone: survey.Phone,
-      loc: survey.Location,
-      img: survey.Photo.content,
-      q1: survey.question1,
-      q2: survey.question2,
-      q3: survey.question3,
-      q4: survey.question4,
-      q5: survey.question5,
-      q6: survey.question6,
-      q7: survey.Goodie
+      Firstname: values.Contact.Firstname,
+      Lastname: values.Contact.Lastname,
+      email: values.Email,
+      phone: values.Phone,
+      loc: values.Location,
+      img: values.Photo.content,
+      q1: values.question1,
+      q2: values.question2,
+      q3: values.question3,
+      q4: values.question4,
+      q5: values.question5,
+      q6: values.question6,
+      q7: values.Goodie
     };
 
     return dto;

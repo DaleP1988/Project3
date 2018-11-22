@@ -23,6 +23,7 @@ const routes = require("./routes/api/surveyRoutes");
 var app = express();
 var PORT = process.env.PORT || 8080;
 
+console.log("=========================server running================");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -38,7 +39,7 @@ if (process.env.NODE_ENV === "production") {
 //===============================================================================
 
 app.use(routes);
-app.use("api/surveyRoutes", routes);
+// app.use("api/surveyRoutes", routes);
 
 //================================================================================
 // PASSPORT
@@ -47,7 +48,7 @@ app.use("api/surveyRoutes", routes);
 //additions for the passport
 
 const LocalStrategy = require("passport-local").Strategy;
-const User = require("./src/user");
+// const User = require("./src/user");
 // Sets an initial port. We"ll use this later in our listener
 
 // Sets up the Express app to handle data parsing
@@ -170,6 +171,6 @@ app.get("/logout", (req, res) => {
 });
 
 // start the app
-app.listen(3000, () => {
-  console.log("magical number is 3000");
+app.listen(4000, () => {
+  console.log("magical number is 4000");
 });

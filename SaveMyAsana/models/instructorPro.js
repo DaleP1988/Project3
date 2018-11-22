@@ -1,6 +1,13 @@
 module.exports = function(sequelize, DataTypes) {
   var instructorPro = sequelize.define("instructorPro", {
-    instructorName: {
+    Firstname: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        len: [1]
+      }
+    },
+    Lastname: {
       type: DataTypes.STRING,
       allowNull: true,
       validate: {
@@ -21,7 +28,14 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    loc: {
+    city: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        len: [1]
+      }
+    },
+    ste: {
       type: DataTypes.STRING,
       allowNull: true,
       validate: {

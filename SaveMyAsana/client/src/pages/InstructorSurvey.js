@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import background from "../images/floor2.jpg";
-import {Modal} from "react-materialize";
+import { Modal } from "react-materialize";
 import { Link } from "react-router-dom";
 import InstructorSurveyForm from "../components/InstructorSurveyForm/InstructorSurveyForm";
 import ClientCard from "../components/ClientCard";
@@ -18,10 +18,16 @@ class InstructorSurvey extends Component {
               <InstructorSurveyForm />
             </Row>
             <Row>
-            <Modal
+              <Link to="/instructor">
+                {" "}
+                <a className="waves-effect waves-light btn-small">
+                  Go To Profile
+                </a>{" "}
+              </Link>
+              {/* <Modal
                 header="Client Matches!"
                 className=" waves-effect waves-light"
-                trigger={<a className="waves-effect waves-light btn-small">View Matches</a>}>
+                trigger={<a className="waves-effect waves-light btn-small">Go To Profile</a>}>
                 <p>
                   These are your suggested matches:
                 </p>
@@ -30,8 +36,7 @@ class InstructorSurvey extends Component {
                 <ClientCard />
                 <ClientCard />
                 <ClientCard />
-              </Modal>
-
+              </Modal> */}
             </Row>
           </Container>
           <div className="parallax">

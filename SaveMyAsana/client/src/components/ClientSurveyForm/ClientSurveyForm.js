@@ -1,7 +1,7 @@
 import * as Survey from "survey-react";
 import "survey-react/survey.css";
 import React from "react";
-// import API from ""
+import axios from "axios";
 
 class ClientSurveyForm extends React.Component {
   json = {
@@ -19,7 +19,7 @@ class ClientSurveyForm extends React.Component {
           },
           {
             type: "checkbox",
-            name: "question1",
+            name: "q1",
             title: "How long have you been practicing yoga?",
             isRequired: true,
             choices: [
@@ -32,7 +32,7 @@ class ClientSurveyForm extends React.Component {
           },
           {
             type: "checkbox",
-            name: "question2",
+            name: "q2",
             title:
               "What class level are you most comfortable in?   (please check all that apply)",
             choices: [
@@ -47,7 +47,7 @@ class ClientSurveyForm extends React.Component {
           },
           {
             type: "checkbox",
-            name: "question3",
+            name: "q3",
             title: "What style(s) do you prefer? (please check all that apply)",
             choices: [
               { value: "item1", text: "Vinyasa Flow" },
@@ -63,7 +63,7 @@ class ClientSurveyForm extends React.Component {
           },
           {
             type: "checkbox",
-            name: "question4",
+            name: "q4",
             title:
               "Which categories best describe your Yoga Client Profile ? (please check all that apply)",
             choices: [
@@ -90,7 +90,7 @@ class ClientSurveyForm extends React.Component {
           },
           {
             type: "checkbox",
-            name: "question5",
+            name: "q5",
             title:
               "Do you attend specialty classes ? (please check all that apply)",
             choices: [
@@ -113,7 +113,7 @@ class ClientSurveyForm extends React.Component {
           },
           {
             type: "checkbox",
-            name: "question6",
+            name: "q6",
             title:
               "Do you work with any of the following Professionals or Specialists ? (please check all that apply)",
             choices: [
@@ -130,7 +130,7 @@ class ClientSurveyForm extends React.Component {
           },
           {
             type: "checkbox",
-            name: "question7",
+            name: "q7",
             title:
               "Please check any of the following offerings that interest you as a Yoga Client (please check all that apply)",
             choices: [
@@ -149,25 +149,43 @@ class ClientSurveyForm extends React.Component {
     ]
   };
 
-  createDTO = survey => {
-    var dto = {
-      Firstname: survey.Contact.Firstname,
-      Lastname: survey.Contact.Lastname,
-      q1: survey.question1,
-      q2: survey.question2,
-      q3: survey.question3,
-      q4: survey.question4,
-      q5: survey.question5,
-      q6: survey.question6,
-      q7: survey.question7
-    };
-
-    return dto;
-  };
-
   //Define a callback methods on survey complete
   onComplete(survey, options) {
     //Write survey results into database
+    var DTO = createDTO(survey);
+
+    axios.post("/api/instructorMatches", DTO).then(function(data) {
+      alert("");
+      console.log(data);
+      bestMatch(data);
+    });
+
+    function createDTO(response) {
+      console.log("good");
+      var survey = response.valuesHash;
+      var dto = {
+        Firstname: survey.Contact.Firstname,
+        Lastname: survey.Contact.Lastname,
+        q1: survey.q1,
+        q2: survey.q2,
+        q3: survey.q3,
+        q4: survey.q4,
+        q5: survey.q5,
+        q6: survey.q6,
+        q7: survey.q7
+      };
+
+      var dto;
+      return dto;
+    }
+
+    function bestMatch(scores) {
+      var bestFive = scores.slice(-5);
+      console.log(bestFive);
+      // var bestFiveJSON = JSON.stringify(bestFive);
+      // sessionStorage.setItem("bestFive", bstFiveJSON);
+      this.props.onSubmit(bestFive);
+    }
 
     //API.saveSurvey .then  (return API.saveSurvey)
     // treat as a post (like submitting something from a form), don't need to save function will be called here.....

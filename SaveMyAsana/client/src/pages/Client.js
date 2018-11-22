@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
-import { Icon } from "react-materialize";
 import background from "../images/floor2.jpg";
 import { Link } from "react-router-dom";
-import headstand from "../images/headstand.png";
+import Headstand from "../images/headstand.png";
+import InstructorCard from "../components/InstructorCard";
+import { Card, Input, Icon, Button, Modal } from "react-materialize";
+import InstructorResultContact from "../components/ResultDivs/InstructorResultContact";
+import InstructorResultBio from "../components/ResultDivs/InstructorResultBio";
 
 //need to be directed from form page, fill in the data, change the state
 // use functions defined client side in API.js (utils)
@@ -11,26 +14,60 @@ import headstand from "../images/headstand.png";
 //
 
 class Client extends Component {
-  state = {
-    survey: []
-  };
+  // state = {
+  //   iSurvey: [],
+  //   iClient: []
+  // };
 
-  componentDidMount() {
-    this.getClientProfile();
-  }
+  // componentDidMount() {
+  //   this.getClientProfile();
+  //   //can I just call all the others here?
+  // }
 
-  //Method for getting the saved survey from the db
-  getClientProfile = () => {
-    API.getIS()
-    .then((res) => {
-      this.setState({ survey: res.data });
-    });
-}
+  // //Method for getting the saved survey from the db
+  // getClientProfile = () => {
+  //   API.getCP().then(res => {
+  //     this.setState({ iSurvey: res.data });
 
-// method for rendering one results div
+  //     //can I add code right into here for the rendering?
+  //   });
+  // };
 
+  // // method for rendering a results div
 
-class Client extends Component {
+  // renderclientProfContact = () => {
+  //   return this.state.iClient.map(iClient => (
+  //     <ClientResultContact>
+  //       {/* need to make a results component */}
+  //       {/* this needs to reference the client components */}
+  //       -id={iClient.id}
+  //       key={iClient._id}
+  //       name={iClient.Firstname + iClient.Lastname}
+  //       email={iClient.email}
+  //       phone={iClient.phone}
+  //       city={iClient.city}
+  //       loc={iClient.locState}
+  //       img={iClient.img}
+  //     </ClientResultContact>
+  //   ));
+  // };
+
+  // renderClientResultBio = () => {
+  //   return this.state.iClient.map(iClient => (
+  //     <ClientResultBio>
+  //       {/* need to make a results component */}
+  //       {/* this needs to reference the client components */}
+  //       -id={iClient.id}
+  //       key={iClient._id}
+  //       ideal={iClient.q1}
+  //       challenge={iClient.q2}
+  //       environment={iClient.q3}
+  //       practice={iClient.q4}
+  //     </ClientResultBio>
+  //   ));
+  // };
+
+  // class Client extends Component {
   render() {
     return (
       <div>
@@ -38,51 +75,115 @@ class Client extends Component {
           <Container>
             <Row>
               <Col size="12">
-                <div className="white center" id="search-heading">
-                  <h5 className="center" id="search-title">
-                    <img src={headstand}> </img>
-                    CLIENT NAME: LOCATION: STUDIO:
-                  </h5>
+                <div
+                  className="white center"
+                  id="search-heading"
+                  style={{ marginTop: "5%", paddingBottom: "5px" }}
+                >
+                  <div className="center inline" id="search-title">
+                    <img className="img" src={Headstand} />
+                    <span
+                      style={{
+                        marginRight: "50px",
+                        marginLeft: "20px",
+                        fontSize: "20px",
+                        fontWeight: "bold"
+                      }}
+                    >
+                      Name:
+                      <span> Jane Robbins</span>
+                    </span>
+                    <span
+                      style={{
+                        marginRight: "50px",
+                        marginLeft: "20px",
+                        fontSize: "20px",
+                        fontWeight: "bold"
+                      }}
+                    >
+                      Level:
+                      <span> Beginner </span>
+                    </span>
+                    <span
+                      style={{
+                        marginRight: "50px",
+                        marginLeft: "20px",
+                        fontSize: "20px",
+                        fontWeight: "bold"
+                      }}
+                    >
+                      Location:
+                      <span> Los Angeles, CA</span>
+                    </span>
+                  </div>
                 </div>
               </Col>
             </Row>
             <Row>
-              <Col size="5">
-                <div className="white center" id="search-heading">
-                  <h5 className="center" id="search-title">
-                    <img src="change to the example"> </img>
-                    image
-                  </h5>
-                </div>
+              <Col size="6">
+                <InstructorCard />
               </Col>
-              <Col size="5">
-                <div className="white center" id="search-heading">
-                  <h5 className="center" id="search-title">
-                    {/* <img src={omSym}> </img> */}
-                    begin bio content - label
-                  </h5>
-                  <h3>Contact</h3>
-                  <h3>phone</h3>
-                  <h3>email</h3>
-                  <img>image</img>
-                </div>
+              <Col size="6">
+                <Card title="Client Biography">
+                  <Row>
+                    <div className="col m12">
+                      <h6>About Me</h6>
+                      <p style={{ lineHeight: "20px" }}>
+                        {" "}
+                        Ideal Yoga Practice:
+                      </p>
+                      <p style={{ lineHeight: "20px" }}>
+                        {" "}
+                        Challenges I am Facing in My Practice:
+                      </p>
+                      <p style={{ lineHeight: "20px" }}>
+                        {" "}
+                        Ideal Yoga Practice Environment:
+                      </p>
+                    </div>
+                  </Row>
+                </Card>
               </Col>
             </Row>
             <Row>
               <Col size="12">
-                <div className="white center" id="search-heading">
-                  <h5 className="center" id="search-title">
-                    {/* <img src={omSym}> </img> */}
-                    final bio content
-                  </h5>
-                  {/* see above */}
-                  <p>ideal practice</p>
-                  <p>level</p>
-                  <p>ideal environment</p>
-                  <p>more about journey</p>
+                <div
+                  className="white "
+                  id="search-heading"
+                  style={{
+                    // marginTop: "5%",
+                    paddingBottom: "5px",
+                    marginLeft: "5px"
+                  }}
+                >
+                  <div className="" id="search-title">
+                    {/* <img className="img" src={OM} /> */}
+                    <h4 className="center">My Yoga Journey </h4>
+                    <p
+                      style={{
+                        marginLeft: "50px"
+                      }}
+                    >
+                      Here is how it all began:
+                    </p>
+                  </div>
                 </div>
               </Col>
             </Row>
+            <div style={{ marginBottom: "5px" }}>
+              <Link to="/clientsurvey">
+                {" "}
+                <a className="waves-effect waves-light btn-small">
+                  Take Client Survey
+                </a>{" "}
+              </Link>
+              <Link to="/search">
+                {" "}
+                <a className="waves-effect waves-light btn-small">
+                  Search Instructors
+                </a>{" "}
+              </Link>
+            </div>
           </Container>
           <div className="parallax">
             <img
@@ -92,7 +193,7 @@ class Client extends Component {
             />
           </div>
         </div>
-        <div className="section-white">
+        <div className="section-white" style={{ marginTop: "5%" }}>
           <h2 className="center">Namaste</h2>
           <Row>
             <div className="center">
@@ -101,8 +202,8 @@ class Client extends Component {
             <div className="center">
               <Col size="6">
                 <p>
-                  "Yoga Is a light with once lit will never dim, the better your
-                  practice the brighter your flame."
+                  "Yoga Is a light which once lit will never dim, the better
+                  your practice the brighter your flame."
                 </p>
                 <p>- B.K.S. Iyengar</p>
               </Col>
@@ -116,4 +217,5 @@ class Client extends Component {
     );
   }
 }
+
 export default Client;

@@ -1,0 +1,19 @@
+a {
+  color: white;
+}
+
+th.th {
+  padding-left: 20px;
+  padding-right: 22px;
+  text-align: center;
+}
+
+.th {
+  width: 180px;
+}
+
+td {
+  width: 180px;
+  font-size: 14px;
+  text-align: center;
+}

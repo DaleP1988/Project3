@@ -18,10 +18,22 @@ class ClientProfile extends Component {
               <ClientProfileForm />
             </Row>
             <Row>
-              <Link to="/booking">
+              <Link to="/client">
                 {" "}
                 <a className="waves-effect waves-light btn-small">
                   View Profile Page
+                </a>{" "}
+              </Link>
+              <Link to="/clientsurvey">
+                {" "}
+                <a className="waves-effect waves-light btn-small">
+                  Take Client Survey
+                </a>{" "}
+              </Link>
+              <Link to="/search">
+                {" "}
+                <a className="waves-effect waves-light btn-small">
+                  Search Instructors
                 </a>{" "}
               </Link>
             </Row>
