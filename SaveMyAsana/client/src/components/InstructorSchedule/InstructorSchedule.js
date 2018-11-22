@@ -4,6 +4,7 @@ import "./InstructorSchedule.css";
 import paris from "../../images/paris.jpg";
 import { Link } from "react-router-dom";
 import { Table } from "react-materialize";
+import { PromiseProvider } from "mongoose";
 
 //function to map over return data and create a row
 
@@ -12,10 +13,10 @@ const InstructorSchedule = () => (
     <div className="card-stack">
       <div className="card-content">
         <h5 className="center">Instructor Teaching Schedule</h5>
-        <h6>Class Name:</h6>
-        <h6>Level:</h6>
-        <h6>Description:</h6>
-        <h6>Location:</h6>
+        {/* <h6>Class Name: {props.className} </h6>
+        <h6>Level: {props.level} </h6>
+        <h6>Description: {props.description} </h6>
+        <h6>Address: {props.address}</h6> */}
 
         <Table className="center">
           <thead>
@@ -46,36 +47,14 @@ const InstructorSchedule = () => (
           {/* make a table row component, fill in with js */}
           <tbody>
             <tr>
-              <td>11-29-18</td>
-              <td>7:00 AM</td>
-              <td>Advanced Flow</td>
-              <td>The Yoga Scene</td>
-              <td>Yes</td>
-              <td>No</td>
-              <td>Drop-In</td>
+              {/* <td> {props.date}</td>
+              <td>{props.time}</td>
+              <td>{props.className}</td>
+              <td>{props.studio}</td>
+              <td>{props.spots}</td>
+              <td>{props.cancellation}</td>
+              <td>{props.registration}</td> */}
             </tr>
-            {/* <tr>
-              <td>Alan</td>
-              <td>Jellybean</td>
-              <td>$3.76</td>
-              <td>Alan</td>
-              <td>Jellybean</td>
-              <td>$3.76</td>
-              <td>Alan</td>
-              <td>Jellybean</td>
-              <td>$3.76</td>
-            </tr>
-            <tr>
-              <td>Jonathan</td>
-              <td>Lollipop</td>
-              <td>$7.00</td>
-              <td>Jonathan</td>
-              <td>Lollipop</td>
-              <td>$7.00</td>
-              <td>Jonathan</td>
-              <td>Lollipop</td>
-              <td>$7.00</td>
-            </tr> */}
           </tbody>
         </Table>
         <Link to="/Search" style={{ font: "white !important" }}>

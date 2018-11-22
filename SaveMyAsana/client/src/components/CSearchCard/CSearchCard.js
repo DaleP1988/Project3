@@ -18,7 +18,7 @@ const CSearchCard = () => (
           Search other Clients
         </a>
         {/* this needs to clear the input field in search + reload the search page */}
-        <Link to="/client">
+        <Link to="/booking">
           {" "}
           <a className="waves-effect waves-light btn-small">
             View Client Schedule

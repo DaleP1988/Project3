@@ -4,35 +4,85 @@ import InstructorCard from "../components/InstructorCard";
 import { Card, Input, Icon, Button, Modal } from "react-materialize";
 import background from "../images/floor2.jpg";
 import InstructorSchedule from "../components/InstructorSchedule";
+import API from "../utils/API";
+import { PromiseProvider } from "mongoose";
 
 class Booking extends Component {
   state = {
-    name: "",
-    city: "",
-    state: "",
-    instructorSchedule: [],
-    date: "",
-    time: ""
+    Instructor: "Johnny Salke",
+    City: "",
+    InstructorSchedules: [],
+    Day: "",
+    Time: "",
+    Modal: []
   };
 
-  // use session storage from previous to get the name of the instructor
-  // run ajax with this data
-  // fill the table
+  //when component mounts, get instructor from session storage, load to this.state.instructorSchedule
 
-  // handleFormSubmit = (event) => {
-  //   event.preventDefault();
-  //   console.log("Getting NYT Articles");
-  //   console.log("this.state.topic: ", this.state.topic);
-  //   console.log("this.state.startYear: ", this.state.startYear);
-  //   console.log("this.state.endYear: ", this.state.endYear);
-  //   API.searchNYT(this.state.topic, this.state.startYear, this.state.endYear)
-  //     .then((res) => {
-  //       this.setState({ articles: res.data.response.docs });
-  //       console.log("this.state.articles: ", this.state.articles);
-  //     });
-  // }
+  componentDidMount() {
+    this.getInstructorName();
+    this.findSchedules();
+  }
 
-  // ADD THE MODAL, FILL date and time message....
+  //function to get the instructor name from session storage
+
+  getInstructorName = () => {
+    var instructorName = sessionStorage.getItem("key");
+    // save the data from the other page
+    this.setState({ Instructor: instructorName });
+  };
+
+  //function to search with the name
+
+  // findSchedule = () => {
+  //   API.getClasses(this.state.Instructor)
+  //     .then(res => {
+  //       var responseArray =
+  //         typeof res.data.response.docs !== "undefined"
+  //           ? res.data.response.docs
+  //           : [];
+  //       if (responseArray) {
+  //         classList = responseArray.Classes.class;
+  //       }
+  //       this.setState({ InstructorSchedules: classList });
+  //     })
+  //     .catch(err => console.log(err));
+  // };
+
+  //method for rendering one instructor schedule div
+
+  // renderInstructorSchedule = () => {
+  //   return this.state.InstructorSchedules.map(schedule => (
+  //     <InstructorSchedule>
+  //       -id={schedule._id}
+  //       key={schedule._id}
+  //       className = {classList.ClassDescription.SessionType.Name}
+  //       level = {classList.ClassDescription.Level.Name}
+  //       description = {classList.ClassDescription.Description}
+  //       location = {classList.Location.City}
+  //       date = {classList.StartDateTime}
+  //       time = {classList.StartDateTime}
+  //       studio = {classList.Location.City.Name}
+  //       spots = {classList.IsAvailable}
+  //       cancellation = {classList.IsCanceled}
+  //       registration = {classList.ClassDescription.Program.ScheduleType}
+  //       address = {classList.Location.Address}
+  //     </InstructorSchedule>
+  //   ));
+  // };
+  //not sure if above will return the right result
+
+  //method for getting the date input
+
+  handleDateChange = event => {
+    this.setState({ Time: event.target.value });
+  };
+
+  //method for getting the time input
+
+  handleTimeInput = event => {
+    this.setState({ Day: event.target.value });
+  };
 
   render() {
     return (
@@ -65,6 +115,7 @@ class Booking extends Component {
                           id="datePick"
                           type="text"
                           class="datepicker"
+                          // onChange={props.handleDateChange}
                         />
                         <label for="datePick">Select a date</label>
                       </div>
@@ -76,6 +127,7 @@ class Booking extends Component {
                           id="timePick"
                           type="text"
                           class="timepicker"
+                          // onChange={props.handleTimeInput}
                         />
                         <label for="timePick">Select a time</label>
                       </div>
@@ -93,8 +145,9 @@ class Booking extends Component {
                       }
                     >
                       <p>
-                        Your request for a session on 'date' at 'time' has been
-                        submitted. 'instructor' will contact you directly.
+                        {/* Your request for a session on {props.Day} at{" "}
+                        {props.Time} has been submitted. {props.Instructor} will
+                        contact you directly. */}
                       </p>
                     </Modal>
                   </Card>
@@ -117,6 +170,7 @@ class Booking extends Component {
               <Col size="12">
                 <div style={{}} className="" id="booking-results">
                   <InstructorSchedule />
+                  {/* <InstructorSchedule /> */}
                 </div>
               </Col>
             </Row>
