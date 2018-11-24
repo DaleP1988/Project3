@@ -1,4 +1,4 @@
-import * as Survey from "survey-react";
+import Survey from "survey-react";
 import "survey-react/survey.css";
 import React from "react";
 import axios from "axios";
@@ -150,22 +150,33 @@ class ClientSurveyForm extends React.Component {
   };
 
   //Define a callback methods on survey complete
-  onComplete(survey, options) {
+  onComplete = (survey, options) => {
     //Write survey results into database
     var DTO = createDTO(survey);
+    var scores = "";
+    // use binding method
+    const onSubmit = this.props.onSubmit;
+    // makes sure it is available in the component
 
-    axios.post("/api/instructorMatches", DTO).then(function(data) {
+    axios.post("api/clientChoices", DTO).then(function(data) {
       alert("");
       console.log(data);
-      bestMatch(data);
+      // bestMatch(data.data);
+      //first is response with results.
+
+      axios.post("api/scores", scores).then(function(score) {
+        alert("");
+        console.log(score);
+        bestMatch(score);
+      });
     });
 
     function createDTO(response) {
       console.log("good");
       var survey = response.valuesHash;
       var dto = {
-        Firstname: survey.Contact.Firstname,
-        Lastname: survey.Contact.Lastname,
+        // Firstname: survey.Contact.Firstname,
+        // Lastname: survey.Contact.Lastname,
         q1: survey.q1,
         q2: survey.q2,
         q3: survey.q3,
@@ -175,16 +186,31 @@ class ClientSurveyForm extends React.Component {
         q7: survey.q7
       };
 
+      //add the code to focus the items?
+
       var dto;
       return dto;
     }
+
+    //
+
+    // get the client selections .... in dto?
+
+    //post client selections to server
+    //post matches
+    // call best match
+
+    //  console.log(clientSelections);
+
+    // need to do the instructor matching...
 
     function bestMatch(scores) {
       var bestFive = scores.slice(-5);
       console.log(bestFive);
       // var bestFiveJSON = JSON.stringify(bestFive);
       // sessionStorage.setItem("bestFive", bstFiveJSON);
-      this.props.onSubmit(bestFive);
+
+      onSubmit(bestFive);
     }
 
     //API.saveSurvey .then  (return API.saveSurvey)
@@ -193,7 +219,7 @@ class ClientSurveyForm extends React.Component {
     //(see saved book)
 
     console.log("Survey results: " + JSON.stringify(survey.data));
-  }
+  };
   render() {
     //Create the model and pass it into react Survey component
     //You may create survey model outside the render function and use it in your App or component

@@ -9,9 +9,50 @@ const SurveysController = require("../../controllers/SurveysController");
 // it helps post result to the server
 // this will be used in the modal
 //make sure the api route matches what is pictured here...
-//this key doesnt have to do with the folder name. it uses api/name for e=organizational technique and following convention
+//this key doesnt have to do with the folder name. it uses api/name for technique and convention
 console.log("THIS WORKED");
-router.route("/api/instructorMatches").post(SurveysController.bestMatch);
+// router.route("api/instructorMatches").post(SurveysController.bestMatch);
+router.route("api/instructorProfile").post(DTO);
+router.route("api/clientChoices").post(DTO);
+
+// router.route("api/clientSelections").post();
+
+// write the code to get instructor scores
+//need to get client data from the survey or db?
+// get scores for instructors and return array with highest scores first
+
+// var clientData = req.body;
+// // console.log("clientData:" + JSON.stringify(clientData));
+// instructorData.forEach(function(instructor) {
+//   var score = 0;
+
+//   for (var question in instructor) {
+//     // console.log("name:" + instructor.name);
+//     // console.log("question:" + question);
+//     // go through all variables in instructor object
+//     if (instructor.hasOwnProperty(question) && question.startsWith("q")) {
+//       clientData[question].forEach(function(answer) {
+//         if (instructor[question].indexOf(answer) > -1) {
+//           // console.log("name:" + instructor.name);
+//           // console.log("answer:" + answer);
+
+//           score++;
+//           // console.log("score:" + score);
+//         }
+//       });
+//     }
+//   }
+
+//   instructor.score = score;
+// });
+
+// function sortScores(a, b) {
+//   //Compare "a" and "b" in some fashion, and return -1, 0, or 1
+//   return a.score - b.score;
+// }
+// instructorData.sort(sortScores);
+
+// res.json(instructorData);
 
 //can make a local function here
 //or make another one in surveyscontroller ... which is the option I chose!

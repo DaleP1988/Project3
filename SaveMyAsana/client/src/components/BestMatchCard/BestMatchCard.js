@@ -17,16 +17,16 @@ const BestMatchCard = () => (
             <i className="material-icons right">more_vert</i>
           </span>
         </div>
-        <div className="card-reveal">
+        <div className="card">
           <span className="card-title grey-text text-darken-4">
             Why I Teach<i className="material-icons right">close</i>
           </span>
-          <p>{props.message}</p>
+          {/* <p>{props.message}</p> */}
           <hr />
           <p>Name: {props.name}</p>
-          <p>Location: {props.city + "," + props.state}</p>
-          <p>Email: {props.email}</p>
-          <p>Phone: {props.phone}</p>
+          <p>Studio: {props.studio}</p>
+          <p>Location: {props.location}</p>
+
           <div>
             <a className="waves-effect waves-light btn-small right instructor-btn">
               View Profile

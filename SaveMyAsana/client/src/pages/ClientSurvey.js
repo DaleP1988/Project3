@@ -5,16 +5,23 @@ import { Link } from "react-router-dom";
 import ClientSurveyForm from "../components/ClientSurveyForm/ClientSurveyForm";
 import { Button, Modal } from "react-materialize";
 import BestMatchCard from "../components/BestMatchCard";
+import axios from "axios";
 
 // on click get data (obj), call result function, display in modal...
 // add a modal to the page
 
 class ClientSurvey extends Component {
   state = {
-    BestMatch: []
+    BestMatch: [],
+    ModalResult: []
+    //make a new one
+    // async await is supported in create react app
+    // can write async like linear functions
+    // review.
   };
 
   componentDidMount() {
+    this.onFormSubmit();
     // this.getBestMatch();
     //can I just call all the others here?
   }
@@ -30,7 +37,26 @@ class ClientSurvey extends Component {
 
   onFormSubmit = data => {
     alert(data);
+    var modalRes = JSON.stringify(data);
+    this.setState({ ModalResult: modalRes });
+
+    // save the result into state
+    // and set to modal
+    // this needs to be the survey logic.....
   };
+
+  renderModal = () => {
+    return this.state.modalRes.map(modal => (
+      <BestMatchCard>
+        -id={modal.id}
+        key={modal._id}
+        name={modal.Firstname + modal.Lastname}
+        studio={modal.studio}
+        location={modal.city + "," + modal.locState}
+      </BestMatchCard>
+    ));
+  };
+
   // data is passed in from the form
 
   // method for rendering a results div
@@ -67,7 +93,7 @@ class ClientSurvey extends Component {
                 trigger={<Button>View Matches</Button>}
               >
                 <p>These are your suggested matches:</p>
-                {this.renderBestMatch()}
+                {/* {this.renderModal()} */}
               </Modal>
             </Row>
           </Container>

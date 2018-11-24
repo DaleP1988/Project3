@@ -28,24 +28,18 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    city: {
+    location: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]
-      },
-      locState: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1]
-        }
-      },
-      img: {
-        type: DataTypes.TEXT,
-        validate: {
-          len: [1]
-        }
+      }
+    },
+
+    img: {
+      type: DataTypes.TEXT,
+      validate: {
+        len: [1]
       }
     }
   });
