@@ -18,6 +18,7 @@ class InstructorSurveyForm extends React.Component {
               { name: "Firstname", placeholder: "First name" },
               { name: "Lastname", placeholder: "Last name" },
               { name: "Studio" },
+              { name: "City" },
               { name: "Location" }
             ],
             colCount: 2

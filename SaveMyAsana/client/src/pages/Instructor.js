@@ -44,8 +44,8 @@ class Instructor extends Component {
   //       name={iProf.Firstname + iProf.Lastname}
   //       email={iProf.email}
   //       phone={iProf.phone}
-  //       city={iProf.city}
-  //       loc={iProf.loc}
+  //
+  //       location={iProf.loc}
   //       img={iProf.img}
   //     </InstructorResultContact>
   //   ));

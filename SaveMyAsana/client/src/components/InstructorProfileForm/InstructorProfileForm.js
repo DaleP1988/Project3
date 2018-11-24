@@ -2,6 +2,7 @@ import * as Survey from "survey-react";
 import "survey-react/survey.css";
 import React from "react";
 // import API from "";
+import axios from "axios";
 
 class InstructorProfileForm extends React.Component {
   json = {
@@ -86,51 +87,65 @@ class InstructorProfileForm extends React.Component {
     sendResultOnPageNext: true
   };
 
-  createDTO = survey => {
-    var values = survey.ValuesHash;
-    var dto = {
-      Firstname: values.Contact.Firstname,
-      Lastname: values.Contact.Lastname,
-      email: values.Email,
-      phone: values.Phone,
-      loc: values.Location,
-      img: values.Photo.content,
-      q1: values.question1,
-      q2: values.question2,
-      q3: values.question3,
-      q4: values.question4,
-      q5: values.question5,
-      q6: values.question6,
-      q7: values.Goodie
-    };
-
-    return dto;
-  };
-
-  //Define a callback methods on survey complete
-  onComplete(survey, options) {
+  onComplete = (survey, options) => {
     //Write survey results into database
-    console.log("Survey results: " + JSON.stringify(survey.data));
-  }
-  render() {
-    //Create the model and pass it into react Survey component
-    //You may create survey model outside the render function and use it in your App or component
-    //The most model properties are reactive, on their change the component will change UI when needed.
+    var DTO = createDTO(survey);
 
-    var model = new Survey.Model(this.json);
-    return <Survey.Survey model={model} onComplete={this.onComplete} />;
-    /*
-  //The alternative way. react Survey component will create survey model internally
-  return (<Survey.Survey json={this.json} onComplete={this.onComplete}/>);
-  */
-    //You may pass model properties directly into component or set it into model
-    // <Survey.Survey model={model} mode="display"/>
-    //or
-    // model.mode="display"
-    // <Survey.Survey model={model}/>
-    // You may change model properties outside render function.
-    //If needed react Survey Component will change its behavior and change UI.
-  }
+    axios.post("api/instructorProfile", DTO).then(function(data) {
+      alert("");
+      console.log(data);
+    });
+    function createDTO(survey) {
+      console.log("worked");
+      var values = survey.ValuesHash;
+      var dto = {
+        Firstname: values.Contact.Firstname,
+        Lastname: values.Contact.Lastname,
+        email: values.Email,
+        phone: values.Phone,
+        loc: values.Location,
+        img: values.Photo.content,
+        q1: values.question1,
+        q2: values.question2,
+        q3: values.question3,
+        q4: values.question4,
+        q5: values.question5,
+        q6: values.question6,
+        q7: values.Goodie
+      };
+
+      return dto;
+    }
+  };
 }
+
+//Define a callback methods on survey complete
+
+// function finale(){
+
+//   //Write survey results into database
+//   console.log("Survey results: " + JSON.stringify(survey.data));
+
+//   render() {
+//     //Create the model and pass it into react Survey component
+//     //You may create survey model outside the render function and use it in your App or component
+//     //The most model properties are reactive, on their change the component will change UI when needed.
+
+//     var model = new Survey.Model(this.json);
+//     return <Survey.Survey model={model} onComplete={this.onComplete} />;
+//     /*
+//   //The alternative way. react Survey component will create survey model internally
+//   return (<Survey.Survey json={this.json} onComplete={this.onComplete}/>);
+//   */
+//     //You may pass model properties directly into component or set it into model
+//     // <Survey.Survey model={model} mode="display"/>
+//     //or
+//     // model.mode="display"
+//     // <Survey.Survey model={model}/>
+//     // You may change model properties outside render function.
+//     //If needed react Survey Component will change its behavior and change UI.
+
+//   };
+// };
 
 export default InstructorProfileForm;

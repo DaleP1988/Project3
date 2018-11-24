@@ -4,6 +4,7 @@ import { Icon } from "react-materialize";
 import { Col, Row, Container } from "../Grid";
 import logo from "../../images/logo.png";
 import appStore from "../../images/appStore.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => (
   <div className="page-footer teal" id="footer-style">
@@ -18,9 +19,11 @@ const Footer = () => (
               </a>
             </li>
             <li>
-              <a className="white-text" href="#!">
-                About Us
-              </a>
+              <Link to="/about">
+                <a className="white-text" href="#!">
+                  About Us
+                </a>
+              </Link>
             </li>
             <li>
               <a className="white-text" href="#!">

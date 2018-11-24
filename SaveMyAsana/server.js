@@ -4,6 +4,7 @@
 // ==============================================================================
 
 var path = require("path");
+var cors = require("cors");
 var express = require("express");
 var bodyParser = require("body-parser");
 var axios = require("axios");
@@ -20,12 +21,19 @@ const routes = require("./routes/api/surveyRoutes");
 // and MIDDLEWARE
 // ==============================================================================
 
+var surveyController = require("./controllers/SurveysController");
+
+module.exports = app;
+
 var app = express();
 var PORT = process.env.PORT || 8080;
 
 console.log("=========================server running================");
+app.use(cors());
+//will accept connections from any domain
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use("/surveys", surveyController);
 
 //server static assets
 if (process.env.NODE_ENV === "production") {
@@ -71,6 +79,9 @@ const syncOptions = { force: false };
 //=================================================================================
 
 db.sequelize.sync().then(function() {
+  //read file from node
+  //read queries and pass to sequelize after db is created
+
   app.listen(PORT, function() {
     console.log("App listening on PORT: " + PORT);
   });
@@ -171,6 +182,6 @@ app.get("/logout", (req, res) => {
 });
 
 // start the app
-app.listen(4000, () => {
-  console.log("magical number is 4000");
+app.listen(3000, () => {
+  console.log("magical number is 3000");
 });

@@ -18,7 +18,7 @@ const ISearchCard = () => (
           Search other Instructors
         </a>
         {/* this needs to clear the input field in search + reload the search page */}
-        <Link to="/instructor">
+        <Link to="/booking">
           {" "}
           <a className="waves-effect waves-light btn-small">
             View Instructor's Schedule
