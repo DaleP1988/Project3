@@ -4,7 +4,7 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "server.js",
   "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start": "npm run start:prod",
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
@@ -16,14 +16,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.18.0",
-    "body-parser": "^1.18.3",
-    "cors": "^2.8.5",
-    "express": "^4.16.4",
-    "express-session": "^1.15.6",
-    "morgan": "^1.9.1",
-    "passport": "^0.4.0",
+    "axios": "*",
+    "body-parser": "*",
+    "express": "*",
+    "express-session": "*",
+    "morgan": "*",
+    "mysql2": "^1.6.4",
+    "passport": "*",
+    "passport-local": "^1.0.0",
     "sequelize": "^4.41.2",
+    "cors": "^2.8.5",
     "soap": "^0.25.0"
   }
 }

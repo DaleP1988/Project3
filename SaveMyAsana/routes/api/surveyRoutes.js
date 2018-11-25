@@ -12,8 +12,18 @@ const SurveysController = require("../../controllers/SurveysController");
 //this key doesnt have to do with the folder name. it uses api/name for technique and convention
 console.log("THIS WORKED");
 // router.route("api/instructorMatches").post(SurveysController.bestMatch);
-router.route("api/instructorProfile").post(DTO);
-router.route("api/clientChoices").post(DTO);
+// router.route("api/instructorProfile").post(DTO);
+// router.route("api/clientChoices").post(DTO);
+
+//
+router.get("/", (req, res) => {
+  res.status(200).json({ message: "Connected!" });
+});
+
+//CRUD CAN GO HERE.
+//THIS CAN BE REFERENCED IN THE CLIENT SIDE CODE
+//WILL GO TO API
+//axios.then (on client side) is the response from here
 
 // router.route("api/clientSelections").post();
 

@@ -8,8 +8,13 @@ const surveyRtes = require("./surveyRoutes");
 // ==============================================================================
 // Set Routes
 // ==============================================================================
-
+router.get("/", (req, res) => {
+  res.status(200).json({ message: "Connected!" });
+});
 router.use("/surveyRoutes", surveyRtes);
+
+//individual api routes here
+//
 
 // ==============================================================================
 // Export Router
