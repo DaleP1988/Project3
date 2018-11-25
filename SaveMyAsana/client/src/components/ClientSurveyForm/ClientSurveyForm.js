@@ -1,4 +1,4 @@
-import Survey from "survey-react";
+import * as Survey from "survey-react";
 import "survey-react/survey.css";
 import React from "react";
 import axios from "axios";
@@ -175,8 +175,8 @@ class ClientSurveyForm extends React.Component {
       console.log("good");
       var survey = response.valuesHash;
       var dto = {
-        // Firstname: survey.Contact.Firstname,
-        // Lastname: survey.Contact.Lastname,
+        Firstname: survey.Contact.Firstname,
+        Lastname: survey.Contact.Lastname,
         q1: survey.q1,
         q2: survey.q2,
         q3: survey.q3,
@@ -191,6 +191,18 @@ class ClientSurveyForm extends React.Component {
       var dto;
       return dto;
     }
+
+    // dto.forEach(function(question) {
+    //   var selectedItems = [];
+    //   question.find();
+    // });
+
+    //     .find("input:checked")
+    //     .each(function(i, element) {
+    //       selections.push($(this).val());
+    //     });
+    //   clientSelections[question] = selections;
+    // });
 
     //
 
@@ -213,31 +225,11 @@ class ClientSurveyForm extends React.Component {
       onSubmit(bestFive);
     }
 
-    //API.saveSurvey .then  (return API.saveSurvey)
-    // treat as a post (like submitting something from a form), don't need to save function will be called here.....
-    //function defined in API.js ****
-    //(see saved book)
-
-    console.log("Survey results: " + JSON.stringify(survey.data));
+    // console.log("Survey results: " + JSON.stringify(survey.data));
   };
   render() {
-    //Create the model and pass it into react Survey component
-    //You may create survey model outside the render function and use it in your App or component
-    //The most model properties are reactive, on their change the component will change UI when needed.
-
     var model = new Survey.Model(this.json);
     return <Survey.Survey model={model} onComplete={this.onComplete} />;
-    /*
-  //The alternative way. react Survey component will create survey model internally
-  return (<Survey.Survey json={this.json} onComplete={this.onComplete}/>);
-  */
-    //You may pass model properties directly into component or set it into model
-    // <Survey.Survey model={model} mode="display"/>
-    //or
-    // model.mode="display"
-    // <Survey.Survey model={model}/>
-    // You may change model properties outside render function.
-    //If needed react Survey Component will change its behavior and change UI.
   }
 }
 

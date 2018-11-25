@@ -127,57 +127,57 @@ module.exports = {
 //   .findAll()
 //   .then(instructorChoices => {
 
-//     // check the dbModel structure to make sure the form of the data
+// //     // check the dbModel structure to make sure the form of the data
 //     console.log(JSON.stringify(instructorChoices));
-//     //send all instructors and client survey to perform scoring
+// //     //send all instructors and client survey to perform scoring
 
 //     instructorData = res.json(instructorChoices);
-//     // var instructors = getInstructors(dbModel, req.DTO);
-//     // sent the data back to the client
-//     //function below is called above
+//     var instructors = getInstructors(dbModel, req.DTO);
+// //     // sent the data back to the client
+// //     //function below is called above
 //   },
 
-// }),
+// // }),
 
 //   axios.post("api/scores", score )
 //   .then(function(score){
-//     console.log(score)
+//     console.log(score);
 
-// });
+// }),
 
 // bestMatch(data.data);
 //first is response with results.
 
-//       instructorData.forEach(function(instructor) {
-//         var score = 0;
+// instructors.forEach(function (instructor) {
+//   var score = 0;
 
-//         for (var question in instructor) {
-//           // console.log("name:" + instructor.name);
-//           // console.log("question:" + question);
-//           // go through all variables in instructor object
-//           if (instructor.hasOwnProperty(question) && question.startsWith("q")) {
-//             clientData[question].forEach(function(answer) {
-//               if (instructor[question].indexOf(answer) > -1) {
-//                 // console.log("name:" + instructor.name);
-//                 // console.log("answer:" + answer);
+//   for (var question in instructor) {
+//     //           // console.log("name:" + instructor.name);
+//     //           // console.log("question:" + question);
+//     //           // go through all variables in instructor object
+//     if (instructor.hasOwnProperty(question) && question.startsWith("q")) {
+//       clientData[question].forEach(function (answer) {
+//         if (instructor[question].indexOf(answer) > -1) {
+//           //                 // console.log("name:" + instructor.name);
+//           //                 // console.log("answer:" + answer);
 
-//                 score++;
-//                 // console.log("score:" + score);
-//               }
-//             });
-//           }
+//           score++;
+//           console.log("score:" + score);
 //         }
-
-//         instructor.score = score;
 //       });
+//     }
+//   }
 
-//       function sortScores(a, b) {
-//         //Compare "a" and "b" in some fashion, and return -1, 0, or 1
-//         return a.score - b.score;
-//       }
-//       instructorData.sort(sortScores);
+//   instructor.score = score;
+// }),
 
-//       res.json(instructorData);
+// function sortScores(a, b) {
+//   //Compare "a" and "b" in some fashion, and return -1, 0, or 1
+//   return a.score - b.score;
+// }
+// instructors.sort(sortScores);
+
+// res.json(instructors);
 //     });
 //   };
 
@@ -201,17 +201,17 @@ module.exports = {
 // };
 //#region Create Update
 // Create a new  survey
-router.get("/", async function(req, res) {
-  try {
-    console.log("survey endpoint hit" + req);
-    //    res.status(200).send(survey);
-  } catch (err) {
-    console.log(err);
-    return res
-      .status(500)
-      .send("There was a problem adding the information to the database.");
-  }
-});
+// router.get("/", async function(req, res) {
+//   try {
+//     console.log("survey endpoint hit" + req);
+//     //    res.status(200).send(survey);
+//   } catch (err) {
+//     console.log(err);
+//     return res
+//       .status(500)
+//       .send("There was a problem adding the information to the database.");
+//   }
+// });
 ///////////////////
 ///INSTRUCT PRO/////
 ////////////////////
