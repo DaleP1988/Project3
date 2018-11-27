@@ -1,13 +1,65 @@
-const router = require("express").Router();
-const SurveysController = require("../../controllers/SurveysController");
+const express = require("express");
+const router = express.Router();
+// var bodyParser = require("body-parser");
+// const SurveysController = require("../../controllers/SurveysController");
+// const db = require("./models");
+
+// router.use(bodyParser.urlencoded({ extended: true }));
+// router.use(bodyParser.json());
 
 //////////////////
 //CLIENT SURVEY///
 /////////////////
 
-// the one below is from clientSurvey.js
-// it helps post result to the server
-// this will be used in the modal
+// router.get("/api/instructors", (req, res) => {
+//     res.status(200).json(instructorData);
+//     console.log(instructorData);
+//   });
+
+// router.post("api/clientChoices", (req, res) => {
+//     res.status(200).json(req.body);
+//     console.log(req.body);
+
+//     });
+
+// router.post("api/match", (req, res)  =>  {
+//     var clientData = req.body;
+//     console.log("clientData:" + JSON.stringify(clientData));
+//     alert("posting to server");
+//     console.log(best);
+
+//     instructorData.forEach(function(instructor){
+//         var score = 0;
+
+//         for (var question in instructor) {
+//             if(instructor.hasOwnProperty(question) && question.startsWith("q")){
+//                 clientData[question].forEach(function(answer){
+//                     if(instructor[question] === answer > -1) {
+//                     //I am not sure if I am getting all potential answers here since multiple answers can be selected and they come back as "item1, item3" , etc.
+
+//                         score++;
+//                     }
+//                 });
+//             }
+
+//         }
+//         instructor.score = score;
+
+//     });
+
+//     function sortScores(a, b) {
+//         //Compare "a" and "b" in some fashion, and return -1, 0, or 1
+//         return a.score - b.score;
+//       }
+//       instructorData.sort(sortScores);
+
+//       res.json(instructorData);
+
+//  code to send the scores back to the component
+// });
+
+// };
+
 //make sure the api route matches what is pictured here...
 //this key doesnt have to do with the folder name. it uses api/name for technique and convention
 console.log("THIS WORKED");
@@ -15,10 +67,160 @@ console.log("THIS WORKED");
 // router.route("api/instructorProfile").post(DTO);
 // router.route("api/clientChoices").post(DTO);
 
+//use routes instead of controller or rename later
+
+// module.exports = function(app) {
+
 //
 router.get("/", (req, res) => {
   res.status(200).json({ message: "Connected!" });
 });
+
+//////////////////////
+//INSTRUCTOR SURVEYS///
+//////////////////////
+
+//get
+
+// router.get("../../api/instructorSurveys", (req, res) => {
+//   res.status(200).json({});
+// });
+//POST route for adding new survey to server
+
+router.post("/api/InstructorSurveys", function(req, res) {});
+
+// GET route for getting all of the instructor surveys
+
+router.get("/api/InstructorSurveys", function(req, res) {
+  // var query = {};
+  // if (req.params.boxId) {
+  //     query.BoxId = req.params.boxId;
+  // }
+  // Here we add an "include" property to our options in our findAll query
+  // We set the value to an array of the models we want to include in a left outer join
+  // In this case, just db.Box
+  db.instructorSurveys
+    .findAll({})
+    .then(function(Surveys) {
+      let iSurveys = {
+        SurveyData: Surveys
+      };
+      res.send(iSurveys);
+    })
+    .catch(function(err) {
+      // Whenever a validation or flag fails, an error is thrown
+      // We can "catch" the error to prevent it from being "thrown", which could crash our node router
+      res.json(err);
+    });
+});
+
+//GET route for one instructor survey
+
+///////////////////////
+////ONE INS SURVEY////
+//////////////////////
+
+router.get("/api/InstructorSurveys/:id", function(req, res) {
+  db.instructorSurveys
+    .findOne({
+      where: {
+        Firstname: req.params.Firstname,
+        Lastname: req.params.Lastname,
+        loc: req.params.loc
+      }
+    })
+    .then(ISurvey => {
+      res.json(ISurvey).catch(function(err) {
+        res.json(err);
+      });
+    });
+});
+
+// var query = {};
+// if (req.params.boxId) {
+//     query.BoxId = req.params.boxId;
+// }
+// Here we add an "include" property to our options in our findAll query
+// We set the value to an array of the models we want to include in a left outer join
+// In this case, just db.Box
+//   db.instructorSurveys
+// .findOne({})
+// .then(function(Surveys) {
+//   let iSurveys = {
+//     SurveyData: Surveys
+//   };
+//   res.send(iSurveys);
+// })
+// .catch(function(err) {
+//   // Whenever a validation or flag fails, an error is thrown
+//   // We can "catch" the error to prevent it from being "thrown", which could crash our node router
+//   res.json(err);
+// });
+
+//PUT route for new survey to db
+router.put("/api/InstructorSurveys", function(req, res) {});
+
+//DELETE getting rid of the survey
+router.delete("/api/InstructorSurveys", function(req, res) {});
+
+//////////////////////
+//INSTRUCTOR PROFILES/
+//////////////////////
+
+//get
+
+router.get("/api/InstructorProfiles", function(req, res) {});
+//post
+
+router.post("/api/InstructorProfiles", function(req, res) {});
+
+//put
+
+router.put("/api/InstructorProfiles", function(req, res) {});
+
+//delete
+
+router.delete("/api/InstructorProfiles", function(req, res) {});
+
+//////////////////////
+///CLIENT SURVEYS/////
+//////////////////////
+
+//get
+
+router.get("/api/ClientSurveys", function(req, res) {});
+
+//post
+router.post("/api/ClientSurveys", function(req, res) {});
+
+//put
+router.put("/api/ClientSurveys", function(req, res) {});
+
+//delete
+router.delete("/api/ClientSurveys", function(req, res) {});
+
+//////////////////////
+//CLIENT PROFILES/////
+//////////////////////
+
+//get
+router.get("/api/ClientProfiles", function(req, res) {});
+//post
+router.post("/api/ClientProfiles", function(req, res) {});
+//put
+router.put("/api/ClientProfiles", function(req, res) {});
+//delete
+router.delete("/api/ClientProfiles", function(req, res) {});
+
+//////////////////////
+//////Booking/////////
+//////////////////////
+
+//////////////////////
+///////Search/////////
+//////////////////////
+
+module.exports = router;
 
 //CRUD CAN GO HERE.
 //THIS CAN BE REFERENCED IN THE CLIENT SIDE CODE
@@ -152,25 +354,6 @@ router.get("/", (req, res) => {
 // Matches with "/api/Login/:id"
 
 // router.route("/Login/:id").get(SurveysController.findOneLogin);
-// .put(SurveysController.update)
+// .put(SurveysController.update);
 // .delete(SurveysController.remove);
-
-module.exports = router;
-
-//Matches with /api/clientSurv
-
-//Matches with /api/clientProf
-
-//Matches with /api/instructorSurv
-
-//Matches with /api/instructorProf
-
-//Matches with /api/clientSurv
-
-//Matches with /api/clientSurv
-
-//Matches with /api/clientSurv
-
-//Matches with /api/clientSurv
-
-//Matches with /api/clientSurv
+// });

@@ -4,6 +4,7 @@
 var express = require("express");
 var router = express.Router();
 var bodyParser = require("body-parser");
+// var db = require("./models");
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
@@ -14,112 +15,136 @@ router.use(bodyParser.json());
 
 //DEFINING METHODS FOR THE SURVEYSCONTROLLER
 
-module.exports = {
-  //////////////////
-  ///CLIENT PRO/////
-  //////////////////
+// module.exports = function (app){
+//////////////////
+///CLIENT PRO/////
+//////////////////
 
-  //find all
+//find all
 
-  findClientPros: function(req, res) {
-    db.clientPro
-      .find(req.query)
-      .sort({ date: -1 }) //this needs to sort by a new param.
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
+// findClientPros: function(req, res) {
+//   db.clientPro
+//     .find(req.query)
+//     .sort({ date: -1 }) //this needs to sort by a new param.
+//     .then(dbModel => res.json(dbModel))
+//     .catch(err => res.status(422).json(err));
+// },
 
-  //find by id
+//find by id
 
-  findOneClientPro: function(req, res) {
-    db.clientPro
-      .findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
+// app.get("/api/controllers/SurveysController", function(req, res) {
+//   var query = {};
+//   if (req.params.boxId) {
+//       query.BoxId = req.params.boxId;
+//   }
+//   // Here we add an "include" property to our options in our findAll query
+//   // We set the value to an array of the models we want to include in a left outer join
+//   // In this case, just db.Box
+//   db.Post.findAll({
+//           where: query,
+//           include: [db.Box]
+//       }).then(function(dbPost) {
 
-  //createone
+//           let postList = {
+//               posts:dbPost
+//           }
+//           res.send(postList);
+//       })
+//       .catch(function(err) {
+//           // Whenever a validation or flag fails, an error is thrown
+//           // We can "catch" the error to prevent it from being "thrown", which could crash our node app
+//           res.json(err);
+//       });
 
-  createClientPro: function(req, res) {
-    db.clientPro
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
+// findOneClientPro: function(req, res) {
+//   db.clientPro
+//     .findById(req.params.id)
+//     .then(dbModel => res.json(dbModel))
+//     .catch(err => res.status(422).json(err));
+// },
 
-  //update
+//createone
 
-  updateClientPro: function(req, res) {
-    db.clientPro
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
+// createClientPro: function(req, res) {
+//   db.clientPro
+//     .create(req.body)
+//     .then(dbModel => res.json(dbModel))
+//     .catch(err => res.status(422).json(err));
+// },
 
-  //delete
+// //update
 
-  removeClientPro: function(req, res) {
-    db.clientPro
-      .findById({ _id: req.params.id })
-      .then(dbModel => dbModel.remove())
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
-  // };
+// updateClientPro: function(req, res) {
+//   db.clientPro
+//     .findOneAndUpdate({ _id: req.params.id }, req.body)
+//     .then(dbModel => res.json(dbModel))
+//     .catch(err => res.status(422).json(err));
+// },
 
-  //////////////////
-  ///CLIENT SURV/////
-  //////////////////
+// //delete
 
-  //find best match
+// removeClientPro: function(req, res) {
+//   db.clientPro
+//     .findById({ _id: req.params.id })
+//     .then(dbModel => dbModel.remove())
+//     .then(dbModel => res.json(dbModel))
+//     .catch(err => res.status(422).json(err));
+// },
+// };
 
-  //find all
+//////////////////
+///CLIENT SURV/////
+//////////////////
 
-  findClientSurv: function(req, res) {
-    db.clientSurvey
-      .find(req.query)
-      .sort({ date: -1 }) //this needs to sort by a new param.
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
+//find best match
 
-  //find by id
+//find all
 
-  findOneClientSurv: function(req, res) {
-    db.clientSurvey
-      .findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
+// findClientSurv: function(req, res) {
+//   db.clientSurvey
+//     .find(req.query)
+//     .sort({ date: -1 }) //this needs to sort by a new param.
+//     .then(dbModel => res.json(dbModel))
+//     .catch(err => res.status(422).json(err));
+// },
 
-  //createone
+// //find by id
 
-  createClientSurv: function(req, res) {
-    db.clientSurvey
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  }
+// findOneClientSurv: function(req, res) {
+//   db.clientSurvey
+//     .findById(req.params.id)
+//     .then(dbModel => res.json(dbModel))
+//     .catch(err => res.status(422).json(err));
+// },
 
-  //////////////////
-  ////MATCHING//////
-  ////SORTING///////
-  //////////////////
+//createone
 
-  // bestMatch
-  // name is the same as the function called in surveyRoutes.js
-  // client does post, survey routes receives and forwards to surveyscontroller
-  //TO DO:
-  // add to seeds (instructors and clients)
-  // check the old "API" model and match the format for the query
+// createClientSurv: function(req, res) {
+//   db.clientSurvey
+//     .create(req.body)
+//     .then(dbModel => res.json(dbModel))
+//     .catch(err => res.status(422).json(err));
+// }
 
-  // bestMatch: function(req, res) {
+//////////////////
+////MATCHING//////
+////SORTING///////
+//////////////////
 
-  //clientChoices:function(req, res){
-  //console.log(req+"client choices hit");
+// bestMatch
+// name is the same as the function called in surveyRoutes.js
+// client does post, survey routes receives and forwards to surveyscontroller
+//TO DO:
+// add to seeds (instructors and clients)
+// check the old "API" model and match the format for the query
 
-  //}
-};
+// bestMatch: function(req, res) {
+
+//clientChoices:function(req, res){
+//console.log(req+"client choices hit");
+
+//}
+// };
 //go back and organize client choices DTO
 //minimize to the items only
 

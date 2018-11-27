@@ -1,5 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
   var instructorSurveys = sequelize.define("instructorSurveys", {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     Firstname: {
       type: DataTypes.TEXT,
       allowNull: true,

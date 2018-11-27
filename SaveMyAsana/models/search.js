@@ -1,5 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
   var search = sequelize.define("search", {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     Firstame: {
       type: DataTypes.STRING,
       allowNull: false,

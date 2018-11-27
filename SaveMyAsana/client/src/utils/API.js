@@ -51,30 +51,27 @@ export default {
   //   }
   // };
 
-  //saves the surveys
-
-  // saveIS: function(surveyIS) {
-  //   return axios.post("/api/surveyRoutes/InstructorSurvey", surveyIS);
-  // },
+  saveIS: function(surveyIS) {
+    return axios.post("/api/InstructorSurvey", surveyIS);
+  },
 
   //Gets All Survey Data from DB
 
-  // getISAll: function() {
-  //   return axios.get("/api/surveyRoutes/InstructorSurvey");
-  // },
+  getISAll: function() {
+    return axios.get("/api/InstructorSurvey");
+  },
 
   //Gets specific Survey Data from DB
 
-  // getIS: function(id) {
-  //   return axios.get("/api/surveyRoutes/InstructorSurvey/:" + id);
-  // },
+  getIS: function(id) {
+    return axios.get("/api/InstructorSurvey/:" + id);
+  },
 
   //Deletes a specific Survey from DB
 
-  // deleteIS: function(id) {
-  //   return axios.delete("/api/surveyRoutes/InstructorSurvey/:" + id);
-  // },
-  // };
+  deleteIS: function(id) {
+    return axios.delete("/api/InstructorSurvey/:" + id);
+  },
 
   //////////////////////
   //INSTRUCTOR PROFILE//
@@ -87,110 +84,117 @@ export default {
   // check to see if survey is the right parameter
   // can reuse these routes for the booking and search profile data
 
-  // saveIP: function(surveyIP) {
-  //   return axios.post("/api/surveyRoutes/InstructorProfile", surveyIP);
-  // },
+  saveIP: function(surveyIP) {
+    return axios.post("/api/InstructorProfile", surveyIP);
+  },
 
   //Gets All Survey Data from DB
 
-  // getIPAll: function() {
-  //   return axios.get("/api/surveyRoutes/InstructorProfile");
-  // },
+  getIPAll: function() {
+    return axios.get("/api/InstructorProfile");
+  },
+
+  ////////////
+  //INSPRO////
+  ////////////
 
   //Gets specific Survey Data from DB
 
   getIP: function(id) {
-    return axios.get("/api/surveyRoutes/InstructorProfile/:" + id);
+    //fetch('http://localhost:4000/api/InstructorProfile/:id);
+    // .then
+    return axios.get("/api/InstructorProfile/:" + id);
+  },
+
+  //Deletes a specific Survey from DB
+
+  deleteIP: function(id) {
+    return axios.delete("/api/InstructorProfile/:" + id);
+  },
+
+  //////////////////////
+  ////CLIENT SURVEY/////
+  //////////////////////
+
+  // export default {
+  // Saves Survey Data to DB
+  // check to see if survey is the right parameter
+
+  // saveCS: function(surveyCS) {
+  //   return axios.post("/api/surveyRoutes/ClientSurvey", surveyCS);
+  // },
+
+  //Gets All Survey Data from DB
+
+  // getCSAll: function() {
+  //   return axios.get("/api/surveyRoutes/ClientSurvey");
+  // },
+
+  //Gets specific Survey Data from DB
+
+  // getCS: function(id) {
+  //   return axios.get("/api/surveyRoutes/ClientSurvey/:" + id);
+  // },
+
+  //Deletes a specific Survey from DB
+
+  // deleteCS: function(id) {
+  //   return axios.delete("/api/surveyRoutes/ClientSurvey/:" + id);
+  // },
+
+  //////////////////////
+  ////CLIENT PROFILE////
+  //////////////////////
+
+  // export default {
+  // Saves Survey Data to DB
+  // check to see if survey is the right parameter
+
+  saveCP: function(surveyCP) {
+    //
+    return axios.post("/api/ClientProfile", surveyCP);
+  },
+
+  //Gets All Survey Data from DB
+
+  getCPAll: function() {
+    return axios.get("/api/ClientProfile/:");
+  },
+
+  //Gets specific Survey Data from DB
+
+  getCP: function(id) {
+    return axios.get("/api/ClientProfile/:" + id);
+  },
+
+  //Deletes a specific Survey from DB
+
+  deleteCP: function(id) {
+    return axios.delete("/api/ClientProfile/:" + id);
+  },
+
+  /////////////////////
+  ////////LOGIN////////
+  /////////////////////
+
+  //Gets All Survey Data from DB
+
+  getLoginAll: function() {
+    return axios.get("/api/surveyRoutes/Login");
+  },
+
+  //Gets specific Survey Data from DB
+
+  getLogin: function(id) {
+    return axios.get("/api/surveyRoutes/Login/:" + id);
+  },
+
+  //Deletes a specific Survey from DB
+
+  deleteLogin: function(id) {
+    return axios.delete("/api/surveyRoutes/Login/:" + id);
   }
 };
-
-//Deletes a specific Survey from DB
-
-// deleteIP: function(id) {
-//   return axios.delete("/api/surveyRoutes/InstructorProfile/:" + id);
-// },
-
-//////////////////////
-////CLIENT SURVEY/////
-//////////////////////
-
-// export default {
-// Saves Survey Data to DB
-// check to see if survey is the right parameter
-
-// saveCS: function(surveyCS) {
-//   return axios.post("/api/surveyRoutes/ClientSurvey", surveyCS);
-// },
-
-//Gets All Survey Data from DB
-
-// getCSAll: function() {
-//   return axios.get("/api/surveyRoutes/ClientSurvey");
-// },
-
-//Gets specific Survey Data from DB
-
-// getCS: function(id) {
-//   return axios.get("/api/surveyRoutes/ClientSurvey/:" + id);
-// },
-
-//Deletes a specific Survey from DB
-
-// deleteCS: function(id) {
-//   return axios.delete("/api/surveyRoutes/ClientSurvey/:" + id);
-// },
-
-//////////////////////
-////CLIENT PROFILE////
-//////////////////////
-
-// export default {
-// Saves Survey Data to DB
-// check to see if survey is the right parameter
-
-// saveCP: function(surveyCP) {
-//   return axios.post("/api/surveyRoutes/ClientProfile", surveyCP);
-// },
-
-//Gets All Survey Data from DB
-
-// getCPAll: function() {
-//   return axios.get("/api/surveyRoutes/ClientProfile/:");
-// },
-
-//Gets specific Survey Data from DB
-
-// getCP: function(id) {
-//   return axios.get("/api/surveyRoutes/ClientProfile/:" + id);
-// },
-
-//Deletes a specific Survey from DB
-
-// deleteCP: function(id) {
-//   return axios.delete("/api/surveyRoutes/ClientProfile/:" + id);
-// },
-
-/////////////////////
-////////LOGIN////////
-/////////////////////
-
-//Gets All Survey Data from DB
-
-// getLoginAll: function() {
-//   return axios.get("/api/surveyRoutes/Login");
-// },
-
-//Gets specific Survey Data from DB
-
-// getLogin: function(id) {
-//   return axios.get("/api/surveyRoutes/Login/:" + id);
-// },
-
-//Deletes a specific Survey from DB
-
-// deleteLogin: function(id) {
-//   return axios.delete("/api/surveyRoutes/Login/:" + id);
-// }
 
 ///////////////
 ///BOOKING/////
@@ -199,4 +203,3 @@ export default {
 //////////////
 ///SEARCH/////
 //////////////
-// };
