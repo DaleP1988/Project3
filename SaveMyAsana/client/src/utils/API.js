@@ -94,22 +94,39 @@ export default {
     return axios.get("/api/InstructorProfile");
   },
 
-  ////////////
-  //INSPRO////
-  ////////////
+  ///////////////////////
+  //INSTRUCTOR SEARCH////
+  ///////////////////////
 
   //Gets specific Survey Data from DB
+  //use instructor survey bc it holds the studio data
 
-  getIP: function(id) {
+  getIS: function(id) {
     //fetch('http://localhost:4000/api/InstructorProfile/:id);
     // .then
-    return axios.get("/api/InstructorProfile/:" + id);
+    return axios.get("/api/InstructorSurvey/:" + id);
   },
 
   //Deletes a specific Survey from DB
 
   deleteIP: function(id) {
     return axios.delete("/api/InstructorProfile/:" + id);
+  },
+
+  ///////////////////////
+  ////CLIENT SEARCH//////
+  ///////////////////////
+
+  //Gets specific Survey Data from DB
+
+  getCP: function(id) {
+    return axios.get("/api/ClientProfile/:" + id);
+  },
+
+  //Deletes a specific Survey from DB
+
+  deleteCP: function(id) {
+    return axios.delete("/api/ClientProfile/:" + id);
   },
 
   //////////////////////

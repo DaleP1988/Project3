@@ -8,77 +8,55 @@ import CSearchCard from "../components/CSearchCard";
 // use functions defined client side in API.js (utils)
 
 class ClientSearch extends Component {
-  //   state = {
-  //     clients: [],
-  //     selection: "",
-  //     name: "",
-  //     loc: ""
-  //   };
+  state = {
+    clients: [],
+    name: "",
+    loc: ""
+  };
 
-  //   componentDidMount() {
-  //     this.handleSearchSubmit();
-  //   }
-
-  //get survey content for the client search term
-
-  // getClientProfile  = ()=> {
-  //     API.getCP()
-  //     .then((res) => {
-  //       this.setState({clients: res.data });
-  //     });
-
-  // }
+  componentDidMount() {
+    this.handleSearchSubmit();
+  }
 
   //store name input
 
-  // handleNameSearch = event => {
-  //   this.setState({ name: event.target.value });
-  // };
+  handleNameSearch = event => {
+    this.setState({ name: event.target.value });
+  };
 
-  // //store location input
+  //store location input
 
-  // handleLocationSearch = event => {
-  //   this.setState({
-  //     location: event.target.value
-  //     //need to separate the string .....
-  //   });
-  // };
+  handleLocationSearch = event => {
+    this.setState({
+      location: event.target.value
+      //need to separate the string .....
+    });
+  };
 
-  // form submit make a call to the backend
-
-  // handleSearchSubmit = event => {
-  //   event.preventDefault();
-  //   console.log("grabbed search name and location");
-  //   console.log("this.state.name", this.state.name);
-  //   console.log("this.state.location", this.state.location);
-  //   API.searchClients(this.state.name, this.state.location).then(res => {
-  //     this.setState({ clients: res.data.response.docs });
-  //     console.log("this.state.clients", this.state.clients);
-
-  //need to create a searchInstructors call at API.js in utils
-  //   });
-  // };
+  handleSearchSubmit = event => {
+    event.preventDefault();
+    if (this.state.name || this.state.loc) {
+      API.getCP(this.state.name, this.state.loc).then(res => {
+        this.setState({ clients: res.data });
+      });
+    }
+  };
 
   //method for rendering one div based on the above backend call
 
-  // renderClients = () => {
-  //   return this.state.clients.map(clients => (
-  //     <Result>
-  //       -id={clients.id}
-  //       key={clients._id}
-  //       name={clients.Firstname + clients.Lastname}
-  //       email={clients.email}
-  //       phone={clients.phone}
-  //       city={clients.city}
-  //       loc={clients.loc}
-  //       img={clients.img}
-  //     </Result>
-  //   ));
-  // };
-
-  // handleInstructorSelection = event => {
-  //   this.setState({ selection: event.target.value });
-  // };
+  renderClients = () => {
+    return this.state.clients.map(clients => (
+      <CSearchCard>
+        -id={clients.id}
+        key={clients._id}
+        name={clients.Firstname + clients.Lastname}
+        email={clients.email}
+        phone={clients.phone}
+        loc={clients.location}
+        img={clients.img}
+      </CSearchCard>
+    ));
+  };
 
   //make sure the button to store the instructor info
   //export this function/data to profile page..
@@ -128,11 +106,7 @@ class ClientSearch extends Component {
             <Row>
               <Col size="12">
                 <div id="booking-results">
-                  <CSearchCard />
-                  <CSearchCard />
-                  <CSearchCard />
-                  <CSearchCard />
-                  <CSearchCard />
+                  <ul className="list-group"> {this.renderClients()}</ul>
                 </div>
               </Col>
             </Row>
