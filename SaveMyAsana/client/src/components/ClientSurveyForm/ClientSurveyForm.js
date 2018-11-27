@@ -2,6 +2,7 @@ import * as Survey from "survey-react";
 import "survey-react/survey.css";
 import React from "react";
 import axios from "axios";
+// import $ from "jquery";
 
 class ClientSurveyForm extends React.Component {
   json = {
@@ -154,29 +155,33 @@ class ClientSurveyForm extends React.Component {
     //Write survey results into database
     var DTO = createDTO(survey);
     var scores = "";
+    var matches = bestMatch(scores);
     // use binding method
     const onSubmit = this.props.onSubmit;
-    // makes sure it is available in the component
+    // above makes sure it is available in the component
 
     axios.post("api/clientChoices", DTO).then(function(data) {
+      // res.json({ data });
       alert("");
-      console.log(data);
+      console.log(JSON.stringify(data));
       // bestMatch(data.data);
       //first is response with results.
 
-      axios.post("api/scores", scores).then(function(score) {
+      //this will get the match result back from the server
+      axios.post("api/match", DTO).then(function(data) {
         alert("");
-        console.log(score);
-        bestMatch(score);
+        console.log(data);
+        bestMatch(data);
       });
     });
+    console.log(DTO);
 
     function createDTO(response) {
       console.log("good");
       var survey = response.valuesHash;
       var dto = {
-        Firstname: survey.Contact.Firstname,
-        Lastname: survey.Contact.Lastname,
+        // Firstname: survey.Contact.Firstname,
+        // Lastname: survey.Contact.Lastname,
         q1: survey.q1,
         q2: survey.q2,
         q3: survey.q3,
@@ -185,6 +190,9 @@ class ClientSurveyForm extends React.Component {
         q6: survey.q6,
         q7: survey.q7
       };
+      //  dto.forEach(function (question){
+
+      //  })
 
       //add the code to focus the items?
 
@@ -192,6 +200,11 @@ class ClientSurveyForm extends React.Component {
       return dto;
     }
 
+    function bestMatch(scores) {
+      // var scoreArray = array.push(scores);
+      var bestFive = scores.slice(-5);
+      console.log(bestFive);
+    }
     // dto.forEach(function(question) {
     //   var selectedItems = [];
     //   question.find();

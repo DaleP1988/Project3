@@ -2,6 +2,7 @@ import React from "react";
 import * as Survey from "survey-react";
 import "survey-react/survey.css";
 // import API from "../../";
+// import $ from "jquery";
 
 export default class ClientProfileForm extends React.Component {
   json = {

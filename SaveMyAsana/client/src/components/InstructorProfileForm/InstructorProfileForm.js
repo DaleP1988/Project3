@@ -3,6 +3,7 @@ import "survey-react/survey.css";
 import React from "react";
 // import API from "";
 import axios from "axios";
+// import $ from "jquery";
 
 class InstructorProfileForm extends React.Component {
   json = {

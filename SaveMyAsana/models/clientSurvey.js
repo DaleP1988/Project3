@@ -1,5 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
   var clientSurvey = sequelize.define("clientSurvey", {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
     Firstname: {
       type: DataTypes.STRING,
       allowNull: true,

@@ -12,8 +12,10 @@ const http = require("http");
 var db = require("./models");
 const session = require("express-session"); // for sessions
 const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
 const user = express.Router();
 const api = require("./routes/api");
+//above is the api at routes stored as var
 
 // ==============================================================================
 // EXPRESS CONFIGURATION
@@ -21,7 +23,7 @@ const api = require("./routes/api");
 // ==============================================================================
 
 var app = express();
-var PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 3001;
 
 console.log("=========================server running================");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -32,6 +34,8 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+//====================================================================
+
 //===============================================================================
 
 // ROUTING (API AND REACT VIEWS)
@@ -40,9 +44,35 @@ if (process.env.NODE_ENV === "production") {
 
 //app.use(routes);
 app.use("/api", api);
+const env = require("dotenv/config");
 // app.use("api/surveyRoutes", routes);
 
-//
+// ADD CONTROLLER REFERENCES
+
+// const SurveysController = require("./controllers/surveysController.js");
+
+//EXAMPLES
+// const home = require("/");
+// const booking = require("booking.js");
+// const about = require("./controllers/postController.js");
+// const client = require("./controllers/userController.js");
+// const clientProfile = require("./controllers/userController.js");
+// const clientSurvey = require("./controllers/userController.js");
+// const instructor = require("./controllers/userController.js");
+// const instructorProfile = require("./controllers/userController.js");
+
+// app.use controllers
+
+// app.use("/", SurveysController);
+
+//Use Controllers
+// app.use("/", home);
+// // home(app);
+// app.use("/", sentiment);
+// box(app);
+// post(app);
+// user(app);
+// comment(app);
 
 //================================================================================
 // PASSPORT
@@ -50,17 +80,17 @@ app.use("/api", api);
 
 //additions for the passport
 
-const LocalStrategy = require("passport-local").Strategy;
+// const LocalStrategy = require("passport-local").Strategy;
 // const User = require("./src/user");
 // Sets an initial port. We"ll use this later in our listener
 
-// Sets up the Express app to handle data parsing
+// Sets up the Express app to handle data parsing4
 
-app.use(express.static(path.join(__dirname, "/public")));
+// app.use(express.static(path.join(__dirname, "/public")));
 
-app.get("/", function(req, res) {
-  res.sendFile(path.join(_dirname, "/pages/Home"));
-});
+// app.get("/", function(req, res) {
+//   res.sendFile(path.join(_dirname, "/pages/Home"));
+// });
 
 //================================================================================
 // DATABASE SYNC OPTIONS
@@ -73,11 +103,11 @@ const syncOptions = { force: false };
 // SERVER
 //=================================================================================
 
-// db.sequelize.sync().then(function() {
-//   app.listen(PORT, function() {
-//     console.log("App listening on PORT: " + PORT);
-//   });
-// });
+db.sequelize.sync().then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT: " + PORT);
+  });
+});
 
 app.use(morgan("combined"));
 app.use(bodyParser.json()); // body-parser MW
@@ -174,9 +204,9 @@ app.get("/logout", (req, res) => {
 });
 
 // start the app
-app.listen(4000, () => {
-  console.log("magical number is 4000");
-});
+// app.listen(PORT, () => {
+//   console.log("magical number is ", PORT);
+// });
 
 // // ==============================================================================
 // // DEPENDENCIES and REQUIRED FILES
@@ -215,10 +245,10 @@ app.listen(4000, () => {
 // app.use(bodyParser.json());
 // // app.use("/surveys", surveyController);
 
-// //server static assets
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static("client/build"));
-// }
+//server static assets
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 // //===============================================================================
 

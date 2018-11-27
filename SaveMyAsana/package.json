@@ -4,11 +4,11 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "server.js",
   "scripts": {
-    "start": "npm run start:prod",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
-    "seed": "node scripts/seedDB.js",
+    "seed": " mysql << db/seeds.sql",
     "install": "cd client && yarn install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
@@ -18,14 +18,15 @@
   "dependencies": {
     "axios": "*",
     "body-parser": "*",
+    "cors": "^2.8.5",
     "express": "*",
     "express-session": "*",
+    "jquery": "^3.3.1",
     "morgan": "*",
     "mysql2": "^1.6.4",
     "passport": "*",
     "passport-local": "^1.0.0",
     "sequelize": "^4.41.2",
-    "cors": "^2.8.5",
     "soap": "^0.25.0"
   }
 }

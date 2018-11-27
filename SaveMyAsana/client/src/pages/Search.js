@@ -17,6 +17,7 @@ class Search extends Component {
 
   // componentDidMount() {
   //   this.handleSearchSubmit();
+  //   getClientProfile();
   // }
 
   //get survey content for the client search term
