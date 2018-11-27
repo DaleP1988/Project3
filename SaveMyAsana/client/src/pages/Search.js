@@ -8,27 +8,16 @@ import background from "../images/floor2.jpg";
 // use functions defined client side in API.js (utils)
 
 class Search extends Component {
-  // state = {
-  //   instructors: [],
-  //   selection: "",
-  //   name: "",
-  //   loc: ""
-  // };
+  state = {
+    instructors: [],
+    name: "",
+    loc: ""
+  };
 
-  // componentDidMount() {
-  //   this.handleSearchSubmit();
-  //   getClientProfile();
-  // }
-
-  //get survey content for the client search term
-
-  // getClientProfile  = ()=> {
-  //     API.getCP()
-  //     .then((res) => {
-  //       this.setState({instructors: res.data });
-  //     });
-
-  // }
+  componentDidMount() {
+    this.handleSearchSubmit();
+    // getInstructorProfile();
+  }
 
   //store name input
 
@@ -47,34 +36,31 @@ class Search extends Component {
 
   // form submit make a call to the backend
 
-  // handleSearchSubmit = event => {
-  //   event.preventDefault();
-  //   console.log("grabbed search name and location");
-  //   console.log("this.state.name", this.state.name);
-  //   console.log("this.state.location", this.state.location);
-  //   API.searchClients(this.state.name, this.state.location).then(res => {
-  //     this.setState({ instructors: res.data.response.docs });
-  //     console.log("this.state.instructors", this.state.instructors);
-
-  //     //need to create a searchInstructors call at API.js in utils
-  //   });
-  // };
+  handleSearchSubmit = event => {
+    event.preventDefault();
+    if (this.state.name || this.state.loc) {
+      API.getIS(this.state.name, this.state.loc).then(res => {
+        this.setState({ instructors: res.data });
+      });
+    }
+  };
 
   //method for rendering one div based on the above backend call
 
-  // renderInstructors = () => {
-  //   return this.state.instructors.map(instructors => (
-  //     <Result>
-  //       -id={instructors.id}
-  //       key={instructors._id}
-  //       name={instructors.Firstname + instructors.Lastname}
-  //       email={instructors.email}
-  //       phone={instructors.phone}
-  //       loc={instructors.city + "," + state}
-  //       img={instructors.img}
-  //     </Result>
-  //   ));
-  // };
+  renderInstructors = () => {
+    return this.state.instructors.map(instructors => (
+      <ISearchCard>
+        -id={instructors.id}
+        key={instructors._id}
+        name={instructors.Firstname + instructors.Lastname}
+        email={instructors.email}
+        phone={instructors.phone}
+        studio-{instructors.studio}
+        loc={instructors.city + "," + state}
+        img={instructors.img}
+      </ISearchCard>
+    ));
+  };
 
   // handleInstructorSelection = event => {
   //   this.setState({ selection: event.target.value });
@@ -128,11 +114,7 @@ class Search extends Component {
             <Row>
               <Col size="12">
                 <div id="booking-results">
-                  <ISearchCard />
-                  <ISearchCard />
-                  <ISearchCard />
-                  <ISearchCard />
-                  <ISearchCard />
+                  <ul className="list-group">{this.renderInstructors()}</ul>
                 </div>
               </Col>
             </Row>
