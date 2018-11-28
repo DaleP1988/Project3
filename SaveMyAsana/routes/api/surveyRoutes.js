@@ -22,43 +22,65 @@ const router = express.Router();
 
 //     });
 
-// router.post("api/match", (req, res)  =>  {
-//     var clientData = req.body;
-//     console.log("clientData:" + JSON.stringify(clientData));
-//     alert("posting to server");
-//     console.log(best);
+    
+// this gets the data, does the matches and sends them back to the client
+// post both sends and receives
 
-//     instructorData.forEach(function(instructor){
-//         var score = 0;
 
-//         for (var question in instructor) {
-//             if(instructor.hasOwnProperty(question) && question.startsWith("q")){
-//                 clientData[question].forEach(function(answer){
-//                     if(instructor[question] === answer > -1) {
-//                     //I am not sure if I am getting all potential answers here since multiple answers can be selected and they come back as "item1, item3" , etc.
+// could have kept surveyRoutes more simple. Database code would have been in the controller. It can still work as is. The other mthd used to scale efficiently and cleanly.
 
-//                         score++;
-//                     }
-//                 });
-//             }
 
-//         }
-//         instructor.score = score;
+router.post("api/match", (req, res)  =>  {
+    var clientData = req.body;
+    console.log("clientData:" + JSON.stringify(clientData));
+    alert("posting to server");
+    console.log(best);
 
-//     });
+    instructorData.forEach(function(instructor){
+        var score = 0;
 
-//     function sortScores(a, b) {
-//         //Compare "a" and "b" in some fashion, and return -1, 0, or 1
-//         return a.score - b.score;
-//       }
-//       instructorData.sort(sortScores);
+        // need something to make a distinction btw ques. and all other data in obj
+        // would want a name and array of questions in the future
+        // 
+        for (var question in instructor) {
+            if(instructor.hasOwnProperty(question) && question.startsWith("q")){
+                clientData[question].forEach(function(answer){
+                    if(instructor[question].indexOf(answer) > -1) {
+                      // typescript, looks like java. converted when built. practice with typescript to move towards java...
+                      // instructor[question] is an array... if you used equal signs you would have to make sure both objs are arrays or strings
+                      // now there is includes and contains (in ECMA script)... would need to check compatability with windows 11 (for internet explorer ppl). server can handle any version of JS
+                      // this assumes question1 is in client data
+                      // this is now dependent on the structure of the survey (for same number of questions on each). this test is not "bulletproof"
+                      // I am not sure if I am getting all potential answers here since multiple answers can be selected and they come back as "item1, item3" , etc.
+                      // 
+                        score++;
+                    }
+                });
+            }
 
-//       res.json(instructorData);
+        }
+        instructor.score = score;
+
+    });
+
+    function sortScores(a, b) {
+        //Compare "a" and "b" in some fashion, and return -1, 0, or 1
+        return a.score - b.score;
+      }
+      instructorData.sort(sortScores);
+
+      res.json(instructorData);
+
+      // this is returning the data to the client
+      // req and res could be named whatever
+      
+      // when function is called in surveyRoutes, 
+      //
 
 //  code to send the scores back to the component
-// });
+});
 
-// };
+};
 
 //make sure the api route matches what is pictured here...
 //this key doesnt have to do with the folder name. it uses api/name for technique and convention

@@ -15,7 +15,7 @@ import InstructorResultBio from "../components/ResultDivs/InstructorResultBio";
 class Instructor extends Component {
   state = {
     iProf: [],
-    Instructor: "",
+    InstructorName: "",
     // studio: "",
     location: ""
   };
@@ -31,13 +31,18 @@ class Instructor extends Component {
 
   getInstructorName = () => {
     var instructorName = sessionStorage.getItem("key");
+    var location = sessionStorage.getItem("key");
+    // figure out how to get it from component ... use session storage? see clientSurveyForm, use the onsubmit option
+    // need a method to set the state with the object from the onSubmit
+    // eliminate the sessionStorage
     // save the data from the other page
-    this.setState({ Instructor: instructorName });
+    this.setState({ InstructorName: instructorName });
   };
 
   // //Method for getting the saved survey from the db
   getInstructorProfile = () => {
-    API.getIP().then(res => {
+    API.getIP(this.state.InstructorName, this.state.location).then(res => {
+      // revise....
       this.setState({ iProf: res.data });
       this.setState({ location: res.data.Location });
 
