@@ -12,7 +12,7 @@ import axios from "axios";
 
 class ClientSurvey extends Component {
   state = {
-    BestMatch: [],
+    // BestMatch: [],
     ModalResult: []
     //make a new one
     // async await is supported in create react app
@@ -48,11 +48,11 @@ class ClientSurvey extends Component {
   renderModal = () => {
     return this.state.modalRes.map(modal => (
       <BestMatchCard>
-        -id={modal.id}
-        key={modal._id}
-        name={modal.Firstname + modal.Lastname}
-        studio={modal.studio}
-        location={modal.city + "," + modal.locState}
+        -id={modalRes.id}
+        key={modalRes._id}
+        name={modalRes.Firstname + modalRes.Lastname}
+        studio={modalRes.Studio}
+        location={modalRes.City}
       </BestMatchCard>
     ));
   };
@@ -61,23 +61,7 @@ class ClientSurvey extends Component {
 
   // method for rendering a results div
 
-  renderBestMatch = () => {
-    return this.state.BestMatch.map(BestMatch => (
-      <BestMatchCard>
-        {/* need to make a results component */}
-        {/* this needs to reference the client components */}
-        -id={BestMatch.id}
-        key={BestMatch._id}
-        name={BestMatch.Firstname + BestMatch.Lastname}
-        email={BestMatch.email}
-        phone={BestMatch.phone}
-        location={BestMatch.city + BestMatch.state}
-        message={BestMatch.message}
-        img={BestMatch.img}
-      </BestMatchCard>
-    ));
-  };
-
+  //
   render() {
     return (
       <div>
@@ -93,8 +77,8 @@ class ClientSurvey extends Component {
                 trigger={<Button>View Matches</Button>}
               >
                 <p>These are your suggested matches:</p>
+
                 {this.renderModal()}
-                {this.renderBestMatch()}
               </Modal>
             </Row>
           </Container>

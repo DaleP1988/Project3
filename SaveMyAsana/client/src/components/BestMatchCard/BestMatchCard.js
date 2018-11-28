@@ -3,13 +3,14 @@ import "./instructorCard.css";
 import { Row } from "../Grid";
 import parisCard from "../../images/parisCard.png";
 import { PromiseProvider } from "mongoose";
+import instructor from "../../images/yogateacher.jpg";
 
 const BestMatchCard = () => (
   <div className="instructor-row">
     <div className="instructor-card">
       <div className="card">
         <div className="waves-effect waves-block waves-light">
-          <img className="instructor-image activator" src={props.img} />
+          <img className="instructor-image activator" src={instructor} />
         </div>
         <div class="card-content instructor-name">
           <span className="card-title activator grey-text text-darken-4">
