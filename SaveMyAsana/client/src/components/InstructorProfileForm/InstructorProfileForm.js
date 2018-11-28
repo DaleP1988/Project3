@@ -96,6 +96,11 @@ class InstructorProfileForm extends React.Component {
       alert("");
       console.log(data);
     });
+
+    //need corresponding post in surveyRoutes
+    //make sure verbs and endpoint names match
+    // make sure the db is reference in the correct way on the server
+
     function createDTO(survey) {
       console.log("worked");
       var values = survey.ValuesHash;

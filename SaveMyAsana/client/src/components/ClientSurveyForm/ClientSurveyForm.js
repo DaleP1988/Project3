@@ -1,5 +1,6 @@
 import * as Survey from "survey-react";
 import "survey-react/survey.css";
+import ClientSurvey from "../../pages/ClientSurvey";
 import React from "react";
 import axios from "axios";
 // import $ from "jquery";
@@ -154,25 +155,63 @@ class ClientSurveyForm extends React.Component {
   onComplete = (survey, options) => {
     //Write survey results into database
     var DTO = createDTO(survey);
-    var scores = "";
-    var matches = bestMatch(scores);
+
+    // DEBUGGING NOTES //
+    // doing step into would take you to the method createDTO()
+    // step over skips the method and jumps to the next function
+    // breakpoint and hit play to skip over a bunch and get right to a new place
+    // step over is line by line, never goes into function
+    // step into goes into function, then you can go line by line in the function
+    // step return goes to end of function and gets out of function (back to line above it)
+    // can change things while in the debugger
+    // can right click on breakpoint: right click and set condition "for breaking".. could do it for the question
+    // var matches = bestMatch(scores);
     // use binding method
-    const onSubmit = this.props.onSubmit;
+
+    //check in debugger. breakpoint at this object.
+    // for control at a point, put a breakpoint at the point (line #).
+
+    var onSubmit = this.props.onSubmit;
+    // getting all the properties on submit and assigning to local var
     // above makes sure it is available in the component
 
-    axios.post("api/clientChoices", DTO).then(function(data) {
-      // res.json({ data });
-      alert("");
-      console.log(JSON.stringify(data));
-      // bestMatch(data.data);
-      //first is response with results.
+    // axios.post("api/clientChoices", DTO).then(function(data) {
+    // res.json({ data });
+    // alert("");
+    // console.log(JSON.stringify(data));
+    // bestMatch(data.data);
+    // first is response with results.
+    // single post both calls and receives.
+    // URI syntax for the slashes
 
-      //this will get the match result back from the server
-      axios.post("api/match", DTO).then(function(data) {
-        alert("");
-        console.log(data);
-        bestMatch(data);
-      });
+    //this will get the match result back from the server
+    // the content in then is the receiving part
+    //its asynchronous
+    //comes back with a "bookmark"
+    //one post handles sending and what happens when it comes back
+
+    // CRUD Ops with rest calls
+    // v. get
+    // to fetch names and info
+    // post for creating new client
+    // put for change of address (update)
+    // delete for removing
+
+    // this is an endpoint
+    // data is the var that the instructor data is copied into (that was returned from the server)
+
+    axios.post("api/match", DTO).then(function(data) {
+      alert("");
+      console.log(data);
+      var bestFive = getBestFiveMatches(data);
+      onSubmit(bestFive);
+      // this is to get data back to the page
+      // this function can be declared on the page
+
+      // keep the methods simple. see above.
+      // data is new. just created here. holds array of instructors.
+      // data gets copied into scores variable in the best match method.
+      // });
     });
     console.log(DTO);
 
@@ -192,19 +231,9 @@ class ClientSurveyForm extends React.Component {
       };
       //  dto.forEach(function (question){
 
-      //  })
-
-      //add the code to focus the items?
-
-      var dto;
       return dto;
     }
 
-    function bestMatch(scores) {
-      // var scoreArray = array.push(scores);
-      var bestFive = scores.slice(-5);
-      console.log(bestFive);
-    }
     // dto.forEach(function(question) {
     //   var selectedItems = [];
     //   question.find();
@@ -229,13 +258,15 @@ class ClientSurveyForm extends React.Component {
 
     // need to do the instructor matching...
 
-    function bestMatch(scores) {
+    function getBestFiveMatches(scores) {
       var bestFive = scores.slice(-5);
       console.log(bestFive);
+
+      // when declaring a function you are not necessary calling it. saying run it sometime, not now.
       // var bestFiveJSON = JSON.stringify(bestFive);
       // sessionStorage.setItem("bestFive", bstFiveJSON);
-
-      onSubmit(bestFive);
+      return bestFive;
+      // onSubmit(bestFive);
     }
 
     // console.log("Survey results: " + JSON.stringify(survey.data));

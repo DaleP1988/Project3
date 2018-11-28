@@ -21,7 +21,7 @@ class ClientSurvey extends Component {
   };
 
   componentDidMount() {
-    this.onFormSubmit();
+    this.onSubmit();
     // this.getBestMatch();
     //can I just call all the others here?
   }
@@ -93,7 +93,8 @@ class ClientSurvey extends Component {
                 trigger={<Button>View Matches</Button>}
               >
                 <p>These are your suggested matches:</p>
-                {/* {this.renderModal()} */}
+                {this.renderModal()}
+                {this.renderBestMatch()}
               </Modal>
             </Row>
           </Container>

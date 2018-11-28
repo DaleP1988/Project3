@@ -13,61 +13,79 @@ import InstructorResultBio from "../components/ResultDivs/InstructorResultBio";
 // make a UUID with javascript,
 
 class Instructor extends Component {
-  // state = {
-  //   iSurvey: [],
-  //   iProf: []
-  // };
+  state = {
+    iProf: [],
+    InstructorName: "",
+    // studio: "",
+    location: ""
+  };
 
-  // componentDidMount() {
-  //   this.getInstructorProfile();
-  //   //can I just call all the others here?
-  // }
+  componentDidMount() {
+    this.getInstructorName();
+    this.getInstructorProfile();
+    //can I just call all the others here?
+  }
+
+  // method for getting name from session storage
+  // hard code into state if it doesnt work
+
+  getInstructorName = () => {
+    var instructorName = sessionStorage.getItem("key");
+    var location = sessionStorage.getItem("key");
+    // figure out how to get it from component ... use session storage? see clientSurveyForm, use the onsubmit option
+    // need a method to set the state with the object from the onSubmit
+    // eliminate the sessionStorage
+    // save the data from the other page
+    this.setState({ InstructorName: instructorName });
+  };
 
   // //Method for getting the saved survey from the db
-  // getInstructorProfile = () => {
-  //   API.getIP().then(res => {
-  //     this.setState({ iSurvey: res.data });
+  getInstructorProfile = () => {
+    API.getIP(this.state.InstructorName, this.state.location).then(res => {
+      // revise....
+      this.setState({ iProf: res.data });
+      this.setState({ location: res.data.Location });
 
-  //     //can I add code right into here for the rendering?
-  //   });
-  // };
+      //can I add code right into here for the rendering?
+    });
+  };
 
   // // method for rendering a results div
 
-  // renderinstructorProfContact = () => {
-  //   return this.state.iProf.map(iProf => (
-  //     <InstructorResultContact>
-  //       {/* need to make a results component */}
-  //       {/* this needs to reference the client components */}
-  //       -id={iProf.id}
-  //       key={iProf._id}
-  //       name={iProf.Firstname + iProf.Lastname}
-  //       email={iProf.email}
-  //       phone={iProf.phone}
-  //
-  //       location={iProf.loc}
-  //       img={iProf.img}
-  //     </InstructorResultContact>
-  //   ));
-  // };
+  renderinstructorProfContact = () => {
+    return this.state.iProf.map(iProf => (
+      <InstructorResultContact>
+        {/* need to make a results component */}
+        {/* this needs to reference the client components */}
+        -id={iProf.id}
+        key={iProf._id}
+        name={iProf.Firstname + iProf.Lastname}
+        email={iProf.email}
+        phone={iProf.phone}
+        location={iProf.loc}
+        img={iProf.img}
+      </InstructorResultContact>
+    ));
+  };
 
-  // renderinstructorProfBio = () => {
-  //   return this.state.iProf.map(iProf => (
-  //     <InstructorResultBio>
-  //       {/* need to make a results component */}
-  //       {/* this needs to reference the client components */}
-  //       -id={iProf.id}
-  //       key={iProf._id}
-  //       about={iProf.q1}
-  //       style={iProf.q2}
-  //       background={iProf.q3}
-  //       transformative={iProf.q4}
-  //       message={iProf.q5}
-  //       wisdom={iProf.q6}
-  //       goodie={iProf.q7}
-  //     </InstructorResultBio>
-  //   ));
-  // };
+  renderinstructorProfBio = () => {
+    return this.state.iProf.map(iProf => (
+      <InstructorResultBio>
+        {/* make sure the content below gets to the right parts of the survey */}
+        {/* check the selections in dev tools */}
+        -id={iProf.id}
+        key={iProf._id}
+        about={iProf.q2}
+        style={iProf.q1}
+        background={iProf.q3}
+        transformative={iProf.q4}
+        message={iProf.q5}
+        wisdom={iProf.q6}
+        goodie={iProf.q7}
+      </InstructorResultBio>
+    ));
+  };
+
   // class Instructor extends Component {
   render() {
     return (
@@ -92,7 +110,7 @@ class Instructor extends Component {
                       }}
                     >
                       Name:
-                      <span> Linda Rosenblatt</span>
+                      <span> {props.name}</span>
                     </span>
                     <span
                       style={{
@@ -103,7 +121,7 @@ class Instructor extends Component {
                       }}
                     >
                       Studio:
-                      <span> Yoga By Linda</span>
+                      <span> Clubville </span>
                     </span>
                     <span
                       style={{
@@ -114,7 +132,7 @@ class Instructor extends Component {
                       }}
                     >
                       Location:
-                      <span> Kern County, CA</span>
+                      <span> {props.location}</span>
                     </span>
                   </div>
                 </div>
@@ -128,12 +146,13 @@ class Instructor extends Component {
                 <Card title="Instructor Biography">
                   <Row>
                     <div className="col m12">
-                      <h6>About Me</h6>
+                      {this.renderinstructorProfContact()}
+                      {/* <h6>About Me</h6>
                       <p style={{ lineHeight: "20px" }}>My Teaching Style:</p>
                       <p style={{ lineHeight: "20px" }}> Instructor Bio:</p>
                       <p style={{ lineHeight: "20px" }}>
-                        A Transformative Teach Experience:
-                      </p>
+                        A Transformative Teaching Experience:
+                      </p> */}
                     </div>
                   </Row>
                 </Card>
@@ -151,31 +170,7 @@ class Instructor extends Component {
                   }}
                 >
                   <div className="" id="search-title">
-                    {/* <img className="img" src={OM} /> */}
-                    <h4 className="center">
-                      Teaching Experience and Philosophy{" "}
-                    </h4>
-                    <p
-                      style={{
-                        marginLeft: "50px"
-                      }}
-                    >
-                      What I Love Most About Teaching:
-                    </p>
-                    <p
-                      style={{
-                        marginLeft: "50px"
-                      }}
-                    >
-                      Words of Wisdom and Encouragement:
-                    </p>
-                    <p
-                      style={{
-                        marginLeft: "50px"
-                      }}
-                    >
-                      Find my Favorite Yoga Goodie Here:
-                    </p>
+                    {this.renderinstructorProfBio()}
                   </div>
                 </div>
               </Col>

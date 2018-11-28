@@ -84,6 +84,14 @@ export default {
   // check to see if survey is the right parameter
   // can reuse these routes for the booking and search profile data
 
+  // get one instructor profile
+
+  getIP: function(surveyIP) {
+    return axios.post("/api/InstructorProfile", surveyIP);
+  },
+
+  // save the IP
+
   saveIP: function(surveyIP) {
     return axios.post("/api/InstructorProfile", surveyIP);
   },

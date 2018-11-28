@@ -12,9 +12,10 @@ class Booking extends Component {
     Instructor: "Johnny Salke",
     City: "",
     InstructorSchedules: [],
+    InstructorBio: [],
     Day: "",
-    Time: "",
-    Modal: []
+    Time: ""
+    // Modal: []
   };
 
   //when component mounts, get instructor from session storage, load to this.state.instructorSchedule
@@ -24,6 +25,10 @@ class Booking extends Component {
     this.findSchedules();
   }
 
+  /////////////////////
+  ///abbrv profile/////
+  /////////////////////
+
   //function to get the instructor name from session storage
 
   getInstructorName = () => {
@@ -32,45 +37,33 @@ class Booking extends Component {
     this.setState({ Instructor: instructorName });
   };
 
-  //function to search with the name
+  // funciton to get the profile data into card
 
-  // findSchedule = () => {
-  //   API.getClasses(this.state.Instructor)
-  //     .then(res => {
-  //       var responseArray =
-  //         typeof res.data.response.docs !== "undefined"
-  //           ? res.data.response.docs
-  //           : [];
-  //       if (responseArray) {
-  //         classList = responseArray.Classes.class;
-  //       }
-  //       this.setState({ InstructorSchedules: classList });
-  //     })
-  //     .catch(err => console.log(err));
-  // };
+  fillAbbrevProfile = () => {
+    API.getCP(this.state.name, this.state.loc).then(res => {
+      this.setState({ clients: res.data });
+    });
+  };
 
-  //method for rendering one instructor schedule div
+  // method to create a single card div
+  // instructor card
 
-  // renderInstructorSchedule = () => {
-  //   return this.state.InstructorSchedules.map(schedule => (
-  //     <InstructorSchedule>
-  //       -id={schedule._id}
-  //       key={schedule._id}
-  //       className = {classList.ClassDescription.SessionType.Name}
-  //       level = {classList.ClassDescription.Level.Name}
-  //       description = {classList.ClassDescription.Description}
-  //       location = {classList.Location.City}
-  //       date = {classList.StartDateTime}
-  //       time = {classList.StartDateTime}
-  //       studio = {classList.Location.City.Name}
-  //       spots = {classList.IsAvailable}
-  //       cancellation = {classList.IsCanceled}
-  //       registration = {classList.ClassDescription.Program.ScheduleType}
-  //       address = {classList.Location.Address}
-  //     </InstructorSchedule>
-  //   ));
-  // };
-  //not sure if above will return the right result
+  renderInstructorBio = () => {
+    return this.state.InstructorBio.map(schedule => (
+      <InstructorCard>
+        -id={schedule._id}
+        key={schedule._id}
+        name = {InstructorBio.name}
+        email = {InstructorBio.email}
+        phone = {InstructorBio.phone}
+        location = {classList.location}
+      </InstructorCard>
+    ));
+  };
+
+  //////////////////
+  //BOOKING INPUT///
+  //////////////////
 
   //method for getting the date input
 
@@ -82,6 +75,76 @@ class Booking extends Component {
 
   handleTimeInput = event => {
     this.setState({ Day: event.target.value });
+  };
+
+  //////////////////
+  ///MODAL BUILD///
+  /////////////////
+
+  //not sure if above will return the right result
+
+  // method for rendering the modal div
+  // may not need this method. can just do the
+
+  // renderModal = () => {
+  //   return this.state.Modal.map(schedule => (
+  //     <BookingResult>
+  //       -id={schedule._id}
+  //       key={schedule._id}
+  //       name = {Modal.name}
+  //       location = {Modal.location}
+  //       studio = {Modal.studio}
+  //       email = {Modal.email}
+  //       phone = {Modal.phone}
+  //     </BookingResult>
+  //   ));
+  // };
+
+  ///////////////////
+  ///FILL SCHEDULE//
+  //////////////////
+
+  //function to search with the name. for the axios call to MBO
+  // make sure it gets the right instructor
+
+  findSchedule = () => {
+    API.getClasses(this.state.Instructor)
+      .then(res => {
+        var responseArray =
+          typeof res.data.response.docs !== "undefined"
+            ? res.data.response.docs
+            : [];
+        if (responseArray) {
+          classList = responseArray.Classes.class;
+        }
+        this.setState({ InstructorSchedules: classList });
+      })
+      .catch(err => console.log(err));
+  };
+
+  //method for rendering one instructor schedule div
+
+  renderInstructorSchedule = () => {
+    return this.state.InstructorSchedules.map(schedule => (
+      <InstructorSchedule>
+        -id={schedule._id}
+        key={schedule._id}
+        className ={" "}
+        {InstructorSchedules.classList.ClassDescription.SessionType.Name}
+        level = {InstructorSchedules.classList.ClassDescription.Level.Name}
+        description ={" "}
+        {InstructorSchedules.classList.ClassDescription.Description}
+        location = {InstructorSchedules.classList.Location.City}
+        date = {InstructorSchedules.classList.StartDateTime}
+        time = {InstructorSchedules.classList.StartDateTime}
+        studio = {InstructorSchedules.classList.Location.City.Name}
+        spots = {InstructorSchedules.classList.IsAvailable}
+        cancellation = {InstructorSchedules.classList.IsCanceled}
+        registration ={" "}
+        {InstructorSchedules.classList.ClassDescription.Program.ScheduleType}
+        address = {InstructorSchedules.classList.Location.Address}
+      </InstructorSchedule>
+    ));
   };
 
   render() {
@@ -103,9 +166,7 @@ class Booking extends Component {
                 </div>
               </Row>
               <Row>
-                <Col size="6">
-                  <InstructorCard />
-                </Col>
+                <Col size="6">{this.renderInstructorBio()}</Col>
                 <Col size="6">
                   <Card title="Request an Introductory Session">
                     <Row>
@@ -115,7 +176,7 @@ class Booking extends Component {
                           id="datePick"
                           type="text"
                           class="datepicker"
-                          // onChange={props.handleDateChange}
+                          onChange={props.handleDateChange}
                         />
                         <label for="datePick">Select a date</label>
                       </div>
@@ -127,7 +188,7 @@ class Booking extends Component {
                           id="timePick"
                           type="text"
                           class="timepicker"
-                          // onChange={props.handleTimeInput}
+                          onChange={props.handleTimeInput}
                         />
                         <label for="timePick">Select a time</label>
                       </div>
@@ -145,9 +206,9 @@ class Booking extends Component {
                       }
                     >
                       <p>
-                        {/* Your request for a session on {props.Day} at{" "}
+                        Your request for a session on {props.Day} at{" "}
                         {props.Time} has been submitted. {props.Instructor} will
-                        contact you directly. */}
+                        contact you directly.
                       </p>
                     </Modal>
                   </Card>
@@ -169,8 +230,7 @@ class Booking extends Component {
             <Row>
               <Col size="12">
                 <div style={{}} className="" id="booking-results">
-                  <InstructorSchedule />
-                  {/* <InstructorSchedule /> */}
+                  {this.renderInstructorSchedule()}
                 </div>
               </Col>
             </Row>
