@@ -21,7 +21,7 @@ class ClientSurvey extends Component {
   };
 
   componentDidMount() {
-    this.onSubmit();
+    // this.onSubmit();
     // this.getBestMatch();
     //can I just call all the others here?
   }
@@ -45,17 +45,17 @@ class ClientSurvey extends Component {
     // this needs to be the survey logic.....
   };
 
-  renderModal = () => {
-    return this.state.modalRes.map(modal => (
-      <BestMatchCard>
-        -id={modalRes.id}
-        key={modalRes._id}
-        name={modalRes.Firstname + modalRes.Lastname}
-        studio={modalRes.Studio}
-        location={modalRes.City}
-      </BestMatchCard>
-    ));
-  };
+  // renderModal = () => {
+  //   return this.state.modalRes.map(modal => (
+  //     <BestMatchCard>
+  //       -id={modal.id}
+  //       key={modal._id}
+  //       name={modal.Firstname + modal.Lastname}
+  //       studio={modal.Studio}
+  //       location={modal.City}
+  //     </BestMatchCard>
+  //   ));
+  // };
 
   // data is passed in from the form
 
@@ -78,7 +78,7 @@ class ClientSurvey extends Component {
               >
                 <p>These are your suggested matches:</p>
 
-                {this.renderModal()}
+                {/* {this.renderModal()} */}
               </Modal>
             </Row>
           </Container>

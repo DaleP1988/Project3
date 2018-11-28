@@ -33,14 +33,14 @@ class ClientSearch extends Component {
     });
   };
 
-  handleSearchSubmit = event => {
-    event.preventDefault();
-    if (this.state.name || this.state.loc) {
-      API.getCP(this.state.name, this.state.loc).then(res => {
-        this.setState({ clients: res.data });
-      });
-    }
-  };
+  // handleSearchSubmit = event => {
+  //   event.preventDefault();
+  //   if (this.state.name || this.state.loc) {
+  //     // API.getCP(this.state.name, this.state.loc).then(res => {
+  //       this.setState({ clients: res.data });
+  //     });
+  //   }
+  // };
 
   //method for rendering one div based on the above backend call
 
@@ -89,6 +89,9 @@ class ClientSearch extends Component {
                     <label for="icon_prefix">Location</label>
                   </div>
                 </div>
+                <a className="waves-effect waves-light btn-small">
+                  Search Client
+                </a>{" "}
               </Row>
             </div>
           </Container>

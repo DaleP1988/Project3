@@ -303,7 +303,7 @@ values
 INSERT INTO clientPro
     (id, Firstname, Lastname, email, phone, loc, img, q1, q2, q3, q4)
 values
-    ("8", "Justin", "Quinonez", "justinq@gmail.com", "(212) 919-0808", "Brooklyn, NY", "justinq.jpg", "item6", "item3", "Hey guys! My name is Justin and I am a beginner yogi...... I am looking for a class with other lovers of the art of yoga. ", "I have traveled a lot and have made great friends in my various classes. I look forward to any classes that welcome new members!");
+    ("8", "Justin", "Quinonez", "justinq@gmail.com", "(212) 919-0808", "Brooklyn, NY", "justinq.jpg", "item6", "item3", "Hey! I am a learning yogi and would love to learn as much as I can in classroom sessions.", "I would like to learn new yoga styles and get in touch with my inner self. If you can teach me meditaiton and relaxation techniques that would be cool too.");
 
 
 -- JUSTIN Q.

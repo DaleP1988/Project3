@@ -6,7 +6,7 @@ import client from "../../images/yogaclient.jpg";
 import { Link } from "react-router-dom";
 import { PromiseProvider } from "mongoose";
 
-const CSearchCard = () => (
+const CSearchCard = props => (
   <div className="card horizontal searchCard">
     <img className="card-image" src={client} alt="filler" />
     <div className="card-stack">
