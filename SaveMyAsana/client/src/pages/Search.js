@@ -15,7 +15,7 @@ class Search extends Component {
   };
 
   componentDidMount() {
-    this.handleSearchSubmit();
+    // this.handleSearchSubmit();
     // getInstructorProfile();
   }
 
@@ -36,28 +36,28 @@ class Search extends Component {
 
   // form submit make a call to the backend
 
-  handleSearchSubmit = event => {
-    event.preventDefault();
-    if (this.state.name || this.state.loc) {
-      API.getIS(this.state.name, this.state.loc).then(res => {
-        this.setState({ instructors: res.data });
-      });
-    }
-  };
+  // handleSearchSubmit = event => {
+  //   event.preventDefault();
+  //   if (this.state.name || this.state.loc) {
+  //     API.getIS(this.state.name, this.state.loc).then(res => {
+  //       this.setState({ instructors: res.data });
+  //     });
+  //   }
+  // };
 
   //method for rendering one div based on the above backend call
 
   renderInstructors = () => {
-    return this.state.instructors.map(instructors => (
+    return this.state.instructors.map(instructor => (
       <ISearchCard>
-        -id={instructors.id}
-        key={instructors._id}
-        name={instructors.Firstname + instructors.Lastname}
-        email={instructors.email}
-        phone={instructors.phone}
-        studio-{instructors.studio}
-        loc={instructors.city + "," + state}
-        img={instructors.img}
+        -id={instructor.id}
+        key={instructor._id}
+        name={instructor.Firstname + instructor.Lastname}
+        email={instructor.email}
+        phone={instructor.phone}
+        studio-{instructor.studio}
+        loc={instructor.city + "," + instructor.state}
+        img={instructor.img}
       </ISearchCard>
     ));
   };
@@ -97,6 +97,9 @@ class Search extends Component {
                     <label for="icon_prefix">Location</label>
                   </div>
                 </div>
+                <a className="waves-effect waves-light btn-small">
+                  Search Instructor
+                </a>{" "}
               </Row>
             </div>
           </Container>

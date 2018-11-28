@@ -9,11 +9,11 @@ const ISearchCard = () => (
     <img className="card-image" src={instructor} alt="filler" />
     <div className="card-stack">
       <div className="card-content">
-        <p>Name: {props.name}</p>
+        {/* <p>Name: {props.name}</p>
         <p>Location: {props.loc}</p>
         <p>Studio: {props.studio}</p>
         <p>Email: {props.email}</p>
-        <p>Phone: {props.phone}</p>
+        <p>Phone: {props.phone}</p> */}
         <br />
         <a id="instructor" className="waves-effect waves-light btn-small">
           Search other Instructors

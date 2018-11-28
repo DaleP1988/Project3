@@ -7,6 +7,7 @@ import InstructorCard from "../components/InstructorCard";
 import { Card, Input, Icon, Button, Modal } from "react-materialize";
 import InstructorResultContact from "../components/ResultDivs/InstructorResultContact";
 import InstructorResultBio from "../components/ResultDivs/InstructorResultBio";
+import API from "../utils/API";
 
 //need to be directed from form page, fill in the data, change the state
 // use functions defined client side in API.js (utils)
@@ -110,7 +111,7 @@ class Instructor extends Component {
                       }}
                     >
                       Name:
-                      <span> {props.name}</span>
+                      {/* <span> {props.name}</span> */}
                     </span>
                     <span
                       style={{
@@ -132,7 +133,7 @@ class Instructor extends Component {
                       }}
                     >
                       Location:
-                      <span> {props.location}</span>
+                      {/* <span> {props.location}</span> */}
                     </span>
                   </div>
                 </div>

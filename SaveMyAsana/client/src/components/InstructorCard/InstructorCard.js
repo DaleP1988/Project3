@@ -2,7 +2,7 @@ import React from "react";
 import "./instructorCard.css";
 import instructor from "../../images/yogaclient.jpg";
 
-const InstructorCard = () => (
+const InstructorCard = props => (
   <div className="instructor-row">
     <div className="instructor-card">
       <div className="card">

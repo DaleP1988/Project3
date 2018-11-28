@@ -22,7 +22,7 @@ class Booking extends Component {
 
   componentDidMount() {
     this.getInstructorName();
-    this.findSchedules();
+    // this.findSchedules();
   }
 
   /////////////////////
@@ -53,10 +53,10 @@ class Booking extends Component {
       <InstructorCard>
         -id={schedule._id}
         key={schedule._id}
-        name = {InstructorBio.name}
-        email = {InstructorBio.email}
-        phone = {InstructorBio.phone}
-        location = {classList.location}
+        name = {schedule.name}
+        email = {schedule.email}
+        phone = {schedule.phone}
+        location = {schedule.location}
       </InstructorCard>
     ));
   };
@@ -107,20 +107,20 @@ class Booking extends Component {
   //function to search with the name. for the axios call to MBO
   // make sure it gets the right instructor
 
-  findSchedule = () => {
-    API.getClasses(this.state.Instructor)
-      .then(res => {
-        var responseArray =
-          typeof res.data.response.docs !== "undefined"
-            ? res.data.response.docs
-            : [];
-        if (responseArray) {
-          classList = responseArray.Classes.class;
-        }
-        this.setState({ InstructorSchedules: classList });
-      })
-      .catch(err => console.log(err));
-  };
+  // findSchedule = () => {
+  //   API.getClasses(this.state.Instructor)
+  //     .then(res => {
+  //       var responseArray =
+  //         typeof res.data.response.docs !== "undefined"
+  //           ? res.data.response.docs
+  //           : [];
+  //       if (responseArray) {
+  //         classList = responseArray.Classes.class;
+  //       }
+  //       this.setState({ InstructorSchedules: classList });
+  //     })
+  //     .catch(err => console.log(err));
+  // };
 
   //method for rendering one instructor schedule div
 
@@ -129,25 +129,23 @@ class Booking extends Component {
       <InstructorSchedule>
         -id={schedule._id}
         key={schedule._id}
-        className ={" "}
-        {InstructorSchedules.classList.ClassDescription.SessionType.Name}
-        level = {InstructorSchedules.classList.ClassDescription.Level.Name}
-        description ={" "}
-        {InstructorSchedules.classList.ClassDescription.Description}
-        location = {InstructorSchedules.classList.Location.City}
-        date = {InstructorSchedules.classList.StartDateTime}
-        time = {InstructorSchedules.classList.StartDateTime}
-        studio = {InstructorSchedules.classList.Location.City.Name}
-        spots = {InstructorSchedules.classList.IsAvailable}
-        cancellation = {InstructorSchedules.classList.IsCanceled}
+        className = {schedule.classList.ClassDescription.SessionType.Name}
+        level = {schedule.classList.ClassDescription.Level.Name}
+        description = {schedule.classList.ClassDescription.Description}
+        location = {schedule.classList.Location.City}
+        date = {schedule.classList.StartDateTime}
+        time = {schedule.classList.StartDateTime}
+        studio = {schedule.classList.Location.City.Name}
+        spots = {schedule.classList.IsAvailable}
+        cancellation = {schedule.classList.IsCanceled}
         registration ={" "}
-        {InstructorSchedules.classList.ClassDescription.Program.ScheduleType}
-        address = {InstructorSchedules.classList.Location.Address}
+        {schedule.classList.ClassDescription.Program.ScheduleType}
+        address = {schedule.classList.Location.Address}
       </InstructorSchedule>
     ));
   };
 
-  render() {
+  render(props) {
     return (
       <div>
         <div className="parallax-container">
@@ -176,7 +174,7 @@ class Booking extends Component {
                           id="datePick"
                           type="text"
                           class="datepicker"
-                          onChange={props.handleDateChange}
+                          // onChange={props.handleDateChange}
                         />
                         <label for="datePick">Select a date</label>
                       </div>
@@ -188,7 +186,7 @@ class Booking extends Component {
                           id="timePick"
                           type="text"
                           class="timepicker"
-                          onChange={props.handleTimeInput}
+                          // onChange={props.handleTimeInput}
                         />
                         <label for="timePick">Select a time</label>
                       </div>
@@ -205,11 +203,11 @@ class Booking extends Component {
                         </Button>
                       }
                     >
-                      <p>
+                      {/* <p>
                         Your request for a session on {props.Day} at{" "}
                         {props.Time} has been submitted. {props.Instructor} will
                         contact you directly.
-                      </p>
+                      </p> */}
                     </Modal>
                   </Card>
                 </Col>
