@@ -14,61 +14,62 @@ import InstructorResultBio from "../components/ResultDivs/InstructorResultBio";
 //
 
 class Client extends Component {
-  // state = {
-  //   iSurvey: [],
-  //   iClient: []
-  // };
+  state = {
+    ClientName: "Justin Quinonez",
+    Location: "Brooklyn, NY",
+    iClient: []
+  };
 
-  // componentDidMount() {
-  //   this.getClientProfile();
-  //   //can I just call all the others here?
-  // }
+  componentDidMount() {
+    //   this.getClientProfile();
+    //   //can I just call all the others here?
+  }
 
   // //Method for getting the saved survey from the db
-  // getClientProfile = () => {
-  //   API.getCP().then(res => {
-  //     this.setState({ iSurvey: res.data });
+  getClientProfile = () => {
+    API.getCP().then(res => {
+      this.setState({ iClient: res.data });
 
-  //     //can I add code right into here for the rendering?
-  //   });
-  // };
+      //can I add code right into here for the rendering?
+    });
+  };
 
   // // method for rendering a results div
 
-  // renderclientProfContact = () => {
-  //   return this.state.iClient.map(iClient => (
-  //     <ClientResultContact>
-  //       {/* need to make a results component */}
-  //       {/* this needs to reference the client components */}
-  //       -id={iClient.id}
-  //       key={iClient._id}
-  //       name={iClient.Firstname + iClient.Lastname}
-  //       email={iClient.email}
-  //       phone={iClient.phone}
-  //       city={iClient.city}
-  //       loc={iClient.locState}
-  //       img={iClient.img}
-  //     </ClientResultContact>
-  //   ));
-  // };
+  renderclientProfContact = () => {
+    return this.state.iClient.map(iClient => (
+      <ClientResultContact>
+        {/* need to make a results component */}
+        {/* this needs to reference the client components */}
+        -id={iClient.id}
+        key={iClient._id}
+        name={iClient.Firstname + iClient.Lastname}
+        email={iClient.email}
+        phone={iClient.phone}
+        city={iClient.city}
+        loc={iClient.locState}
+        img={iClient.img}
+      </ClientResultContact>
+    ));
+  };
 
-  // renderClientResultBio = () => {
-  //   return this.state.iClient.map(iClient => (
-  //     <ClientResultBio>
-  //       {/* need to make a results component */}
-  //       {/* this needs to reference the client components */}
-  //       -id={iClient.id}
-  //       key={iClient._id}
-  //       ideal={iClient.q1}
-  //       challenge={iClient.q2}
-  //       environment={iClient.q3}
-  //       practice={iClient.q4}
-  //     </ClientResultBio>
-  //   ));
-  // };
+  renderClientResultBio = () => {
+    return this.state.iClient.map(iClient => (
+      <ClientResultBio>
+        {/* need to make a results component */}
+        {/* this needs to reference the client components */}
+        -id={iClient.id}
+        key={iClient._id}
+        ideal={iClient.q1}
+        challenge={iClient.q2}
+        environment={iClient.q3}
+        practice={iClient.q4}
+      </ClientResultBio>
+    ));
+  };
 
   // class Client extends Component {
-  render() {
+  render(props) {
     return (
       <div>
         <div className="parallax-container">
@@ -128,7 +129,8 @@ class Client extends Component {
                   <Row>
                     <div className="col m12">
                       <h6>About Me</h6>
-                      <p style={{ lineHeight: "20px" }}>
+                      {this.renderClientResultContact()}
+                      {/* <p style={{ lineHeight: "20px" }}>
                         {" "}
                         Ideal Yoga Practice:
                       </p>
@@ -139,7 +141,8 @@ class Client extends Component {
                       <p style={{ lineHeight: "20px" }}>
                         {" "}
                         Ideal Yoga Practice Environment:
-                      </p>
+                      </p> */}{" "}
+                      */}
                     </div>
                   </Row>
                 </Card>
@@ -159,13 +162,14 @@ class Client extends Component {
                   <div className="" id="search-title">
                     {/* <img className="img" src={OM} /> */}
                     <h4 className="center">My Yoga Journey </h4>
-                    <p
+                    {this.renderclientProfBio()}
+                    {/* <p
                       style={{
                         marginLeft: "50px"
                       }}
                     >
                       Here is how it all began:
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               </Col>

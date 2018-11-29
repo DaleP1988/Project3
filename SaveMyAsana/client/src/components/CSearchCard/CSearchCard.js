@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Col, Container } from "../Grid";
 import "./SearchCard.css";
+
 // import paris from "../../images/paris.jpg";
 import client from "../../images/yogaclient.jpg";
 import { Link } from "react-router-dom";

@@ -21,7 +21,7 @@ class ClientSurvey extends Component {
   };
 
   componentDidMount() {
-    // this.onSubmit();
+    this.onSubmit();
     // this.getBestMatch();
     //can I just call all the others here?
   }

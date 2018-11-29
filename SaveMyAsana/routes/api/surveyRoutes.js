@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 // var bodyParser = require("body-parser");
 // const SurveysController = require("../../controllers/SurveysController");
-// const db = require("./models");
+const db = require("../../models");
 
 // router.use(bodyParser.urlencoded({ extended: true }));
 // router.use(bodyParser.json());
@@ -186,10 +186,31 @@ router.delete("/api/InstructorSurveys", function(req, res) {});
 
 //get
 
-router.get("/api/InstructorProfiles", function(req, res) {});
+router.get("/api/InstructorProfiles", function(req, res) {
+  db.instructorPros.findAll({}).then(function(dbinstructorPros) {
+    res.send(dbinstructorPros);
+  });
+});
+
 //post
 
-router.post("/api/InstructorProfiles", function(req, res) {});
+router.post("/api/InstructorProfiles", function(req, res) {
+  db.instructorPros
+    .findAll({})
+    .then(function(Surveys) {
+      let iSurveys = {
+        SurveyData: Surveys
+      };
+      res.send(iSurveys);
+    })
+    .catch(function(err) {
+      // Whenever a validation or flag fails, an error is thrown
+      // We can "catch" the error to prevent it from being "thrown", which could crash our node router
+      res.json(err);
+    });
+});
+
+// });
 
 //put
 
@@ -222,6 +243,7 @@ router.delete("/api/ClientSurveys", function(req, res) {});
 
 //get
 router.get("/api/ClientProfiles", function(req, res) {});
+
 //post
 router.post("/api/ClientProfiles", function(req, res) {});
 //put

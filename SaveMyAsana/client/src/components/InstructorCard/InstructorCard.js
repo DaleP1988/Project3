@@ -1,6 +1,6 @@
 import React from "react";
 import "./instructorCard.css";
-import instructor from "../../images/yogaclient.jpg";
+import instructor from "../../images/hotyogaman.jpg";
 
 const InstructorCard = props => (
   <div className="instructor-row">
@@ -22,8 +22,8 @@ const InstructorCard = props => (
           <hr />
           <p>Name: {props.name}</p>
           <p>Location: {props.location}</p>
-          <p>Email: {props.email}</p>
-          <p>Phone: {props.phone}</p>
+          <p>Studio: {props.studio}</p>
+          <p>Studio Address: {props.address}</p>
           <div>
             <a className="waves-effect waves-light btn-small right instructor-btn">
               View Profile

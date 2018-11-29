@@ -3,6 +3,7 @@ import { Col, Row, Container } from "../components/Grid";
 import { Icon } from "react-materialize";
 import ISearchCard from "../components/ISearchCard";
 import background from "../images/floor2.jpg";
+import API from "../utils/API";
 
 //get data from search table, post on page
 // use functions defined client side in API.js (utils)
@@ -11,7 +12,7 @@ class Search extends Component {
   state = {
     instructors: [],
     name: "",
-    loc: ""
+    location: ""
   };
 
   componentDidMount() {
@@ -36,29 +37,30 @@ class Search extends Component {
 
   // form submit make a call to the backend
 
-  // handleSearchSubmit = event => {
-  //   event.preventDefault();
-  //   if (this.state.name || this.state.loc) {
-  //     API.getIS(this.state.name, this.state.loc).then(res => {
-  //       this.setState({ instructors: res.data });
-  //     });
-  //   }
-  // };
+  handleSearchSubmit = event => {
+    event.preventDefault();
+    if (this.state.name || this.state.location) {
+      API.getIS(this.state.name, this.state.location).then(res => {
+        console.log("server response ", res);
+        this.setState({ instructors: res });
+      });
+    }
+  };
 
   //method for rendering one div based on the above backend call
 
   renderInstructors = () => {
     return this.state.instructors.map(instructor => (
-      <ISearchCard>
-        -id={instructor.id}
-        key={instructor._id}
+      <ISearchCard
+        id={instructor.id}
+        key={instructor.id}
         name={instructor.Firstname + instructor.Lastname}
         email={instructor.email}
         phone={instructor.phone}
-        studio-{instructor.studio}
-        loc={instructor.city + "," + instructor.state}
+        studio={instructor.studio}
+        loc={instructor.city + "," + instructor.locState}
         img={instructor.img}
-      </ISearchCard>
+      />
     ));
   };
 
@@ -86,18 +88,33 @@ class Search extends Component {
                   </h2>
                   <div className="input-field col s6">
                     <i className="material-icons prefix">account_circle</i>
-                    <input id="icon_prefix" type="text" className="validate" />
-                    <label for="icon_prefix">Name</label>
+                    <input
+                      id="name"
+                      type="text"
+                      className="validate"
+                      onChange={this.handleNameSearch}
+                      value={this.state.name}
+                    />
+                    <label htmlFor="name">Name</label>
                   </div>
                 </div>
                 <div className="center">
                   <div className="input-field col s6">
                     <i className="material-icons prefix">account_circle</i>
-                    <input id="icon_prefix" type="text" className="validate" />
-                    <label for="icon_prefix">Location</label>
+                    <input
+                      id="location"
+                      type="text"
+                      className="validate"
+                      onChange={this.handleLocationSearch}
+                      value={this.state.location}
+                    />
+                    <label htmlFor="location">Location</label>
                   </div>
                 </div>
-                <a className="waves-effect waves-light btn-small">
+                <a
+                  className="waves-effect waves-light btn-small"
+                  onClick={this.handleSearchSubmit}
+                >
                   Search Instructor
                 </a>{" "}
               </Row>

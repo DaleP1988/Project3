@@ -5,11 +5,12 @@ import { Card, Input, Icon, Button, Modal } from "react-materialize";
 import background from "../images/floor2.jpg";
 import InstructorSchedule from "../components/InstructorSchedule";
 import API from "../utils/API";
-import { PromiseProvider } from "mongoose";
+import $ from "jquery";
 
 class Booking extends Component {
   state = {
     Instructor: "Johnny Salke",
+    Location: "",
     City: "",
     InstructorSchedules: [],
     InstructorBio: [],
@@ -18,12 +19,42 @@ class Booking extends Component {
     // Modal: []
   };
 
+  selectedDate = React.createRef();
+
   //when component mounts, get instructor from session storage, load to this.state.instructorSchedule
 
   componentDidMount() {
-    this.getInstructorName();
+    // this.getInstructorName();
     // this.findSchedules();
   }
+
+  ////////////////////
+  ////GET NAME///////
+  ////GET LOC////////
+  ///////////////////
+
+  getInstructorName = event => {
+    // save the data from the other page
+    this.setState({ Instructor: event.target.value });
+  };
+
+  getInstructorLocation = event => {
+    // save the data from the other page
+    this.setState({ Location: event.target.value });
+  };
+
+  ////////////////////
+  ////AJAX CALL//////
+  ////MBO////////////
+  ///////////////////
+
+  handleSearchSubmit = event => {
+    event.preventDefault();
+    API.getClasses(this.state.Instructor, this.state.Location).then(res => {
+      console.log("got data ", res.data);
+      this.setState({ InstructorSchedules: res.data });
+    });
+  };
 
   /////////////////////
   ///abbrv profile/////
@@ -31,16 +62,10 @@ class Booking extends Component {
 
   //function to get the instructor name from session storage
 
-  getInstructorName = () => {
-    var instructorName = sessionStorage.getItem("key");
-    // save the data from the other page
-    this.setState({ Instructor: instructorName });
-  };
-
   // funciton to get the profile data into card
 
   fillAbbrevProfile = () => {
-    API.getCP(this.state.name, this.state.loc).then(res => {
+    API.getIP(this.state.name, this.state.loc).then(res => {
       this.setState({ clients: res.data });
     });
   };
@@ -48,16 +73,15 @@ class Booking extends Component {
   // method to create a single card div
   // instructor card
 
-  renderInstructorBio = () => {
-    return this.state.InstructorBio.map(schedule => (
-      <InstructorCard>
-        -id={schedule._id}
-        key={schedule._id}
-        name = {schedule.name}
-        email = {schedule.email}
-        phone = {schedule.phone}
-        location = {schedule.location}
-      </InstructorCard>
+  renderInstructorContactInfo = () => {
+    return this.state.InstructorSchedules.map(schedule => (
+      <InstructorCard
+        key={schedule.instructor}
+        name={schedule.instructor}
+        studio={schedule.studioName}
+        location={schedule.location}
+        address={schedule.address}
+      />
     ));
   };
 
@@ -68,6 +92,7 @@ class Booking extends Component {
   //method for getting the date input
 
   handleDateChange = event => {
+    console.log("changing date");
     this.setState({ Time: event.target.value });
   };
 
@@ -76,6 +101,11 @@ class Booking extends Component {
   handleTimeInput = event => {
     this.setState({ Day: event.target.value });
   };
+
+  handleTimeDate(event) {
+    // event.preventDefault();
+    console.log("here ", this.state.Time, this.state.Day);
+  }
 
   //////////////////
   ///MODAL BUILD///
@@ -129,42 +159,80 @@ class Booking extends Component {
       <InstructorSchedule>
         -id={schedule._id}
         key={schedule._id}
-        className = {schedule.classList.ClassDescription.SessionType.Name}
-        level = {schedule.classList.ClassDescription.Level.Name}
-        description = {schedule.classList.ClassDescription.Description}
-        location = {schedule.classList.Location.City}
-        date = {schedule.classList.StartDateTime}
-        time = {schedule.classList.StartDateTime}
-        studio = {schedule.classList.Location.City.Name}
-        spots = {schedule.classList.IsAvailable}
-        cancellation = {schedule.classList.IsCanceled}
-        registration ={" "}
-        {schedule.classList.ClassDescription.Program.ScheduleType}
-        address = {schedule.classList.Location.Address}
+        className = {schedule.nameClass}
+        level = {schedule.classLevel}
+        description = {schedule.description}
+        location = {schedule.location}
+        date = {schedule.date}
+        time = {schedule.time}
+        studio = {schedule.studio}
+        spots = {schedule.spots}
+        cancellation = {schedule.cancellation}
+        registration ={schedule.registration}
+        address = {schedule.address}
       </InstructorSchedule>
     ));
   };
 
   render(props) {
+    console.log("here", this.refs);
     return (
       <div>
         <div className="parallax-container">
           <Container>
             <div
-              style={{ marginTop: "20px" }}
+              style={{ marginTop: "20px", height: "250px" }}
               id="booking-section"
               className="white responsive"
             >
               <Row>
                 <div className="center" id="search-heading">
-                  <h2 className="center" id="search-title">
+                  <h2
+                    className="center"
+                    id="search-title"
+                    style={{ "margin-bottom": "0px" }}
+                  >
                     <Icon className="medium">event</Icon>
                     CLASS SCHEDULER
                   </h2>
                 </div>
               </Row>
               <Row>
-                <Col size="6">{this.renderInstructorBio()}</Col>
+                <div className="center" id="search-heading">
+                  <div className="input-field col m6">
+                    <input
+                      placeholder="Name"
+                      id="name"
+                      type="text"
+                      class="name"
+                      style={{ width: "80%" }}
+                      onChange={this.getInstructorName}
+                      value={this.state.Instructor}
+                    />
+                  </div>
+                  <div className="input-field col m6">
+                    <input
+                      placeholder="City, State"
+                      id="location"
+                      type="text"
+                      class="location"
+                      style={{ width: "80%" }}
+                      onChange={this.getInstructorLocation}
+                      value={this.Location}
+                    />
+                  </div>
+                  <a
+                    className="waves-effect waves-light btn-small left"
+                    style={{ "margin-left": "5%" }}
+                    onClick={this.handleSearchSubmit}
+                  >
+                    Submit
+                  </a>
+                </div>
+              </Row>
+
+              <Row>
+                <Col size="6">{this.renderInstructorContactInfo()}</Col>
                 <Col size="6">
                   <Card title="Request an Introductory Session">
                     <Row>
@@ -174,7 +242,8 @@ class Booking extends Component {
                           id="datePick"
                           type="text"
                           class="datepicker"
-                          // onChange={props.handleDateChange}
+                          ref={this.selectedDate}
+                          onSet={this.handleDateChange}
                         />
                         <label for="datePick">Select a date</label>
                       </div>
@@ -186,7 +255,7 @@ class Booking extends Component {
                           id="timePick"
                           type="text"
                           class="timepicker"
-                          // onChange={props.handleTimeInput}
+                          onChange={this.handleTimeInput}
                         />
                         <label for="timePick">Select a time</label>
                       </div>
@@ -198,16 +267,18 @@ class Booking extends Component {
                         <Button
                           className="waves-effect waves-light btn-small"
                           type="submit"
+                          onClick={this.handleTimeDate}
                         >
                           Submit
                         </Button>
                       }
                     >
-                      {/* <p>
-                        Your request for a session on {props.Day} at{" "}
-                        {props.Time} has been submitted. {props.Instructor} will
-                        contact you directly.
-                      </p> */}
+                      <p>
+                        Your request for a session
+                        {/* {this.selectedDate.current} at */}
+                        {this.state.Time} has been submitted.
+                        {this.state.Instructor} will contact you directly.
+                      </p>
                     </Modal>
                   </Card>
                 </Col>
