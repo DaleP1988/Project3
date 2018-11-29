@@ -89,69 +89,66 @@ class InstructorProfileForm extends React.Component {
   };
 
   onComplete = (survey, options) => {
-    //Write survey results into database
     var DTO = createDTO(survey);
+
+    var instructorProfileSubmit = this.props.instructorProfileSubmit;
 
     axios.post("api/instructorProfile", DTO).then(function(data) {
       alert("");
       console.log(data);
-    });
+      instructorProfileSubmit(data);
+      // this is to get data back to the page
+      // this function can be declared on the page
 
-    //need corresponding post in surveyRoutes
-    //make sure verbs and endpoint names match
-    // make sure the db is reference in the correct way on the server
+      // keep the methods simple. see above.
+      // data is new. just created here. holds array of instructors.
+      // data gets copied into scores variable in the best match method.
+      // });
+    });
+    console.log(DTO);
 
     function createDTO(survey) {
-      console.log("worked");
-      var values = survey.ValuesHash;
       var dto = {
-        Firstname: values.Contact.Firstname,
-        Lastname: values.Contact.Lastname,
-        email: values.Email,
-        phone: values.Phone,
-        loc: values.Location,
-        img: values.Photo.content,
-        q1: values.question1,
-        q2: values.question2,
-        q3: values.question3,
-        q4: values.question4,
-        q5: values.question5,
-        q6: values.question6,
-        q7: values.Goodie
+        Firstname: survey.Contact.Firstname,
+        Lastname: survey.Contact.Lastname,
+        studio: survey.Contact.name.Studio,
+        loc: survey.Contact.name.Location,
+        q1: survey.question1,
+        q2: survey.question2,
+        q3: survey.question3,
+        q4: survey.question4,
+        q5: survey.question5,
+        q6: survey.question6,
+        q7: survey.question7
       };
 
       return dto;
     }
   };
+
+  //Define a callback methods on survey complete
+
+  // function finale(){
+
+  //   //Write survey results into database
+  //   console.log("Survey results: " + JSON.stringify(survey.data));
+
+  render() {
+    //Create the model and pass it into react Survey component
+    //You may create survey model outside the render function and use it in your App or component
+    //The most model properties are reactive, on their change the component will change UI when needed.
+
+    var model = new Survey.Model(this.json);
+    return <Survey.Survey model={model} onComplete={this.onComplete} />;
+
+    //     //You may pass model properties directly into component or set it into model
+    //     // <Survey.Survey model={model} mode="display"/>
+    //     //or
+    //     // model.mode="display"
+    //     // <Survey.Survey model={model}/>
+    //     // You may change model properties outside render function.
+    //     //If needed react Survey Component will change its behavior and change UI.
+  }
 }
-
-//Define a callback methods on survey complete
-
-// function finale(){
-
-//   //Write survey results into database
-//   console.log("Survey results: " + JSON.stringify(survey.data));
-
-//   render() {
-//     //Create the model and pass it into react Survey component
-//     //You may create survey model outside the render function and use it in your App or component
-//     //The most model properties are reactive, on their change the component will change UI when needed.
-
-//     var model = new Survey.Model(this.json);
-//     return <Survey.Survey model={model} onComplete={this.onComplete} />;
-//     /*
-//   //The alternative way. react Survey component will create survey model internally
-//   return (<Survey.Survey json={this.json} onComplete={this.onComplete}/>);
-//   */
-//     //You may pass model properties directly into component or set it into model
-//     // <Survey.Survey model={model} mode="display"/>
-//     //or
-//     // model.mode="display"
-//     // <Survey.Survey model={model}/>
-//     // You may change model properties outside render function.
-//     //If needed react Survey Component will change its behavior and change UI.
-
-//   };
-// };
 
 export default InstructorProfileForm;

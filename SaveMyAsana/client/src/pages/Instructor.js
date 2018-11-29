@@ -16,36 +16,61 @@ import API from "../utils/API";
 class Instructor extends Component {
   state = {
     iProf: [],
-    InstructorName: "",
+    InstructorName: "Johnny Salke",
     // studio: "",
-    location: ""
+    location: "San Luis Obispo, CA"
   };
 
+  // this is built with hardcoded name and location data
+  // we arent going to be able to get the info from the previous page
+  //
+
   componentDidMount() {
-    this.getInstructorName();
-    this.getInstructorProfile();
+    // this.getInstructorName();
+    // this.getInstructorProfile();
+
     //can I just call all the others here?
   }
+
+
+  // get data from props 
+
+
+/////////////////////////////////////
+///METHOD FOR GETTING THE INS FORM///
+/////////////////////////////////////
+
+
+// we'll use this if we end up able to get the 
+
+// instructorProfileSubmit = data => {
+//   alert(data);
+//   var modalRes = JSON.stringify(data);
+//   this.setState({ ModalResult: modalRes });
+
+
 
   // method for getting name from session storage
   // hard code into state if it doesnt work
 
-  getInstructorName = () => {
-    var instructorName = sessionStorage.getItem("key");
-    var location = sessionStorage.getItem("key");
-    // figure out how to get it from component ... use session storage? see clientSurveyForm, use the onsubmit option
-    // need a method to set the state with the object from the onSubmit
-    // eliminate the sessionStorage
-    // save the data from the other page
-    this.setState({ InstructorName: instructorName });
-  };
+  // getInstructorName = () => {
+  //   var instructorName = sessionStorage.getItem("key");
+  //   var location = sessionStorage.getItem("key");
+  //   // figure out how to get it from component ... use session storage? see clientSurveyForm, use the onsubmit option
+  //   // need a method to set the state with the object from the onSubmit
+  //   // eliminate the sessionStorage
+  //   // save the data from the other page
+  //   this.setState({ InstructorName: instructorName });
+  // };
 
   // //Method for getting the saved survey from the db
   getInstructorProfile = () => {
-    API.getIP(this.state.InstructorName, this.state.location).then(res => {
+    API.getIP(this.state.InstructorName, this.state.location)
+    .then(res => {
+      this.setState({iProf:res.iPros})
       // revise....
-      this.setState({ iProf: res.data });
-      this.setState({ location: res.data.Location });
+      // this.setState({ iProf: res.data });
+      // this.setState({ location: res.data.Location });
 
       //can I add code right into here for the rendering?
     });
@@ -82,10 +107,11 @@ class Instructor extends Component {
         transformative={iProf.q4}
         message={iProf.q5}
         wisdom={iProf.q6}
-        goodie={iProf.q7}
+        goodie={iProf.goodie}
       </InstructorResultBio>
     ));
   };
+
 
   // class Instructor extends Component {
   render() {
@@ -221,7 +247,10 @@ class Instructor extends Component {
         </div>
       </div>
     );
-  }
-}
+  };
+};
+};
+
+
 
 export default Instructor;

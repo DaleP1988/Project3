@@ -4,6 +4,8 @@
 
 const router = require("express").Router();
 const surveyRtes = require("./surveyRoutes");
+const insClassRoutes = require("./instructorClass");
+const instructorSurvey = require("./instructorSurvey");
 
 // ==============================================================================
 // Set Routes
@@ -12,6 +14,8 @@ const surveyRtes = require("./surveyRoutes");
 //   res.status(200).json({ message: "Connected!" });
 // });
 router.use("/surveyRoutes", surveyRtes);
+router.use("/instructor", insClassRoutes);
+router.use("/instructorSurvey", instructorSurvey);
 
 //individual api routes here
 //
