@@ -3,7 +3,7 @@ import "./instructorCard.css";
 import instructor from "../../images/hotyogaman.jpg";
 
 const InstructorCard = () => (
-  <div className="instructor-row">
+  <div className="instructor-row" style={{ marginRight: "30px" }}>
     <div className="instructor-card">
       <div className="card">
         <div className="waves-effect waves-block waves-light">
