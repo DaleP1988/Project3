@@ -131,7 +131,8 @@ class InstructorProfileForm extends React.Component {
   // function finale(){
 
   //   //Write survey results into database
-  //   console.log("Survey results: " + JSON.stringify(survey.data));
+  // console.log("Survey results: " + JSON.stringify(survey.data));
+  // };
 
   render() {
     //Create the model and pass it into react Survey component

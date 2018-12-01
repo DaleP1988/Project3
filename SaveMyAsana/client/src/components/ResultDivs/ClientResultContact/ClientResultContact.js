@@ -10,14 +10,14 @@ const ClientResultContact = props => (
   <div className="white center" id="search-heading">
     <h5 className="center" id="search-title">
       {/* <img src={omSym}> </img> */}
-      CONTACT CONTENT
+      Client Contact Information
     </h5>
     {/* see above */}
-    <img src={img} />
-    <h3>Client Name: {props.name} </h3>
-    <h3>Client Location: {props.loc} </h3>
-    <h3>Client Phone: {props.phone} </h3>
-    <h3>Client Email:{props.email} </h3>
+    {/* <img src={img} /> */}
+    <p>Client Name: Dale Padelford </p>
+    <p>Client Location: Paso Robles, CA </p>
+    <p>Client Phone: (310) 555 - 7777 </p>
+    <p>Client Email: yogiGirl@gmail.com </p>
   </div>
 );
 
