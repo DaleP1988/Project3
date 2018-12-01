@@ -8,16 +8,33 @@ const ClientResultBio = props => (
   //   <button onClick={() => props.handleSaveButton(props._id)}>Save</button>
   // </div>
   <div className="white center" id="search-heading">
-    <h5 className="center" id="search-title">
+    <p className="center" id="search-title">
       {/* <img src={omSym}> </img> */}
-      BIO CONTENT
-    </h5>
+      Client Bio
+    </p>
     {/* see above */}
-    <img src={img} />
-    <h5> My Ideal Practice: {props.ideal} </h5>
-    <h5> Challenge I am Facing in My Practice: {props.challenge} </h5>
-    <h5> Ideal Yoga Practice Environment: {props.environment} </h5>
-    <h5> More About My Yoga Journey: {props.journey} </h5>
+    {/* <img src={img} /> */}
+    <p>
+      {" "}
+      My Ideal Practice: "At the moment, I am looking for a rigorous practice
+      that will get me moving and sweating."
+    </p>
+    <p>
+      {" "}
+      Challenge I am Facing in My Practice: "Haven't found an instructor that
+      offers the hard class I am looking for. "{" "}
+    </p>
+    <p>
+      {" "}
+      Ideal Yoga Practice Environment: I'd like to do in-studio classes. I'd
+      prefer to move with a big group -- for motivation.
+    </p>
+    <p>
+      {" "}
+      More About My Yoga Journey: I am an intermediate/advanced level yogi who
+      has been practicing for over 8 years. I also teach, so I am looking to
+      find a challenging instructor who will keep me moving and in shape."
+    </p>
   </div>
 );
 

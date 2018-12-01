@@ -232,7 +232,14 @@ class Booking extends Component {
               </Row>
 
               <Row>
-                <Col size="6">{this.renderInstructorContactInfo()}</Col>
+                <Col size="6">
+                  <Card title="" style={{ height: "330px" }}>
+                    <div className="input-field col m12 center">
+                      <h3> Your Instructor Awaits! </h3>
+                      {this.renderInstructorContactInfo()}
+                    </div>
+                  </Card>
+                </Col>
                 <Col size="6">
                   <Card title="Request an Introductory Session">
                     <Row>

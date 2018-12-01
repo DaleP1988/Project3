@@ -1,39 +1,29 @@
 import React from "react";
-import "./instructorCard.css";
-import { Row } from "../Grid";
-import parisCard from "../../images/parisCard.png";
-import { PromiseProvider } from "mongoose";
-import instructor from "../../images/yogateacher.jpg";
+import { Row, Col, Container } from "../Grid";
+import logo from "../../images/logo.png";
+import { Link } from "react-router-dom";
 
 const BestMatchCard = () => (
-  <div className="instructor-row">
-    <div className="instructor-card">
-      <div className="card">
-        <div className="waves-effect waves-block waves-light">
-          <img className="instructor-image activator" src={instructor} />
-        </div>
-        <div class="card-content instructor-name">
-          <span className="card-title activator grey-text text-darken-4">
-            {props.name}
-            <i className="material-icons right">more_vert</i>
-          </span>
-        </div>
-        <div className="card">
-          <span className="card-title grey-text text-darken-4">
-            Why I Teach<i className="material-icons right">close</i>
-          </span>
-          {/* <p>{props.message}</p> */}
-          <hr />
-          <p>Name: {props.name}</p>
-          <p>Studio: {props.studio}</p>
-          <p>Location: {props.location}</p>
-
-          <div>
-            <a className="waves-effect waves-light btn-small right instructor-btn">
-              View Profile
-            </a>
-          </div>
-        </div>
+  <div className="card horizontal searchCard">
+    <img className="card-image" src={logo} alt="filler" />
+    <div className="card-stack">
+      <div className="card-content">
+        <p>Name: Johnny Salke</p>
+        <p>Location: San Luis Obispo, CA</p>
+        <p>Studio: Clubville</p>
+        <p>Email: JSYoga@gmail.com</p>
+        <p>Phone: (805) 121 - 5521</p>
+        <br />
+        <Link to="/search">
+          <a id="instructor" className="waves-effect waves-light btn-small">
+            Search other Instructors
+          </a>
+        </Link>
+        <Link to="/booking">
+          <a className="waves-effect waves-light btn-small">
+            View Instructor's Schedule
+          </a>{" "}
+        </Link>
       </div>
     </div>
   </div>

@@ -155,9 +155,9 @@ class InstructorSurveyForm extends React.Component {
     ]
   };
 
-  onComplete = (survey, options) => {
-    var DTO = createDTO(survey);
-  };
+  // onComplete = (survey, options) => {
+  //   var DTO = createDTO(survey);
+  // };
 
   createDTO = survey => {
     var dto = {

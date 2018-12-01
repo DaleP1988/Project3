@@ -20,7 +20,7 @@ class Home extends Component {
                 </h5>
               </Col>
             </Row>
-          
+
             <Row>
               <Col size="6">
                 <div id="home-card" className="card-panel amber lighten-5">
@@ -165,5 +165,4 @@ class Home extends Component {
     );
   }
 }
-
 export default Home;

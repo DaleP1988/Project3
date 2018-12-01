@@ -1,6 +1,6 @@
 import React from "react";
 
-const InstructorResultContact = props => (
+const InstructorResultContact = () => (
   // <div>
   //   <h4>{props.title}</h4>
   //   <p>Publish Date & Time: {props.date}</p>
@@ -10,14 +10,14 @@ const InstructorResultContact = props => (
   <div className="white center" id="search-heading">
     <h5 className="center" id="search-title">
       {/* <img src={omSym}> </img> */}
-      CONTACT CONTENT
+      Contact Information
     </h5>
     {/* see above */}
-    <img src={img} />
-    <h3>Instructor Name: {props.name} </h3>
-    <h3>Instructor Location: {props.loc} </h3>
-    <h3>Instructor Phone: {props.phone} </h3>
-    <h3>Instructor Email:{props.email} </h3>
+    {/* <img src={img} /> */}
+    <p>Instructor Name: Johnny Salke </p>
+    <p>Instructor Location: San Luis Obispo, CA </p>
+    <p>Instructor Phone: (805) 121 - 5521 </p>
+    <p>Instructor Email: JSYoga@gmail.com </p>
   </div>
 );
 

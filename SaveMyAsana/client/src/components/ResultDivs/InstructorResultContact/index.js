@@ -1,1 +1,1 @@
-// export { default } from "./InstructorResult";
+export { default } from "./InstructorResultContact";

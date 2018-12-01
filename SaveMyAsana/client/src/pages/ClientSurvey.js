@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import background from "../images/floor2.jpg";
+import logo from "../images/yogateacher.jpg";
 import { Link } from "react-router-dom";
 import ClientSurveyForm from "../components/ClientSurveyForm/ClientSurveyForm";
 import { Button, Modal } from "react-materialize";
@@ -11,20 +12,20 @@ import axios from "axios";
 // add a modal to the page
 
 class ClientSurvey extends Component {
-  state = {
-    // BestMatch: [],
-    ModalResult: []
-    //make a new one
-    // async await is supported in create react app
-    // can write async like linear functions
-    // review.
-  };
+  // state = {
+  //   // BestMatch: [],
+  //   ModalResult: []
+  //   //make a new one
+  //   // async await is supported in create react app
+  //   // can write async like linear functions
+  //   // review.
+  // };
 
-  componentDidMount() {
-    this.onSubmit();
-    // this.getBestMatch();
-    //can I just call all the others here?
-  }
+  // componentDidMount() {
+  //   this.onSubmit();
+  //   // this.getBestMatch();
+  //   //can I just call all the others here?
+  // }
 
   //Method for getting the saved survey from the db
   // getBestMatch = () => {
@@ -35,15 +36,15 @@ class ClientSurvey extends Component {
   // });
   // };
 
-  onFormSubmit = data => {
-    alert(data);
-    var modalRes = JSON.stringify(data);
-    this.setState({ ModalResult: modalRes });
+  // onFormSubmit = data => {
+  //   alert(data);
+  //   var modalRes = JSON.stringify(data);
+  //   this.setState({ ModalResult: modalRes });
 
-    // save the result into state
-    // and set to modal
-    // this needs to be the survey logic.....
-  };
+  // save the result into state
+  // and set to modal
+  // this needs to be the survey logic.....
+  // };
 
   // renderModal = () => {
   //   return this.state.modalRes.map(modal => (
@@ -68,7 +69,7 @@ class ClientSurvey extends Component {
         <div className="parallax-container">
           <Container>
             <Row>
-              <ClientSurveyForm onSubmit={this.onFormSubmit} />
+              <ClientSurveyForm />
             </Row>
             <Row>
               <Modal
@@ -78,7 +79,160 @@ class ClientSurvey extends Component {
               >
                 <p>These are your suggested matches:</p>
 
-                {/* {this.renderModal()} */}
+                <div className="card horizontal searchCard">
+                  {/* <img className="card-image" src={logo} alt="filler" /> */}
+                  <div className="card-stack">
+                    <div
+                      className="card-content center"
+                      style={{ marginLeft: "40%", width: "100%" }}
+                    >
+                      <p>Name: Mandy O'Share</p>
+                      <p>Location: Los Angeles, CA</p>
+                      <p>Studio: Mode Yoga</p>
+                      <p>Email: Mandy@modeyoga.com</p>
+                      <p>Phone: (949) 121 - 5521</p>
+                      <br />
+                      <Link to="/search">
+                        <a
+                          id="instructor"
+                          className="waves-effect waves-light btn-small"
+                        >
+                          Search other Instructors
+                        </a>
+                      </Link>
+                      <br />
+                      <Link to="/booking">
+                        <a className="waves-effect waves-light btn-small">
+                          View Instructor's Schedule
+                        </a>{" "}
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+                <div className="card horizontal searchCard">
+                  {/* <img className="card-image" src={{ logo }} alt="filler" /> */}
+                  <div className="card-stack">
+                    <div
+                      className="card-content center"
+                      // style={{ marginLeft: "40%", width: "100%" }}
+                    >
+                      <p>Name: Matt Bluth</p>
+                      <p>Location: Los Angeles, CA</p>
+                      <p>Studio: Angels City Yoga</p>
+                      <p>Email: mBluth@aol.com</p>
+                      <p>Phone: (949) 222 - 5521</p>
+                      <br />
+                      <Link to="/search">
+                        <a
+                          id="instructor"
+                          className="waves-effect waves-light btn-small"
+                          style={{ marginLeft: "1%" }}
+                        >
+                          Search other Instructors
+                        </a>
+                      </Link>
+                      <Link to="/booking">
+                        <a className="waves-effect waves-light btn-small">
+                          View Instructor's Schedule
+                        </a>{" "}
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="card horizontal searchCard">
+                  {/* <img className="card-image" src={logo} alt="filler" /> */}
+                  <div className="card-stack">
+                    <div
+                      className="card-content center"
+                      // style={{ marginLeft: "40%", width: "100%" }}
+                    >
+                      <p>Name: Johnny Salke</p>
+                      <p>Location: San Luis Obispo, CA</p>
+                      <p>Studio: Clubville</p>
+                      <p>Email: JSYoga@gmail.com</p>
+                      <p>Phone: (805) 121 - 5521</p>
+                      <br />
+                      <Link to="/search">
+                        <a
+                          id="instructor"
+                          className="waves-effect waves-light btn-small"
+                          style={{ marginLeft: "1%" }}
+                        >
+                          Search other Instructors
+                        </a>
+                      </Link>
+                      <Link to="/booking">
+                        <a className="waves-effect waves-light btn-small">
+                          View Instructor's Schedule
+                        </a>{" "}
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+                <div className="card horizontal searchCard">
+                  {/* <img className="card-image" src={logo} alt="filler" /> */}
+                  <div className="card-stack">
+                    <div
+                      className="card-content center"
+                      style={{ marginLeft: "1%" }}
+                      // style={{ marginLeft: "40%", width: "100%" }}
+                    >
+                      <p>Name: Sarah Smith</p>
+                      <p>Location: La Habra, CA</p>
+                      <p>Studio: La Curl </p>
+                      <p>Email: 123gmail@com</p>
+                      <p>Phone: (555) 555 - 5555</p>
+                      <br />
+                      <Link to="/search">
+                        <a
+                          id="instructor"
+                          className="waves-effect waves-light btn-small"
+                        >
+                          Search other Instructors
+                        </a>
+                      </Link>
+                      <Link to="/booking">
+                        <a
+                          className="waves-effect waves-light btn-small"
+                          style={{ marginLeft: "1%" }}
+                        >
+                          View Instructor's Schedule
+                        </a>{" "}
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+                <div className="card horizontal searchCard">
+                  {/* <img className="card-image" src={logo} alt="filler" /> */}
+                  <div className="card-stack">
+                    <div
+                      className="card-content center"
+                      // style={{ marginLeft: "40%", width: "100%" }}
+                    >
+                      <p>Name: Sunny Sage</p>
+                      <p>Location: Dallas, TX</p>
+                      <p>Studio: OM Studio</p>
+                      <p>Email: Sunnysage@gmail.com</p>
+                      <p>Phone: (469) 541 - 3395</p>
+                      <br />
+                      <Link to="/search">
+                        <a
+                          id="instructor"
+                          className="waves-effect waves-light btn-small"
+                          style={{ marginLeft: "1%" }}
+                        >
+                          Search other Instructors
+                        </a>
+                      </Link>
+                      <Link to="/booking">
+                        <a className="waves-effect waves-light btn-small">
+                          View Instructor's Schedule
+                        </a>{" "}
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               </Modal>
             </Row>
           </Container>

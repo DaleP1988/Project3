@@ -1,11 +1,11 @@
 $(document).ready(function() {
-    $('.parallax').parallax();
+  $(".parallax").parallax();
 });
 
-$(document).ready(function(){
-    $('.datepicker').datepicker();
+$(document).ready(function() {
+  $(".datepicker").datepicker();
 });
 
-$(document).ready(function(){
-    $('.timepicker').timepicker();
+$(document).ready(function() {
+  $(".timepicker").timepicker();
 });

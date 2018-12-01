@@ -13,42 +13,36 @@ import API from "../utils/API";
 // use functions defined client side in API.js (utils)
 // make a UUID with javascript,
 
-class Instructor extends Component {
-  state = {
-    iProf: [],
-    InstructorName: "Johnny Salke",
-    // studio: "",
-    location: "San Luis Obispo, CA"
-  };
+class Instructor extends React.Component {
+  // state = {
+  //   iProf: [],
+  //   InstructorName: "Johnny Salke",
+  //   // studio: "",
+  //   location: "San Luis Obispo, CA"
+  // };
 
   // this is built with hardcoded name and location data
   // we arent going to be able to get the info from the previous page
   //
 
-  componentDidMount() {
-    // this.getInstructorName();
-    // this.getInstructorProfile();
+  // componentDidMount() {
+  //   // this.getInstructorName();
+  //   // this.getInstructorProfile();
+  //   //can I just call all the others here?
+  // }
 
-    //can I just call all the others here?
-  }
+  // get data from props
 
+  /////////////////////////////////////
+  ///METHOD FOR GETTING THE INS FORM///
+  /////////////////////////////////////
 
-  // get data from props 
+  // we'll use this if we end up able to get the
 
-
-/////////////////////////////////////
-///METHOD FOR GETTING THE INS FORM///
-/////////////////////////////////////
-
-
-// we'll use this if we end up able to get the 
-
-// instructorProfileSubmit = data => {
-//   alert(data);
-//   var modalRes = JSON.stringify(data);
-//   this.setState({ ModalResult: modalRes });
-
-
+  // instructorProfileSubmit = data => {
+  //   alert(data);
+  //   var modalRes = JSON.stringify(data);
+  //   this.setState({ ModalResult: modalRes });
 
   // method for getting name from session storage
   // hard code into state if it doesnt work
@@ -64,54 +58,52 @@ class Instructor extends Component {
   // };
 
   // //Method for getting the saved survey from the db
-  getInstructorProfile = () => {
-    API.getIP(this.state.InstructorName, this.state.location)
-    .then(res => {
-      this.setState({iProf:res.iPros})
-      // revise....
-      // this.setState({ iProf: res.data });
-      // this.setState({ location: res.data.Location });
+  // getInstructorProfile = () => {
+  //   API.getIP(this.state.InstructorName, this.state.location).then(res => {
+  //     this.setState({ iProf: res.iPros });
+  //     // revise....
+  //     // this.setState({ iProf: res.data });
+  //     // this.setState({ location: res.data.Location });
 
-      //can I add code right into here for the rendering?
-    });
-  };
+  //     //can I add code right into here for the rendering?
+  //   });
+  // };
 
   // // method for rendering a results div
 
-  renderinstructorProfContact = () => {
-    return this.state.iProf.map(iProf => (
-      <InstructorResultContact>
-        {/* need to make a results component */}
-        {/* this needs to reference the client components */}
-        -id={iProf.id}
-        key={iProf._id}
-        name={iProf.Firstname + iProf.Lastname}
-        email={iProf.email}
-        phone={iProf.phone}
-        location={iProf.loc}
-        img={iProf.img}
-      </InstructorResultContact>
-    ));
-  };
+  // renderinstructorProfContact = () => {
+  //   return this.state.iProf.map(iProf => (
+  //     <InstructorResultContact>
+  //       {/* need to make a results component */}
+  //       {/* this needs to reference the client components */}
+  //       -id={iProf.id}
+  //       key={iProf._id}
+  //       name={iProf.Firstname + iProf.Lastname}
+  //       email={iProf.email}
+  //       phone={iProf.phone}
+  //       location={iProf.loc}
+  //       img={iProf.img}
+  //     </InstructorResultContact>
+  //   ));
+  // };
 
-  renderinstructorProfBio = () => {
-    return this.state.iProf.map(iProf => (
-      <InstructorResultBio>
-        {/* make sure the content below gets to the right parts of the survey */}
-        {/* check the selections in dev tools */}
-        -id={iProf.id}
-        key={iProf._id}
-        about={iProf.q2}
-        style={iProf.q1}
-        background={iProf.q3}
-        transformative={iProf.q4}
-        message={iProf.q5}
-        wisdom={iProf.q6}
-        goodie={iProf.goodie}
-      </InstructorResultBio>
-    ));
-  };
-
+  // renderinstructorProfBio = () => {
+  //   return this.state.iProf.map(iProf => (
+  //     <InstructorResultBio>
+  //       {/* make sure the content below gets to the right parts of the survey */}
+  //       {/* check the selections in dev tools */}
+  //       -id={iProf.id}
+  //       key={iProf._id}
+  //       about={iProf.q2}
+  //       style={iProf.q1}
+  //       background={iProf.q3}
+  //       transformative={iProf.q4}
+  //       message={iProf.q5}
+  //       wisdom={iProf.q6}
+  //       goodie={iProf.goodie}
+  //     </InstructorResultBio>
+  //   ));
+  // };
 
   // class Instructor extends Component {
   render() {
@@ -136,7 +128,7 @@ class Instructor extends Component {
                         fontWeight: "bold"
                       }}
                     >
-                      Name:
+                      Name: Johnny Salke
                       {/* <span> {props.name}</span> */}
                     </span>
                     <span
@@ -158,7 +150,7 @@ class Instructor extends Component {
                         fontWeight: "bold"
                       }}
                     >
-                      Location:
+                      Location: San Luis Obispo, CA
                       {/* <span> {props.location}</span> */}
                     </span>
                   </div>
@@ -172,8 +164,10 @@ class Instructor extends Component {
               <Col size="6">
                 <Card title="Instructor Biography">
                   <Row>
-                    <div className="col m12">
-                      {this.renderinstructorProfContact()}
+                    <div className="col m12" style={{ marginBottom: "78px" }}>
+                      <InstructorResultContact />
+
+                      {/* {this.renderinstructorProfContact()} */}
                       {/* <h6>About Me</h6>
                       <p style={{ lineHeight: "20px" }}>My Teaching Style:</p>
                       <p style={{ lineHeight: "20px" }}> Instructor Bio:</p>
@@ -181,6 +175,58 @@ class Instructor extends Component {
                         A Transformative Teaching Experience:
                       </p> */}
                     </div>
+                    <br />
+                    <Modal
+                      className=" waves-effect waves-light"
+                      trigger={<Button>Fill and Display Profile</Button>}
+                    >
+                      <Row>
+                        <h6>
+                          Fill in Firstname, Lastname and Email. Click Display
+                          Profile and Close to View!
+                        </h6>
+                      </Row>
+                      <Row>
+                        <Col size="6">
+                          <div className="input-field col s12">
+                            <i className="material-icons prefix">
+                              account_circle
+                            </i>
+                            <input
+                              id="name"
+                              type="text"
+                              className="validate"
+                              // onChange={this.handleNameSearch}
+                              // value={this.state.name}
+                            />
+                            <label htmlFor="name">Name</label>
+                          </div>
+                        </Col>
+                        <Col size="6">
+                          <div className="center">
+                            <div className="input-field col s12">
+                              <i className="material-icons prefix">
+                                account_circle
+                              </i>
+                              <input
+                                id="location"
+                                type="text"
+                                className="validate"
+                                // onChange={this.handleLocationSearch}
+                                // value={this.state.location}
+                              />
+                              <label htmlFor="location">Email</label>
+                            </div>
+                          </div>
+                        </Col>
+                      </Row>
+                      <a
+                        className="waves-effect waves-light btn-small"
+                        // onClick={this.handleSearchSubmit}
+                      >
+                        Display Profile
+                      </a>{" "}
+                    </Modal>
                   </Row>
                 </Card>
               </Col>
@@ -188,16 +234,17 @@ class Instructor extends Component {
             <Row>
               <Col size="12">
                 <div
-                  className="white "
+                  className="white"
                   id="search-heading"
                   style={{
                     // marginTop: "5%",
                     paddingBottom: "5px",
-                    marginLeft: "5px"
+                    marginLeft: "5px",
+                    marginTop: "20px"
                   }}
                 >
-                  <div className="" id="search-title">
-                    {this.renderinstructorProfBio()}
+                  <div className="white" id="search-title">
+                    <InstructorResultBio />
                   </div>
                 </div>
               </Col>
@@ -247,10 +294,7 @@ class Instructor extends Component {
         </div>
       </div>
     );
-  };
-};
-};
-
-
+  }
+}
 
 export default Instructor;

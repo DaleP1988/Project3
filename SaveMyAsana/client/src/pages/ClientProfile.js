@@ -21,7 +21,7 @@ class ClientProfile extends Component {
               <Link to="/client">
                 {" "}
                 <a className="waves-effect waves-light btn-small">
-                  View Profile Page
+                  Display Profile
                 </a>{" "}
               </Link>
               <Link to="/clientsurvey">

@@ -75,6 +75,8 @@ values
 --
 
 
+
+
 INSERT INTO instructorPro
     (id, Firstname, Lastname, email, phone, loc, img, q1, q2, q3, q4, q5, q6, goodie)
 values
@@ -200,7 +202,7 @@ values
 INSERT INTO instructorPro
     (id, Firstname, Lastname, email, phone, loc, img, q1, q2, q3, q4, q5, q6, goodie)
 values
-    ("10", "Johnny", "Salke", "JSYoga@gmail.com", "(805) 121-5521", "San Luis Obispo, CA", "JSalke.jpg", "item3", "Hi Guys! My name is Johnny Salke and I am an active yogi who loves to hike, mountain climb, bike, and row.", "I got into yoga when a buddy of mine suggested it might help me with my climbing. I was having trouble with stability and core strength. He told me yoga had been key to his success in all other athletic activities. So I gave it a go. I signed up for teacher training hoping to understand it better. I came out of training ready and wanting to help others. Haven't looked back!", "I teach an advanced class in a hot room. Its already hard - because Bikram. But I generally let intermediates come in. I am always inspired by the people that come in a fight through. I had a client come and take childs pose for the entire second half of class. I encouraged himm to try other classes and work his way up. He came back three months later at a higher level than a lot of my regulars. He left a huge impression on me and I keep him in my memory bank when I feel burnt out on teaching. I learn so much from my students.", "I love watching people strive for and reach their goals. ", "Take 'give up' out of your vocabulary", "https://www.manduka.com/yoga-towels/yogitoes-towels-1/yogitoesar-yoga-towel-vitality-2-0.html");
+    ("10", "Johnny", "Salke", "JSYoga@gmail.com", "(805) 121-5521", "San Luis Obispo, CA", "JSalke.jpg", "item3", "Hi Guys! My name is Johnny Salke and I am an active yogi who loves to hike, mountain climb, bike, and row.", "I got into yoga when a buddy of mine suggested it might help me with my climbing. I was having trouble with stability and core strength. He told me yoga had been key to his success in all other athletic activities. So I gave it a go. I signed up for teacher training hoping to understand it better. I came out of training ready and wanting to help others. Haven't looked back!", "I teach an advanced class in a hot room. Its already hard - because Bikram. But I generally let intermediates come in. I am always inspired by the people that come in a fight through. I had a client come and take childs pose for the entire second half of class. I encouraged him to try other classes and work his way up. He came back three months later at a higher level than a lot of my regulars. He left a huge impression on me and I keep him in my memory bank when I feel burnt out on teaching. I learn so much from my students.", "I love watching people strive for and reach their goals. ", "Take 'give up' out of your vocabulary", "https://www.manduka.com/yoga-towels/yogitoes-towels-1/yogitoesar-yoga-towel-vitality-2-0.html");
 
 -- //////END INSTRUCTOR PROFILES DATA///////
 
@@ -222,7 +224,7 @@ values
 INSERT INTO clientPro
     (id, Firstname, Lastname, email, phone, loc, img, q1, q2, q3, q4)
 values
-    ("1", "Jake", "Falco", "456@gmail.com", "(888) 888-8888", "Los Angeles, CA", "smile.jpg", "item2", "item2", "Hi guys I am looking for an intermediate yoga session with an instructor. The ideal setting would be at a studio where we can practice poses and breathing. ", "I am trying to impress my girlfriend for our anniversary with our own yoga session. She has always wanted to try but never had that extra push. I wanted to see if anyone here would start us off with a good set of sessions.");
+    ("1", "Jake", "Falco", "456@gmail.com", "(310) 105-8888", "San Luis Obispo, CA", "smile.jpg", "item2", "item2", "Hi guys I am looking for an intermediate yoga session with an instructor. The ideal setting would be at a studio where we can practice poses and breathing. ", "I am trying to impress my girlfriend for our anniversary with our own yoga session. She has always wanted to try but never had that extra push. I wanted to see if anyone here would start us off with a good set of sessions.");
 
 
 
@@ -308,6 +310,14 @@ values
 
 -- JUSTIN Q.
 
+
+INSERT INTO clientPro
+    (id, Firstname, Lastname, email, phone, loc, img, q1, q2, q3, q4)
+values
+    ("9", "Dale", "Padelford", "yogiGirl@gmail.com", "(562) 212 - 1212", "Long Beach, CA", "me.jpg", "item2", "item3", "I'd like to do in-studio classes. I'd
+      prefer to move with a big group -- for motivation.", "I am an intermediate/advanced level yogi who has been practicing
+            for over 8 years. I also teach, so I am looking to find a
+            challenging instructor who will keep me moving and in shape." )
 --/////////////END CLIENT PROS///////////////
 
 
