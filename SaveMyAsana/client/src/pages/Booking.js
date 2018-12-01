@@ -236,7 +236,16 @@ class Booking extends Component {
                   <Card title="" style={{ height: "330px" }}>
                     <div className="input-field col m12 center">
                       <h3> Your Instructor Awaits! </h3>
-                      {this.renderInstructorContactInfo()}
+                      <div
+                        style={{
+                          float: "right",
+                          marginLeft: "600px",
+                          marginTop: "200px",
+                          marginBottom: "100px"
+                        }}
+                      >
+                        {this.renderInstructorContactInfo()}
+                      </div>
                     </div>
                   </Card>
                 </Col>
@@ -301,7 +310,7 @@ class Booking extends Component {
           </div>
         </div>
         <div className="section-white">
-          <Container style={{ height: "400px" }}>
+          <Container style={{ height: "400px", marginTop: "50%" }}>
             <h2 className="center">RESULTS</h2>
             <Row>
               <Col size="12">

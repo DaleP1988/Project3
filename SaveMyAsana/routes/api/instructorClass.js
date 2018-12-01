@@ -33,21 +33,25 @@ router.get("/:name/", (req, res) => {
 
           for (var i = 0; i < APIResults.length; i++) {
             if (APIResults[i].Staff.Name === instructor) {
+              console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+              console.log(APIResults[i]);
+              console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
               const classDesc = APIResults[i];
               const instructor = classDesc.Staff.Name;
               const studioName = classDesc.Location.Name;
-              const nameClass = classDesc.Level.Name;
+              const nameClass = classDesc.ClassDescription.Level.Name;
               const location = classDesc.Location.City;
-              const classLevel = classDesc.Level.Name;
+              const classLevel = classDesc.ClassDescription.Level.Name;
               const description = classDesc.ClassDescription;
               const date = classDesc.Staff.StartDateTime;
               const time = classDesc.Staff.StartDateTime;
-              const studio = classDec.Location.Name;
+              const studio = classDesc.Location.Name;
               const spots = classDesc.ClassDescription.IsAvailable;
               const cancellation = classDesc.ClassDescription.IsCanceled;
               const address =
                 classDesc.Location.Address + classDesc.Location.Address2;
-              const registration = classDesc.Program.ScheduleType;
+              const registration =
+                classDesc.ClassDescription.Program.ScheduleType;
               userClasses.push({
                 instructor,
                 studioName,
