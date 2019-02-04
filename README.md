@@ -1,4 +1,4 @@
-# Project3
+# Save My Asana (prototype)
 Wellness app that matches clients with specialized instructors and wellness professionals
 
 
