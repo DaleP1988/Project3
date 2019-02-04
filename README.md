@@ -28,12 +28,6 @@ Save My Asana is a prototype written in JavaScript/JQuery and React.js. Surveys 
 
 ![word](https://user-images.githubusercontent.com/38080854/52215405-d5215a80-2848-11e9-999f-f31d403470e2.jpg)
 
-![word](https://user-images.githubusercontent.com/38080854/52215431-dfdbef80-2848-11e9-974a-d6178698ba05.jpg)
-
-![word](https://user-images.githubusercontent.com/38080854/52215463-ebc7b180-2848-11e9-80f4-b1fb4208c9b9.jpg)
-
-![word](https://user-images.githubusercontent.com/38080854/52215492-fda95480-2848-11e9-9098-4119864ae9ce.jpg)
-
 ![word](https://user-images.githubusercontent.com/38080854/52215522-10238e00-2849-11e9-9475-061c5f5ca9b2.jpg)
 
 ![word](https://user-images.githubusercontent.com/38080854/52215543-1ade2300-2849-11e9-9e02-b851f59794bd.jpg)
